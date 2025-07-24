@@ -5,7 +5,7 @@ Copilot-assisted staging, drafting, and development for Double Caps Correct ("CA
 
 ## 🧩 What Is This Repo?  
 A trusted workspace for thinking out loud—with structure.  
-**caps-cortex** is a companion repo to your main CAps GitHub Pages site. It houses markdown-based lists, drafts, and logs for collaborative development with Copilot.
+**caps-cortex** is a companion repo to your main CAps GitHub Pages site. It houses markdown-based lists, drafts, and logs for collaborative development with Microsoft Copilot (primarily), and GitHUb Copilot (secondarily).
 
 This is where ideas mature before going live.
 
