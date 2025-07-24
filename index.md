@@ -22,7 +22,7 @@ Copilot-assisted workspace for task sequencing, trust-first refinement, and tran
 
 ---
 
-## 🧪 Future List  
+## 🌱 Future List  
 > _Exploratory ideas and long-range aspirations_
 
 - 🔐 Trust Layer plugin: SHA256, GPG, OpenTimestamps  
@@ -67,6 +67,9 @@ Copilot-assisted workspace for task sequencing, trust-first refinement, and tran
 - 🗓️ 2025-07-24 — Trust guide created and linked  
 - 🗓️ 2025-07-24 — Logging protocol confirmed  
 - 🗓️ 2025-07-24 — Homepage layout and trust-first language refined
+
+## 📜 Project Log (linked)
+- [project-log.md](project-log.md)
 
 ---
 
