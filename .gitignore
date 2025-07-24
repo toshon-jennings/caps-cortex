@@ -1,0 +1,18 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor configs
+.vscode/
+.idea/
+
+# Logs & temp files
+*.log
+*.tmp
+
+# Optional markdown lint configs
+.markdownlint.json
+.markdownlint.yaml
+
+# Optional automation artifacts
+*.bak
