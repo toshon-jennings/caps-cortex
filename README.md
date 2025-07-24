@@ -46,3 +46,7 @@ This is where ideas mature before going live.
 - Explore GitHub Actions to lint, timestamp, or validate staging syntax
 
 ---
+
+Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Attribution required.
+
+---
