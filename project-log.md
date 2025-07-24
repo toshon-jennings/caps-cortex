@@ -28,9 +28,33 @@ Chronological record of Copilot-assisted development, staging, and refinement
 
 ## 🗓️ 2025-07-24 — README.md Drafted  
 - Defined purpose, philosophy, and contents of caps-cortex  
-- Clarified Copilot’s role: formatting, sequencing, and staging—not direct commits  
+- Clarified MS Copilot’s role: formatting, sequencing, and staging—not direct commits  
 - Emphasized separation of concerns and future automation potential  
 - Added license notice and linked to full CC BY 4.0 terms
+
+---
+
+## [2025-07-24] ✅ Initial Git setup and first push
+
+- Initialized Git repo in `caps-cortex`
+- Created `.gitignore` with baseline rules
+- Renamed `.gitignore.txt` to `.gitignore` (Windows extension fix)
+- Staged `index.md` and `project-log.md`
+- Resolved push error via `git pull --rebase`
+- Successfully pushed to GitHub using `git push`
+
+🔗 Repo now live and ready for collaborative staging
+
+---
+
+## [2025-07-24] 🔨 Remote URL Cleanup and Push Success
+
+- Identified malformed remote URL from botched paste
+- Reset with correct GitHub repo: `toshon-jennings/caps-cortex`
+- Verified with `git remote -v`
+- Successfully pushed `master` with tracking
+
+📡 Repo is now syncing cleanly—markdown magic incoming
 
 ---
 
