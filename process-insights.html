@@ -104,6 +104,20 @@
   <p><strong>Context:</strong> During cockpit refinement, Toshon realized the importance of informing Copilot about completed tasks to ensure accurate status tracking and avoid redundant suggestions.</p>
   <p><strong>Action:</strong> Create a dedicated process doc (e.g. <code>process-insights.html</code>) to log insights like this. Use it to track workflow habits, decision-making principles, and meta-level improvements.</p>
 </section>
+
+<section id="favicon-workaround">
+  <h2>💠 Favicon Troubleshooting</h2>
+  <p>
+    GitHub Pages may fail to display <code>favicon.ico</code> due to persistent caching. If the favicon is correctly placed and linked but still doesn’t appear, try appending a query string to force a fresh request:
+  </p>
+  <pre><code>&lt;link rel="icon" href="favicon.ico?" type="image/x-icon"&gt;</code></pre>
+  <p>
+    This technique prompts browsers to bypass stale cache and re-fetch the favicon. Verified in live deployment (DoubleCapsCorrect, 2025-07-25).
+    Source: <a href="https://stackoverflow.com/questions/46163065/github-pages-website-favicon-not-showing" target="_blank" rel="noopener">Stack Overflow workaround</a>
+	More importantly, this is a reminder to not forget resources like Google, which led me to Stack Overflow — sucess in the first hit in the first search.
+  </p>
+</section>
+
 </body>
 
  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e1e4e8; text-align: center; font-size: 0.9rem; color: #555;">
