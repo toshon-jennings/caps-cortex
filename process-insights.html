@@ -165,6 +165,16 @@ h3 {
   <p>Always verify repo-relative paths when accessing static files—especially after adding new documents or folders.</p>
 </section>
 
+<section id="external-nav-link-clarity">
+  <h2>External Nav Link Clarity</h2>
+  <p>If a nav item opens a domain <strong>outside the cockpit</strong>, it must include <code>target="_blank"</code> to preserve context ("comfy UX") and reduce user disorientation.</p>
+  <ul>
+    <li><span style="color:green;">✅</span> <code>&lt;a href="https://external.site" target="_blank"&gt;Wiki&lt;/a&gt;</code> <em>(opens in new tab)</em></li>
+    <li><span style="color:red;">❌</span> <code>&lt;a href="https://external.site"&gt;Wiki&lt;/a&gt;</code> <em>(replaces cockpit tab)</em></li>
+  </ul>
+  <p>Links like <strong>Wiki</strong> that redirect to external domains should be clearly marked or open in a new tab by default—especially if users haven't opted into leaving the cockpit.</p>
+</section>
+
 </body>
 
  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e1e4e8; text-align: center; font-size: 0.9rem; color: #555;">
