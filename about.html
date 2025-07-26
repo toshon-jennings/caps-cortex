@@ -1,15 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CAps-Cortex — Process Insights</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    img.logo {
+      display: block;
+      margin: 2rem auto;
+      max-width: 200px;
+    }
+
+    h1, h2, h3 {
+      font-weight: bold;
+      margin-top: 2rem;
+    }
+
+    a {
+      color: #0366d6;
+      text-decoration: underline;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e1e4e8;
+      margin: 2rem 0;
+    }
+
+    .timestamp {
+      color: #555;
+      font-style: italic;
+    }
+
+    .log-entry {
+      margin-bottom: 1rem;
+    }
+
+    .copilot-note {
+      background: #f9f9f9;
+      border-left: 4px solid #28a745;
+      padding: 1rem;
+      margin-top: 2rem;
+      font-size: 0.95rem;
+    }
+	.caps-header {
+    background-color: #f9f9f9;
+    padding: 12px 24px;
+    border-bottom: 1px solid #ccc;
+    font-family: system-ui, sans-serif;
+ }
+
+  .nav-links {
+   list-style: none;
+    display: flex;
+    gap: 14px;
+   margin: 0;
+   padding: 0;
+  }
+
+  .nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+  }
+
+  .nav-links li a:hover {
+    text-decoration: underline;
+  }
+
+  </style>
+</head>
+
+<body>
+<header style="display: flex; flex-direction: column; align-items: center; gap: 1em; margin-bottom: 2em; position: sticky; top: 0; background: white; z-index: 1000; padding: 1.5em 0; border-bottom: 1px solid #ccc;">
+  <div style="display: flex; align-items: center; justify-content: center; gap: 1em;">
+    <img src="caps-logo.png" alt="CAps Logo" style="height: 48px;">
+    <h1 style="color: #007A33; font-size: 2.5em; font-weight: 600; letter-spacing: 0.5px; margin: 0;">
+      About Toshon
+    </h1>
+  </div>
+
+  <nav style="text-align: center;">
+    <ul class="nav-links" style="list-style: none; display: inline-flex; gap: 20px; padding: 0; margin: 0;">
+       <li><a href="https://toshon-jennings.github.io/DoubleCapsCorrect/">CAps 2.1.1 Home</a></li>
+      <li><a href="https://toshon-jennings.github.io/DoubleCapsCorrect/verify.html">Verification Guide</a></li>
+      <li><a href="https://toshon-jennings.github.io/caps-cortex/">CAps-Cortex</a></li>
+      <li><a href="/caps-cortex/project-log.html">CAps-Cortex Project Log</a></li>
+	  <li><a href="https://toshon-jennings.github.io/caps-cortex/process-insights.html">Process Insights</a></li>
+	  <li><a href="https://github.com/toshon-jennings/DoubleCapsCorrect/wiki">Wiki</a></li>
+    </ul>
+  </nav>
+</header>
+
 <section id="about-toshon">
-  <h2>👨‍💻 About Toshon Jennings</h2>
+  <h2>Infrastructure builder by day, trust-pipeline architect by night.</h2>
   <p>
     I'm an IT professional, cockpit architect, and product steward driven by clarity, transparency, and trust-centered design. I manage multi-campus educational infrastructure by day, build verification tooling by night—and refine everything in between.
   </p>
 
-  <h3>🛠️ Current Role</h3>
+  <h3>Current Role</h3>
   <p>
     I serve as I.T. Coordinator at The City School (Philadelphia), leading incident response, asset management, and infrastructure modernization. I oversee key IT projects—including MSSP transitions, E-Rate implementations, and process documentation—while optimizing service delivery, user satisfaction, and operational uptime across multiple campuses.
   </p>
 
-  <h3>📦 Creator of CAps</h3>
+  <h3>Creator of CAps</h3>
   <p>
     CAps is a portable, trust-forward verification tool I designed to help users confirm file authenticity, detect tampering, and validate digital signatures. It’s the centerpiece of my GitHub cockpit, built with AutoHotkey and distributed through a fully auditable trust pipeline.
   </p>
@@ -17,7 +122,7 @@
     The CAps cockpit showcases not just technical implementation, but visual design, documentation polish, favicon hygiene, anchor consistency, and user empowerment—hallmarks of my product stewardship philosophy.
   </p>
 
-  <h3>🎓 Education & Certifications</h3>
+  <h3>Education & Certifications</h3>
   <ul>
     <li><strong>B.S./M.S. IT Management</strong> — Western Governors University (in progress)</li>
     <li><strong>Cybersecurity Specialist</strong> — NexGenT NISP Program (480-hour certification)</li>
@@ -27,17 +132,33 @@
     <li><strong>A+ and Network+</strong> — In progress</li>
   </ul>
 
-  <h3>📚 Tools & Philosophy</h3>
+  <h3>Tools & Philosophy</h3>
   <p>
     I work fluently across scripting (PowerShell, Bash, AutoHotkey), front-end design (HTML, CSS, UI/UX), and user trust tooling (GPG, hashes, OpenTimestamp). My cockpit tooling reflects a commitment to parity, transparency, and future-proof design.
   </p>
   <p>
-    I also support educational programs—training tech learners, facilitating chess clubs, and mentoring next-gen problem solvers.
+    I also support educational programs—training tech learners, facilitating youth chess clubs, and mentoring next-gen problem solvers.
   </p>
 
-  <h3>📌 Resume</h3>
-  <p>
-    <a href="/resume.pdf" target="_blank">Download PDF Resume</a> — or explore my GitHub repositories to see CAps and other cockpit assets in motion.
-  </p>
+  <section id="resume-download">
+  <h3>📄 Resume</h3>
+  <p>Want to learn more or share my experience? Feel free to view or download a complete PDF version of my résumé:</p>
+  <ul>
+    <li><a href="/resume.pdf" target="_blank" rel="noopener">View Résumé in Browser</a></li>
+    <li><a href="/resume.pdf" download>⬇️ Download Résumé (PDF)</a></li>
+  </ul>
 </section>
 <hr>
+</body>
+
+<footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e1e4e8; text-align: center; font-size: 0.9rem; color: #555;">
+  <p>
+    ← <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/" target="_blank" rel="noopener noreferrer">Download CAps</a>
+    &nbsp;|&nbsp;
+    <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/verify.html" target="_blank" rel="noopener noreferrer">Verification Page</a>
+    &nbsp;|&nbsp;
+    <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/index.html#faq" target="_blank" rel="noopener noreferrer">FAQs</a>
+  </p>
+</footer>
+    
+ </footer>
