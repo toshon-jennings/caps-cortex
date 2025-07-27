@@ -175,6 +175,19 @@ h3 {
   <p>Links like <strong>Wiki</strong> that redirect to external domains should be clearly marked or open in a new tab by default—especially if users haven't opted into leaving the cockpit.</p>
 </section>
 
+<section id="title-tag-symbol-behavior">
+  <h2>&lt;title&gt; Tag Symbol Behavior</h2>
+  <p>While refining branding in page tabs, Toshon noticed unexpected literal rendering when trying to superscript a trademark symbol inside the <code>&lt;title&gt;</code> block.</p>
+  <p><strong>Observation:</strong> Using <code>&lt;sup&gt;&amp;trade;&lt;/sup&gt;</code> inside the <code>&lt;title&gt;</code> caused the tab to display “<code>&lt;sup&gt;™&lt;/sup&gt;</code>” rather than the intended symbol. Removing <code>&lt;sup&gt;</code> and using <code>&amp;trade;</code> or the raw character rendered correctly.</p>
+  <ul>
+    <li><span style="color:green;">✅</span> <code>&lt;title&gt;CAps™ Utility&lt;/title&gt;</code> <em>(displays cleanly)</em></li>
+    <li><span style="color:red;">❌</span> <code>&lt;title&gt;CAps&lt;sup&gt;&amp;trade;&lt;/sup&gt;&lt;/title&gt;</code> <em>(renders tags as text)</em></li>
+  </ul>
+  <p><strong>Reminder:</strong> HTML tags inside metadata blocks like <code>&lt;title&gt;</code> are treated as plain text. Superscript formatting only works in the visible page content.</p>
+  <p>I guess I should have known that—but this is a reminder that you don't know what you don't know, and I've never tried to put a symbol in a <code>&lt;head&gt;</code> before.</p>
+  <p><strong>Recommendation:</strong> Use <code>™</code> or <code>&amp;trade;</code> directly in title or head metadata. Reserve <code>&lt;sup&gt;</code> for inline body text branding only.</p>
+</section>
+
 </body>
 
  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e1e4e8; text-align: center; font-size: 0.9rem; color: #555;">
