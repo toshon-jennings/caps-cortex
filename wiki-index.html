@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Toshon's Résumé</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    img.logo {
+      display: block;
+      margin: 2rem auto;
+      max-width: 200px;
+    }
+
+    h1, h2, h3 {
+      font-weight: bold;
+      margin-top: 2rem;
+    }
+	
+	h2 {
+  color: #007A33;
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 0.3em;
+  margin-top: 2em;
+}
+
+h3 {
+  color: #00A651;
+  padding-bottom: 0.3em;
+  margin-top: 2em;
+}
+
+    a {
+      color: #0366d6;
+      text-decoration: underline;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e1e4e8;
+      margin: 2rem 0;
+    }
+
+    .timestamp {
+      color: #555;
+      font-style: italic;
+    }
+
+    .log-entry {
+      margin-bottom: 1rem;
+    }
+
+    .copilot-note {
+      background: #f9f9f9;
+      border-left: 4px solid #28a745;
+      padding: 1rem;
+      margin-top: 2rem;
+      font-size: 0.95rem;
+    }
+	.caps-header {
+    background-color: #f9f9f9;
+    padding: 12px 24px;
+    border-bottom: 1px solid #ccc;
+    font-family: system-ui, sans-serif;
+ }
+
+  .nav-links {
+   list-style: none;
+    display: flex;
+    gap: 14px;
+   margin: 0;
+   padding: 0;
+  }
+
+  .nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+  }
+
+  .nav-links li a:hover {
+    text-decoration: underline;
+  }
+
+  </style>
+</head>
+
+<body>
+<header style="display: flex; flex-direction: column; align-items: center; gap: 1em; margin-bottom: 2em; position: sticky; top: 0; background: white; z-index: 1000; padding: 1.5em 0; border-bottom: 1px solid #ccc;">
+  <div style="display: flex; align-items: center; justify-content: center; gap: 1em;">
+    <img src="caps-logo.png" alt="CAps Logo" style="height: 48px;">
+    <h1 style="color: #00A651; font-size: 2.5em; font-weight: 600; letter-spacing: 0.5px; margin: 0;">
+      Toshon Jennings, <h3>Human-Centered Technologist</h3>
+    </h1>
+  </div>
+
+  <nav style="text-align: center;">
+    <ul class="nav-links" style="list-style: none; display: inline-flex; gap: 20px; padding: 0; margin: 0;">
+      <li><a href="https://toshon-jennings.github.io/DoubleCapsCorrect/">CAps 2.1.1</a></li>
+      <li><a href="https://toshon-jennings.github.io/DoubleCapsCorrect/verify.html">Verify</a></li>
+      <li><a href="https://toshon-jennings.github.io/caps-cortex/">CAps-Cortex</a></li>
+      <li><a href="/caps-cortex/project-log.html">CAps-Cortex Project Log</a></li>
+	  <li><a href="https://toshon-jennings.github.io/caps-cortex/process-insights.html">Process Insights</a></li>
+	  <li><a href="https://github.com/toshon-jennings/DoubleCapsCorrect/wiki" target="_blank" rel="noopener">Wiki</a></li>
+	  <li><a href="/caps-cortex/about.html">About Toshon</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section id="wiki-index" style="max-width:800px; margin:auto; font-family:sans-serif;">
+  <h1 style="text-align:center;">🗂 CAps Wiki Index</h1>
+  <p>This index lists all current wiki entries grouped by purpose and cockpit module. Use it to navigate, audit, or restore parity across pages.</p>
+
+  <h2>🧭 Navigation & Stewardship</h2>
+  <ul>
+    <li><a href="/caps-cortex/home.html">Home</a> — Welcome and orientation</li>
+    <li><a href="https://toshon-jennings.github.io/caps-cortex/about.html">About Toshon</a> — Creator and cockpit architect</li>
+    <li><a href="/caps-cortex/insights.html">Process Insights</a> — Development trail and trust markers</li>
+    <li><a href="/caps-cortex/future.html">Future List</a> — Logged aspirations and restoration items</li>
+  </ul>
+
+  <h2>🛠 Usage & Ergonomics</h2>
+  <ul>
+    <li><a href="/caps-cortex/setup.html">Setup Guide</a> — Installation and hotkey mapping</li>
+    <li><a href="/caps-cortex/flow.html">Flow Patterns</a> — Ergonomic correction walkthroughs</li>
+    <li><a href="/caps-cortex/issues.html">Known Issues</a> — Tracked bugs and resolutions</li>
+  </ul>
+
+  <h2>🌱 Impact & Outreach</h2>
+  <ul>
+    <li><a href="/caps-cortex/outreach.html">Cert-Ready Academy</a> — Career access and learning equity</li>
+    <li><a href="/caps-cortex/principles.html">CAps Principles</a> — Stewardship, onboarding, and user respect</li>
+  </ul>
+
+  <p>If a page is missing or mislinked, it's likely in the cockpit queue. Log it via the <a href="/caps-cortex/future.html">Future List</a> or restore from a known-good commit.</p>
+</section>
+</body>
+
+<footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e1e4e8; text-align: center; font-size: 0.9rem; color: #555;">
+  <p>
+    ← <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/" target="_blank" rel="noopener noreferrer">Download CAps</a>
+    &nbsp;|&nbsp;
+    <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/verify.html" target="_blank" rel="noopener noreferrer">Verification Page</a>
+    &nbsp;|&nbsp;
+    <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/index.html#faq" target="_blank" rel="noopener noreferrer">FAQs</a>
+  </p>
+</footer>
+
+
+</body>
+</html>
