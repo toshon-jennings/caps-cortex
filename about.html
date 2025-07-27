@@ -102,13 +102,18 @@ h3 {
 }
 
 .resume-button {
-  padding: 0.75rem 1.5rem;
+  display: inline-flex;            /* Allows centering text easily */
+  align-items: center;             /* Vertically center text */
+  justify-content: center;         /* Horizontally center text */
+  width: 160px;                    /* Set to your desired width */
+  padding: 0.75rem 0;              /* Remove horizontal padding, keep vertical padding */
   background-color: #00A651;
   color: #fff;
   text-decoration: none;
   border-radius: 6px;
   font-weight: bold;
   transition: background-color 0.3s ease;
+  text-align: center;              /* For fallback */
 }
 
 .resume-button:hover {
