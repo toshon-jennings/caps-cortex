@@ -91,8 +91,29 @@ h3 {
   .nav-links li a:hover {
     text-decoration: underline;
   }
+   
+  
+  .resume-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
 
-  </style>
+.resume-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #005f73;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.resume-button:hover {
+  background-color: #0a9396;
+}
+</style>
 </head>
 
 <body>
@@ -160,7 +181,7 @@ h3 {
   </p>
 
   <section id="resume-download">
-  <h3>📄 Resume</h3>
+  <h3>📄 Résumé</h3>
   <p>Want to learn more or share my experience? Feel free to view or download a complete PDF version of my résumé:</p>
   <ul>
     <li><a href="https://toshon-jennings.github.io/caps-cortex/resume.html">View Résumé in Browser</a></li>
@@ -168,6 +189,24 @@ h3 {
     <li><a href="https://toshon-jennings.github.io/caps-cortex/toshon_resume.pdf" download>⬇️ Download Résumé (PDF)</a></li>
   </ul>
 </section>
+
+<section id="resume">
+   <div class="resume-buttons">
+    <a href="https://toshon-jennings.github.io/caps-cortex/resume.html" class="resume-button" target="_blank" rel="noopener">
+      Quick View
+    </a>
+    <a href="https://toshon-jennings.github.io/caps-cortex/toshon_resume.pdf" class="resume-button" target="_blank" rel="noopener">
+      View Full PDF
+    </a>
+    <a href="https://toshon-jennings.github.io/caps-cortex/toshon_resume.pdf" class="resume-button" download>
+      Download PDF
+    </a>
+  </div>
+</section>
+
+
+
+
 <hr>
 
 <section id="contact-info">
