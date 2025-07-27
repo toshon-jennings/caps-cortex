@@ -177,7 +177,7 @@ h3 {
 
 <section id="title-tag-symbol-behavior">
   <h2>&lt;title&gt; Tag Symbol Behavior</h2>
-  <p>While refining branding in page tabs, Toshon noticed unexpected literal rendering when trying to superscript a trademark symbol inside the <code>&lt;title&gt;</code> block.</p>
+  <p>While refining branding in page tabs, I noticed unexpected literal rendering when trying to superscript a trademark symbol inside the <code>&lt;title&gt;</code> block.</p>
   <p><strong>Observation:</strong> Using <code>&lt;sup&gt;&amp;trade;&lt;/sup&gt;</code> inside the <code>&lt;title&gt;</code> caused the tab to display “<code>&lt;sup&gt;™&lt;/sup&gt;</code>” rather than the intended symbol. Removing <code>&lt;sup&gt;</code> and using <code>&amp;trade;</code> or the raw character rendered correctly.</p>
   <ul>
     <li><span style="color:green;">✅</span> <code>&lt;title&gt;CAps™ Utility&lt;/title&gt;</code> <em>(displays cleanly)</em></li>
@@ -186,6 +186,18 @@ h3 {
   <p><strong>Reminder:</strong> HTML tags inside metadata blocks like <code>&lt;title&gt;</code> are treated as plain text. Superscript formatting only works in the visible page content.</p>
   <p>I guess I should have known that—but this is a reminder that you don't know what you don't know, and I've never tried to put a symbol in a <code>&lt;head&gt;</code> before.</p>
   <p><strong>Recommendation:</strong> Use <code>™</code> or <code>&amp;trade;</code> directly in title or head metadata. Reserve <code>&lt;sup&gt;</code> for inline body text branding only.</p>
+</section>
+
+<section id="markdown-link-behavior">
+  <h2>Markdown Link Behavior — Visibility vs. Function</h2>
+  <p><strong>Date:</strong> July 27, 2025</p>
+  <p><strong>Insight:</strong> GitHub Pages does not honor the <code>{:target="_blank"}</code> syntax in Markdown—rendering it as visible text rather than triggering new-tab behavior.</p>
+  <ul>
+    <li><span style="color:green;">✅</span> <code>&lt;a href="https://external.site" target="_blank" rel="noopener noreferrer"&gt;Wiki&lt;/a&gt;</code> <em>(opens in new tab)</em></li>
+    <li><span style="color:red;">❌</span> <code>[Wiki](https://external.site){:target="_blank"}</code> <em>(renders as literal text)</em></li>
+  </ul>
+  <p><strong>Response:</strong> Pivoted to HTML-based <code>&lt;a&gt;</code> tags with <code>target="_blank"</code> and <code>rel="noopener noreferrer"</code> to maintain cockpit integrity and ensure external links open in new tabs.</p>
+  <p><strong>Rationale:</strong> Preserves user focus, prevents navigation disruptions, and reinforces cockpit trust by aligning behavior with user expectation. Also adds traceability to link behavior within the correction framework.</p>
 </section>
 
 </body>
