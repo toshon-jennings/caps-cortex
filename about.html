@@ -145,6 +145,7 @@ h3 {
   transition: background 0.2s;
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   text-align: center;
+  border: none;             /* No border by default */
 }
 
 .contact-button:hover,
@@ -155,9 +156,15 @@ h3 {
 
 .contact-static {
   cursor: default;
-  background-color: #00A651; /* A slightly different green for static info */
+  background-color: #00A651;
+  border: 2px solid #00A651;   /* Add green border */
   color: #fff;
   pointer-events: none;
+}
+
+.contact-emoji {
+  margin-right: 0.6em;
+  font-size: 1.2em;
 }
 
 .sticky-header {
@@ -275,7 +282,7 @@ h3 {
     Central GitHub Project: CAps
   </a>
   <div class="contact-button contact-static">
-    Location: Philadelphia
+    <span class="contact-emoji">📍</span> Location: Philadelphia
   </div>
 </div>
 
