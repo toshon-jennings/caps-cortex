@@ -120,6 +120,46 @@ h3 {
   background-color: #007A33;
 }
 
+.contact-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.contact-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 320px;             /* Adjust width as needed */
+  min-height: 48px;
+  background-color: #00A651;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1em;
+  border-radius: 7px;
+  text-decoration: none;
+  margin: 0;
+  padding: 0.9em 1.2em;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  text-align: center;
+}
+
+.contact-button:hover,
+.contact-button:focus {
+  background-color: #007A33;
+  color: #fff;
+}
+
+.contact-static {
+  cursor: default;
+  background-color: #1c8233; /* A slightly different green for static info */
+  color: #fff;
+  pointer-events: none;
+}
+
 .sticky-header {
   display: flex;
   flex-direction: column;
@@ -226,11 +266,16 @@ h3 {
 
 <hr>
 
-<div class="contact-block">
-<h3>Contact</h3>
-  <p>📧 <a href="mailto:toshon.tech@gmail.com">Email</a></p>
-  <p>🧰 <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/">Central GitHub Project: CAps</a></p>
-  <p>📍 Philadelphia, PA</p>
+<div class="contact-buttons">
+  <a class="contact-button" href="mailto:toshon.tech@gmail.com">
+    Email: toshon.tech@gmail.com
+  </a>
+  <a class="contact-button" href="https://toshon-jennings.github.io/DoubleCapsCorrect/" target="_blank" rel="noopener">
+    Central GitHub Project: CAps
+  </a>
+  <div class="contact-button contact-static">
+    Location: Philadelphia
+  </div>
 </div>
 
 </body>
