@@ -300,19 +300,30 @@ main.content-wrapper > h2:first-child {
   
   /* Limit the height to match button feel */
 .contact-location-overlay {
-  height: 60px;
-  max-width: 100%;
-  border-radius: 6px;
+  width: 520px;
+  height: 104px;
+  border-radius: 12px;
   overflow: hidden;
   position: relative;
+  display: block;
+  margin: 0 auto;
+  padding: 0; /* 🧼 Remove any internal spacing */
+  box-sizing: border-box;
+  border: none; /* 🧼 No extra outline or border */
 }
 
 /* Keep the image tightly cropped */
-.contact-location-imgfill {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
+.contact-location-overlay {
+  width: 520px;
+  height: 104px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
   display: block;
+  margin: 0 auto;
+  padding: 0; /* 🧼 Remove any internal spacing */
+  box-sizing: border-box;
+  border: none; /* 🧼 No extra outline or border */
 }
 
 /* Overlay text: small but readable */
@@ -322,10 +333,10 @@ main.content-wrapper > h2:first-child {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.45);
-  color: #fff;
-  font-weight: 500;
-  font-size: 0.9em;
+  background: rgba(0, 0, 0, 0.35);
+  color: white;
+  font-weight: 600;
+  font-size: 1.05em;
   text-align: center;
 }
 .resume-buttons,
