@@ -215,6 +215,32 @@ main.content-wrapper > h2:first-child {
   margin-top: 0; /* override default 2em from h2 */
 }
 
+.resume-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+  max-width: 340px;
+  margin-top: 1em;
+}
+
+.resume-button {
+  background-color: #1d843c;
+  color: white;
+  padding: 0.75em 1.2em;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 6px;
+  display: inline-block;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.resume-button:hover {
+  background-color: #155a2b;
+  transform: scale(1.03);
+}
+
+
 </style>
 </head>
 
