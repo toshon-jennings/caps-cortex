@@ -6,106 +6,238 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <style>
-  /* Base Styles */
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    background-color: #ffffff;
-    color: #000000;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    line-height: 1.6;
-  }
-
-  /* Shared Header */
-  header.site-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1em;
-    margin-bottom: 2em;
-    position: sticky;
-    top: 0;
-    background: #ffffff;
-    z-index: 1000;
-    padding: 1.5em 0;
-    border-bottom: 1px solid #ccc;
-  }
-
-  header.site-header h1 {
-    color: #00A651;
-    font-size: 2.5em;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    margin: 0;
-  }
-
-  /* Navigation */
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 14px;
-    margin: 0;
-    padding: 0;
-  }
-
-  .nav-links li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-  }
-
-  .nav-links li a:hover {
-    text-decoration: underline;
-  }
-
-  /* Status Box Example (optional, reuse or remove if not used) */
-  .status-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.4em;
-    background: #f7f7f9;
-    border: 1px solid #e0e0e0;
-    border-radius: 7px;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    margin: 1.5em 0;
-    flex-wrap: wrap;
-  }
-
-  /* Dark Mode Support */
-  @media (prefers-color-scheme: dark) {
     body {
-      background-color: #1e1e1e;
-      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      line-height: 1.6;
     }
 
-    header.site-header {
-      background: #1e1e1e;
-      border-bottom: 1px solid #444;
+    img.logo {
+      display: block;
+      margin: 2rem auto;
+      max-width: 200px;
     }
 
-    header.site-header h1 {
-      color: #4FFF9F;
+    h1, h2, h3 {
+      font-weight: bold;
+      margin-top: 2rem;
+    }
+    
+    h2 {
+      color: #007A33;
+      border-bottom: 1px solid #cccccc;
+      padding-bottom: 0.3em;
+      margin-top: 2em;
+    }
+
+    h3 {
+      color: #00A651;
+      padding-bottom: 0.3em;
+      margin-top: 2em;
+    }
+
+    a {
+      color: #0366d6;
+      text-decoration: underline;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e1e4e8;
+      margin: 2rem 0;
+    }
+
+    .timestamp {
+      color: #555;
+      font-style: italic;
+    }
+
+    .log-entry {
+      margin-bottom: 1rem;
+    }
+
+    .copilot-note {
+      background: #f9f9f9;
+      border-left: 4px solid #28a745;
+      padding: 1rem;
+      margin-top: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .caps-header {
+      background-color: #f9f9f9;
+      padding: 12px 24px;
+      border-bottom: 1px solid #ccc;
+      font-family: system-ui, sans-serif;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
     }
 
     .nav-links li a {
-      color: #ccc;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
     }
 
     .nav-links li a:hover {
-      color: #ffffff;
+      text-decoration: underline;
     }
 
-    .status-box {
-      background: #2a2a2a;
-      border: 1px solid #444;
-      color: #eee;
+    .resume-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
     }
-  }
-</style>
 
+    .resume-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 160px;
+      padding: 0.75rem 0;
+      background-color: #007A33;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      text-align: center;
+    }
+
+    .resume-button:hover {
+      background-color: #004E15;
+    }
+
+    .contact-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .contact-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 320px;
+      height: 44px; /* Ensure all buttons are the same height */
+      background-color: #007A33;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.1em;
+      border-radius: 7px;
+      text-decoration: none;
+      margin: 0;
+      transition: background 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      text-align: center;
+      border: none;
+      gap: 0.6em;
+      position: relative;
+      overflow: visible;
+      padding: 0; /* Remove vertical padding for alignment with image overlay */
+      min-height: unset;
+    }
+
+    .contact-button:hover,
+    .contact-button:focus {
+      background-color: #004E15;
+      color: #fff;
+    }
+
+    /* Overlay style for Location button */
+    .contact-static.contact-location-overlay {
+      background: none;
+      border: 2px solid #00A651;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      pointer-events: none;
+      height: 44px;
+      min-height: 44px;
+      width: 320px;
+      border-radius: 7px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Full-cover image for overlay */
+    .contact-location-imgfill {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      border-radius: 7px;
+      filter: brightness(0.65) saturate(1.1);
+      pointer-events: none;
+    }
+
+    .contact-location-overlaytext {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      font-weight: bold;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.55);
+      width: 100%;
+      text-align: center;
+      font-size: 1.08em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      pointer-events: none;
+      letter-spacing: 0.015em;
+    }
+
+    .contact-emoji {
+      margin-right: 0.6em;
+      font-size: 1.2em;
+      flex-shrink: 0;
+    }
+
+    .sticky-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1em;
+      margin-bottom: 2em;
+      position: sticky;
+      top: 0;
+      background: white;
+      z-index: 1000;
+      padding: 1.5em 0;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .contact-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 2em;
+    }
+  </style>
 </head>
 
 <body>
