@@ -6,80 +6,81 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      background-color: #ffffff;
-      color: #000000;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
-      line-height: 1.6;
-    }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.6;
+  }
 
-    img.logo {
-      display: block;
-      margin: 2rem auto;
-      max-width: 200px;
-    }
+  img.logo {
+    display: block;
+    margin: 2rem auto;
+    max-width: 200px;
+  }
 
-    h1, h2, h3 {
-      font-weight: bold;
-      margin-top: 2rem;
-    }
-	
-	h2 {
-  color: #007A33;
-  border-bottom: 1px solid #cccccc;
-  padding-bottom: 0.3em;
-  margin-top: 2em;
-}
+  h1, h2, h3 {
+    font-weight: bold;
+    margin-top: 2rem;
+  }
 
-h3 {
-  color: #00A651;
-  padding-bottom: 0.3em;
-  margin-top: 2em;
-}
+  h2 {
+    color: #007A33;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 0.3em;
+    margin-top: 2em;
+  }
 
-    a {
-      color: #0366d6;
-      text-decoration: underline;
-    }
+  h3 {
+    color: #00A651;
+    padding-bottom: 0.3em;
+    margin-top: 2em;
+  }
 
-    hr {
-      border: none;
-      border-top: 1px solid #e1e4e8;
-      margin: 2rem 0;
-    }
+  a {
+    color: #0366d6;
+    text-decoration: underline;
+  }
 
-    .timestamp {
-      color: #555;
-      font-style: italic;
-    }
+  hr {
+    border: none;
+    border-top: 1px solid #e1e4e8;
+    margin: 2rem 0;
+  }
 
-    .log-entry {
-      margin-bottom: 1rem;
-    }
+  .timestamp {
+    color: #555;
+    font-style: italic;
+  }
 
-    .copilot-note {
-      background: #f9f9f9;
-      border-left: 4px solid #28a745;
-      padding: 1rem;
-      margin-top: 2rem;
-      font-size: 0.95rem;
-    }
-	.caps-header {
+  .log-entry {
+    margin-bottom: 1rem;
+  }
+
+  .copilot-note {
+    background: #f9f9f9;
+    border-left: 4px solid #28a745;
+    padding: 1rem;
+    margin-top: 2rem;
+    font-size: 0.95rem;
+  }
+
+  .caps-header {
     background-color: #f9f9f9;
     padding: 12px 24px;
     border-bottom: 1px solid #ccc;
     font-family: system-ui, sans-serif;
- }
+  }
 
   .nav-links {
-   list-style: none;
+    list-style: none;
     display: flex;
     gap: 14px;
-   margin: 0;
-   padding: 0;
+    margin: 0;
+    padding: 0;
   }
 
   .nav-links li a {
@@ -92,7 +93,53 @@ h3 {
     text-decoration: underline;
   }
 
-  </style>
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #1e1e1e;
+      color: #ffffff;
+    }
+
+    h2 {
+      color: #7FFFBE;
+      border-bottom: 1px solid #444;
+    }
+
+    h3 {
+      color: #4FFF9F;
+    }
+
+    a {
+      color: #4ea1f3;
+    }
+
+    hr {
+      border-top: 1px solid #333;
+    }
+
+    .timestamp {
+      color: #aaa;
+    }
+
+    .copilot-note {
+      background: #2a2a2a;
+      border-left: 4px solid #28a745;
+    }
+
+    .caps-header {
+      background-color: #2a2a2a;
+      border-bottom: 1px solid #444;
+    }
+
+    .nav-links li a {
+      color: #ccc;
+    }
+
+    .nav-links li a:hover {
+      color: #ffffff;
+    }
+  }
+</style>
+
 </head>
 <body>
  
