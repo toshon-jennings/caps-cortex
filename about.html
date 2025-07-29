@@ -15,7 +15,6 @@
       padding: 0;
     }
 
-    /* Wraps all content except full-width header/footer */
     .content-wrapper {
       max-width: 800px;
       margin: 0 auto;
@@ -65,18 +64,13 @@
       text-decoration: underline;
     }
 
-    h1, h2, h3 {
-      font-weight: bold;
-      margin-top: 2rem;
-    }
-
+    h1, h2, h3 { font-weight: bold; margin-top: 2rem; }
     h2 {
       color: #007A33;
       border-bottom: 1px solid #cccccc;
       padding-bottom: 0.3em;
       margin-top: 2em;
     }
-
     h3 {
       color: #00A651;
       padding-bottom: 0.3em;
@@ -89,78 +83,43 @@
       border-bottom: 1px solid transparent;
       transition: all 0.2s ease;
     }
-
     a:hover {
       color: #00A651;
       border-bottom: 1px solid #00A651;
-      text-decoration: none;
     }
+    a:visited { color: #005722; }
+    a:visited:hover { color: #007A33; border-bottom: 1px solid #007A33; }
 
-    a:visited {
-      color: #005722;
-    }
-
-    a:visited:hover {
-      color: #007A33;
-      border-bottom: 1px solid #007A33;
-    }
-
-    a[href*=".zip"], 
+    a[href*=".zip"],
     a[style*="background-color: #1d843c"] {
       color: #ffffff !important;
       border-bottom: none !important;
     }
-
-    a[href*=".zip"]:hover, 
+    a[href*=".zip"]:hover,
     a[style*="background-color: #1d843c"]:hover {
       background-color: #155a2b !important;
       color: #ffffff !important;
     }
 
-    .faq-entry {
-      margin-bottom: 1.5em;
-      padding-bottom: 0.5em;
-      border-bottom: 1px solid #ccc;
-    }
-
+    .faq-entry { margin-bottom: 1.5em; padding-bottom: 0.5em; border-bottom: 1px solid #ccc; }
     .faq-entry summary {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 1.1em;
-      cursor: pointer;
-      padding: 0.4em 0;
-      transition: background-color 0.2s ease;
-      border-radius: 4px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 1.1em; cursor: pointer; padding: 0.4em 0;
+      transition: background-color 0.2s ease; border-radius: 4px;
     }
+    .faq-entry summary:hover { background-color: #f3f3f3; }
+    .faq-entry summary::marker { font-size: 1.2em; color: #00A651; }
+    .faq-entry[open] summary { margin-bottom: 0.5em; }
+    .faq-entry p { margin: 0 0 0.5em; }
 
-    .faq-entry summary:hover {
-      background-color: #f3f3f3;
-    }
+    main.content-wrapper > h2:first-child { margin-top: 0; }
 
-    .faq-entry summary::marker {
-      font-size: 1.2em;
-      color: #00A651;
-    }
-
-    .faq-entry[open] summary {
-      margin-bottom: 0.5em;
-    }
-
-    .faq-entry p {
-      margin-top: 0;
-      margin-bottom: 0.5em;
-    }
-
-    main.content-wrapper > h2:first-child {
-      margin-top: 0;
-    }
-
+    /* Buttons and contact overlay sizing */
     .resume-buttons,
     .contact-buttons {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: stretch;
       gap: 0.6em;
       margin: 1.5em auto;
       max-width: 520px;
@@ -168,7 +127,8 @@
     }
 
     .resume-button,
-    .contact-button {
+    .contact-button,
+    .contact-location-overlay {
       background-color: #1d843c;
       color: white;
       padding: 0.75em 1.2em;
@@ -176,25 +136,25 @@
       text-decoration: none;
       font-weight: 600;
       border-radius: 6px;
-      display: inline-block;
       transition: background-color 0.2s ease, transform 0.2s ease;
       width: 100%;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
     }
-
+    }
     .resume-button:hover,
-    .contact-button:hover {
+    .contact-button:hover,
+    .contact-location-overlay:hover {
       background-color: #155a2b;
       transform: scale(1.03);
     }
 
     .contact-location-overlay {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      max-width: 520px;
-      height: 104px;
-      border-radius: 12px;
-      margin: 0 auto;
+      background-color: transparent;
+      padding: 0;
+      height: auto;
     }
 
     .contact-location-imgfill {
@@ -202,78 +162,32 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      border-radius: 6px;
+      margin-bottom: 0;
     }
 
     .contact-location-overlaytext {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0, 0, 0, 0.35);
-      color: white;
-      font-weight: 600;
-      font-size: 1.05em;
-      text-align: center;
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.35);
+      color: white; font-weight: 600; font-size: 1.05em;
+      text-align: center; border-radius: 6px;
     }
 
     /* Dark mode */
     @media (prefers-color-scheme: dark) {
-      body {
-        background-color: #1e1e1e;
-        color: #ffffff;
-      }
-
-      .status-box {
-        background-color: #2a2a2a;
-        border: 1px solid #444;
-      }
-
-      h2 {
-        color: #7FFFBE;
-        border-bottom: 1px solid #444;
-      }
-
-      h3 {
-        color: #4FFF9F;
-      }
-
-      header.site-header {
-        margin-bottom: 1em;
-        background: #1e1e1e;
-        border-bottom: 1px solid #444;
-      }
-
-      header.site-header h1 {
-        color: #4FFF9F;
-      }
-
-      .nav-links li a {
-        color: #ccc;
-      }
-
-      .nav-links li a:hover {
-        color: #ffffff;
-      }
-
-      a {
-        color: #4FFF9F;
-        border-bottom: 1px solid transparent;
-      }
-
-      a:hover {
-        color: #7FFFBE;
-        border-bottom: 1px solid #7FFFBE;
-      }
-
-      a:visited {
-        color: #3FDF8F;
-      }
-
-      a:visited:hover {
-        color: #4FFF9F;
-        border-bottom: 1px solid #4FFF9F;
-      }
+      body { background-color: #1e1e1e; color: #ffffff; }
+      .status-box { background-color: #2a2a2a; border: 1px solid #444; }
+      h2 { color: #7FFFBE; border-bottom: 1px solid #444; }
+      h3 { color: #4FFF9F; }
+      header.site-header { margin-bottom: 1em; background: #1e1e1e; border-bottom: 1px solid #444; }
+      header.site-header h1 { color: #4FFF9F; }
+      .nav-links li a { color: #ccc; }
+      .nav-links li a:hover { color: #ffffff; }
+      a { color: #4FFF9F; border-bottom: 1px solid transparent; }
+      a:hover { color: #7FFFBE; border-bottom: 1px solid #7FFFBE; }
+      a:visited { color: #3FDF8F; }
+      a:visited:hover { color: #4FFF9F; border-bottom: 1px solid #4FFF9F; }
     }
   </style>
 </head>
@@ -295,21 +209,59 @@
       </ul>
     </nav>
   </header>
+
   <main class="content-wrapper">
-    <!-- Existing content omitted for brevity -->
+    <section id="about-toshon">
+      <h2>Infrastructure builder by day, trust-pipeline architect by night.</h2>
+      <p>I'm an IT professional, cockpit architect, and product steward driven by clarity, transparency, and trust-centered design. I manage multi-campus educational infrastructure by day, build verification tooling by night—and refine everything in between.</p>
+
+      <h3>Current Role</h3>
+      <p>I serve as I.T. Coordinator at The City School (TCS) in Philadelphia, leading incident response, asset management, and infrastructure modernization. I oversee key IT projects—including an MSSP transition, E-Rate implementations, and process documentation—while optimizing service delivery, user satisfaction, and operational uptime across multiple campuses.</p>
+
+      <h3>CAps™ Creator</h3>
+      <p>CAps™ is a portable, trust-forward correction utility designed to complement autocorrect and streamline text revision workflows. It operates as a lightweight enhancement layer, giving users rapid access to trusted corrections wherever keystrokes are happening—engineered for speed, accuracy, and user empowerment.</p>
+      <p>The CAps cockpit, "CAps-Cortex™," showcases technical implementation, visual design, documentation polish, and UX focus—hallmarks of my product stewardship philosophy focused on clarity, trust, and respect for the user.</p>
+
+      <h3>Cert-Ready Technology Academy, LLC</h3>
+      <div style="display: flex; align-items: flex-start; gap: 1.5em; flex-wrap: wrap;">
+        <div style="flex: 1 1 250px; min-width: 180px;">
+          <p>I founded CRTA to expand access to tech careers for middle and high school students, as well as adult learners. Our model is certification-first—designed to help students graduate not only with diplomas, but with industry-recognized credentials. From CompTIA to Microsoft tracks, the goal is equity, readiness, and career acceleration. It's where mentorship meets methodology, tailored to your school's culture.</p>
+          <p><strong>Our goal: plant the seeds of tomorrow's tech field today.</strong></p>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; min-width: 180px; max-width: 260px;">
+          <a href="https://toshon-jennings.github.io/caps-cortex/FutureReady@TCS.html" target="_blank" rel="noopener">
+            <img src="https://toshon-jennings.github.io/caps-cortex/FutureReady@TCS.png" alt="FutureReady@TCS PDF Cover" style="max-width: 180px; box-shadow: 0 2px 18px rgba(0,0,0,0.11); border-radius: 8px; transition: transform 0.18s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+          </a>
+          <div style="margin-top: 0.5em; font-weight: bold; color: #0366d6; font-size: 0.98em;">
+            <a href="https://toshon-jennings.github.io/caps-cortex/FutureReady@TCS.html" target="_blank" rel="noopener" style="color: #0366d6; text-decoration: underline;"><code>Click to view proposal</code></a>
+          </div>
+        </div>
+      </div>
+
+      <h3>Education & Certifications</h3>
+      <ul>
+        <li><strong>B.S./M.S. IT Management</strong> — Western Governors University (in progress)</li>
+        <li><strong>Cybersecurity Specialist</strong> — NexGenT NISP Program</li>
+        <li><strong>Security+</strong> — CompTIA</li>
+        <li><strong>ITIL Foundations v4</strong> — Axelos</li>
+        <li><strong>A+ and Network+</strong> — In progress</li>
+      </ul>
+
+      <h3>Tools & Philosophy</h3>
+      <p>I work fluently across scripting (PowerShell, Bash, AutoHotkey, Python), front-end design (HTML, CSS, JavaScript, UI/UX), and user trust tooling (GPG, hashes, OpenTimestamp). My cockpit tooling reflects a commitment to parity, transparency, and future-proof design.</p>
+      <p>I also support educational programs—training tech learners, facilitating youth chess clubs, and mentoring next-gen problem solvers.</p>
+    </section>
+
+    <section id="resume-download">
+      <h3>Résumé</h3>
+      <p>Want to learn more or share my experience? Feel free to view or download a complete PDF version of my résumé:</p>
+    </section>
 
     <section id="resume">
-      <h3>Résumé</h3>
       <div class="resume-buttons">
-        <a href="https://toshon-jennings.github.io/caps-cortex/resume.html" class="resume-button" target="_blank" rel="noopener">
-          Quick View
-        </a>
-        <a href="https://toshon-jennings.github.io/caps-cortex/toshon_resume.pdf" class="resume-button" target="_blank" rel="noopener">
-          Full PDF View
-        </a>
-        <a href="https://toshon-jennings.github.io/caps-cortex/toshon_resume.pdf" class="resume-button" download>
-          🡇 Download PDF
-        </a>
+        <a href="https://toshon-jennings.github.io/caps-cortex/resume.html" class="resume-button" target="_blank" rel="noopener">Quick View</a>
+        <a href="https://toshon-jennings.github.io/caps-cortex/toshon_resume.pdf" class="resume-button" target="_blank" rel="noopener">Full PDF View</a>
+        <a href="https://toshon-jennings.github.io/caps-cortex/toshon_resume.pdf" class="resume-button" download>🡇 Download PDF</a>
       </div>
     </section>
 
@@ -317,31 +269,21 @@
 
     <h2>Contact</h2>
     <div class="contact-buttons">
-      <a class="contact-button" href="mailto:toshon.tech@gmail.com">
-        Email: toshon.tech@gmail.com
-      </a>
-      <a class="contact-button" href="https://github.com/toshon-jennings/DoubleCapsCorrect" target="_blank" rel="noopener">
-        Central GitHub Repo: CAps™
-      </a>
+      <a class="contact-button" href="mailto:toshon.tech@gmail.com">Email: toshon.tech@gmail.com</a>
+      <a class="contact-button" href="https://github.com/toshon-jennings/DoubleCapsCorrect" target="_blank" rel="noopener">Central GitHub Repo: CAps™</a>
       <a class="contact-button" href="https://toshon-jennings.github.io/DoubleCapsCorrect/" target="_blank" rel="noopener">
         <img src="caps-logo.png" alt="CAps Logo" style="height: 22px; width: 25px; margin-right: 0.4em; vertical-align: middle; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.09);" />
         CAps™ 2.1.1
       </a>
       <div class="contact-button contact-location-overlay">
-        <img
-          class="contact-location-imgfill"
-          src="https://toshon-jennings.github.io/caps-cortex/abdul-delati-_jlkgoaKHj0-unsplash.jpg"
-          alt="Philadelphia"
-          aria-hidden="true"
-        />
-        <span class="contact-location-overlaytext">
-          <span class="contact-emoji">📍</span> Location: Philadelphia, PA
-        </span>
+        <img class="contact-location-imgfill" src="https://toshon-jennings.github.io/caps-cortex/abdul-delati-_jlkgoaKHj0-unsplash.jpg" alt="Philadelphia" aria-hidden="true" />
+        <span class="contact-location-overlaytext">📍 Location: Philadelphia, PA</span>
       </div>
     </div>
   </main>
+
   <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e1e4e8; text-align: center; font-size: 0.9rem; color: #555;">
-    <p>🔐 CAps™ is built for user-first verification and open-source transparency. <br />
+    <p>🔐 CAps™ is built for user-first verification and open-source transparency.<br />
       ← <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/" target="_blank" rel="noopener noreferrer">Download CAps™</a>
       &nbsp;|&nbsp;
       <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/verify.html" target="_blank" rel="noopener noreferrer">Verification Page</a>
