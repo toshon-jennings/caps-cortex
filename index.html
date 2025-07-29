@@ -215,6 +215,10 @@ main.content-wrapper > h2:first-child {
   margin-top: 0; /* override default 2em from h2 */
 }
 
+main.content-wrapper > h3:first-child {
+  margin-top: 0; /* override default 2em from h3 for first element */
+}
+
 </style>
 
 </head>
@@ -241,6 +245,7 @@ main.content-wrapper > h2:first-child {
   </nav>
 </header>
 
+<main class="content-wrapper">
   <h3>🧠 Staging Hub for CAps™ Development</h3>
   <p><em><i>Copilot-assisted workspace for task sequencing, trust-first refinement, and transparent iteration</i></em></p>
 
@@ -289,17 +294,17 @@ main.content-wrapper > h2:first-child {
     <li>📦 GitHub Packages for signed CAps distribution</li>
     <li>🧪 OpenTimestamp support for tamper-proof dating</li>
     <li>🧼 Markdown-driven automation for FAQ and task updates</li>
-    <li>🧱 Visual onboarding flow: “How do I launch CAps?”</li>
-	<li>🧭 ToolTip and onboarding flow: “On launch, guide users with ToolTip and intro overlay” — from initial <code>Verify_Hashes_2.1.1.txt</code>, not yet implemented</li>
-	<li>⚙️ GitHub Apps audit: “Explore label/milestone automation, webhook clarity, and cockpit-native integration” — from Future List sketch, not yet implemented</li>
+    <li>🧱 Visual onboarding flow: "How do I launch CAps?"</li>
+	<li>🧭 ToolTip and onboarding flow: "On launch, guide users with ToolTip and intro overlay" — from initial <code>Verify_Hashes_2.1.1.txt</code>, not yet implemented</li>
+	<li>⚙️ GitHub Apps audit: "Explore label/milestone automation, webhook clarity, and cockpit-native integration" — from Future List sketch, not yet implemented</li>
   </ul>
 
-  <p><strong>Context:</strong> Aligns with Toshon’s cockpit philosophy—transparent tooling, zero overwrite, and additive integration.</p>
+  <p><strong>Context:</strong> Aligns with Toshon's cockpit philosophy—transparent tooling, zero overwrite, and additive integration.</p>
 </section>
   </ul>
 
   <section id="outstanding-mentions">
-  <h2>Outstanding Mentions We Haven’t Fully Tackled</h2>
+  <h2>Outstanding Mentions We Haven't Fully Tackled</h2>
   <ul>
     <li><strong>Universal anchor attribute audit</strong> — Logo and footer anchors are trust-safe; remaining anchors need review</li>
     <li><strong>Centralized styling via <code>caps-style.css</code></strong> — Styles are still inlined; external CSS file not yet staged</li>
@@ -344,8 +349,9 @@ main.content-wrapper > h2:first-child {
   <div class="copilot-note">
     💡 <strong>About Copilot:</strong> Throughout this repo, "Copilot" generally refers to <strong>Microsoft Copilot</strong>, a conversational AI assistant integrated with Windows and Bing—not GitHub Copilot, the code-completion tool for developers.<br><br>
     
-	When in doubt, trust the timestamps, emoji flair, and conversational scaffolding; if you see that, you’re talking to Microsoft Copilot.
+	When in doubt, trust the timestamps, emoji flair, and conversational scaffolding; if you see that, you're talking to Microsoft Copilot.
   </div>
+  </main>
   
   <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e1e4e8; text-align: center; font-size: 0.9rem; color: #555;">
   <p>🔐 CAps™ is built for user-first verification and open-source transparency. <br />
