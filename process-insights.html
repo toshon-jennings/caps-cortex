@@ -220,9 +220,10 @@ main.content-wrapper > h2:first-child {
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  padding: 1.5rem;
+  padding: 2.5rem;
   margin-bottom: 2rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
 }
 
 /* Dark-mode card tweak */
@@ -237,6 +238,18 @@ main.content-wrapper > h2:first-child {
 .content-wrapper > section:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.content-wrapper > section::after {
+  content: "";
+  position: absolute;
+  bottom: 1rem;           /* distance from bottom of card */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 11px;
+  background: url("favicon.ico") no-repeat center/contain;
+  opacity: 0.6;
+  pointer-events: none;   /* so it never blocks clicks */
 }
 </style>
 </head>
