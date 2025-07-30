@@ -134,6 +134,40 @@
         background-color: #3a3a3a;
       }
     }
+	.faq-entry {
+  margin-bottom: 1.5em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #ccc;
+}
+
+.faq-entry summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1em;
+  cursor: pointer;
+  padding: 0.4em 0;
+  transition: background-color 0.2s ease;
+  border-radius: 4px;
+}
+
+.faq-entry summary:hover {
+  background-color: #f3f3f3;
+}
+
+.faq-entry summary::marker {
+  font-size: 1.2em;
+  color: #00A651; /* match your green */
+}
+
+.faq-entry[open] summary {
+  margin-bottom: 0.5em;
+}
+
+.faq-entry p {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
   </style>
 </head>
 <body>
@@ -162,15 +196,20 @@
 
     <section id="resume">
        <h2>Résumé</h2>
-       <summary><h3>Professional Summary</h3></summary>
+	   
+       <details class="faq-entry">
+	   <summary>
+	   <h3 style="margin:0;">Professional Summary</h3></summary>
   <p>Creative IT professional with experience managing multi-campus infrastructure and data security.</p>
   <p>Skilled in asset management, incident response, service delivery, and automation.</p>
   <p>CompTIA Security+ and ITIL v4 certified, with a foundation in front-end development and user-centered design.</p>
   <p>Builder and steward of CAps, a keyboard-first correction utility that streamlines autocorrect workflows.</p>
-  <p>Mentor and trainer of future tech professionals.</p>
+  <p>Mentor and trainer of future tech professionals.</p></details>
   
-
-  <summary><h3>Applicable Experience</h3></summary>
+<details class="faq-entry">
+  <summary>
+  <h3 style="margin:0;">Applicable Experience</h3>
+  </summary>
 
   <h4>THE CITY SCHOOL, Philadelphia, PA · Sep 2022–Present</h4>
   <p><strong>I.T. Coordinator</strong> · Aug 2023–Present</p>
@@ -232,9 +271,12 @@
     <li>Facilitated SAT Prep and Chess Clubs (MS/HS)</li>
     <li>Applications: PowerSchool, Khan Academy, IXL</li>
   </ul>
+</details>
 
-<details>
-  <summary><h3>Credentials</h3></summary>
+<details class="faq-entry">
+  <summary>
+  <h3 style="margin:0;">Credentials</h3>
+  </summary>
   <ul>
     <li><strong>A+ (220-1101)</strong> — CompTIA · In Progress</li>
     <li><strong>A+ (220-1102)</strong> — CompTIA · Jul 2023 · ID: 454739851</li>
@@ -246,7 +288,9 @@
  </details>
 
 <details>
-  <summary><h3>Education</h3></summary>
+  <summary>
+  <h3 style="margin:0;">Education</h3>
+  </summary>
   <ul>
     <li>Western Governors University — B.S./M.S. in IT Management (In Progress)</li>
     <li>NexGenT — Cyber Security Specialist (480-hour NISP Program)</li>
@@ -254,8 +298,10 @@
   </ul>
 <details>
 
-<details>
-  <summary><h3>General Toolkit</h3></summary>
+<details class="faq-entry">
+  <summary>
+  <h3 style="margin:0;">General Toolkit</h3>
+  </summary>
   <ul>
     <li><strong>Design:</strong> Figma, Adobe, Canva, typography, accessibility, UX research</li>
     <li><strong>Security:</strong> Wireshark, Nmap, AWS, GoGuardian, Linux, OSINT</li>
@@ -267,7 +313,9 @@
   
   <section id="ai-toolkit">
   <details>
-  <summary><h3>AI Fluency & Toolkit Architecture</h3></summary>
+  <summary>
+  <h3 style="margin:0;">AI Fluency & Toolkit Architecture</h3>
+  </summary>
   <ul>
     <li>Actively leverage multiple AI platforms for creative, technical, and research workflows, including:
       <ul>
