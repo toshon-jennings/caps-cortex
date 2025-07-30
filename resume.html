@@ -67,11 +67,6 @@
       padding-bottom: 0.3em;
       margin-top: 2em;
     }
-    h3 {
-      color: #00A651;
-      padding-bottom: 0.3em;
-      margin-top: 2em;
-    }
     a {
       color: #007A33;
       text-decoration: none;
@@ -82,13 +77,6 @@
       color: #00A651;
       border-bottom: 1px solid #00A651;
     }
-    a:visited {
-      color: #005722;
-    }
-    a:visited:hover {
-      color: #007A33;
-      border-bottom: 1px solid #007A33;
-    }
     @media (prefers-color-scheme: dark) {
       body {
         background-color: #1e1e1e;
@@ -97,9 +85,6 @@
       h2 {
         color: #7FFFBE;
         border-bottom: 1px solid #444;
-      }
-      h3 {
-        color: #4FFF9F;
       }
       header.site-header {
         background: #1e1e1e;
@@ -122,70 +107,45 @@
         color: #7FFFBE;
         border-bottom: 1px solid #7FFFBE;
       }
-      a:visited {
-        color: #3FDF8F;
-      }
-      a:visited:hover {
-        color: #4FFF9F;
-        border-bottom: 1px solid #4FFF9F;
-      }
     }
-    a[href*=".zip"],
-    a[style*="background-color: #1d843c"] {
-      color: #ffffff !important;
-      border-bottom: none !important;
-    }
-    a[href*=".zip"]:hover,
-    a[style*="background-color: #1d843c"]:hover {
-      background-color: #155a2b !important;
-      color: #ffffff !important;
-    }
-    .faq-entry {
-      margin-bottom: 1.5em;
-      padding-bottom: 0.5em;
-      border-bottom: 1px solid #ccc;
-    }
-    .faq-entry summary {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 1.1em;
-      cursor: pointer;
-      padding: 0.4em 0;
-      transition: background-color 0.2s ease;
-      border-radius: 4px;
-    }
-    .faq-entry summary:hover {
-      background-color: #f3f3f3;
-    }
-    .faq-entry summary::marker {
-      font-size: 1.2em;
-      color: #00A651;
-    }
-    .faq-entry[open] summary {
-      margin-bottom: 0.5em;
-    }
-    .faq-entry p {
-      margin-top: 0;
-      margin-bottom: 0.5em;
-    }
-    main.content-wrapper > h2:first-child {
-      margin-top: 0;
-    }
-    /* big-h2 tweak: more subtle light gray */
+
+    /* Base big-h2 box styling */
     .big-h2 {
+      display: block;
+      background-color: #e0e0e0;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
       text-align: center;
       font-size: 2rem;
       line-height: 1.2;
-      margin: 0 0 1.5rem;
-      color: #aaaaaa;             /* lighter gray */
-      padding-bottom: 0.5rem;
+      margin: 0 auto 1.5rem;
+      color: #333333;
       border-bottom: 2px solid rgba(0,166,81,0.3);
       font-weight: 600;
+      max-width: fit-content;
+      transition: letter-spacing 0.3s ease;
     }
+
+    /* Letter-spacing “breathing” on hover */
+    .big-h2.letter-space:hover {
+      letter-spacing: 2px;
+    }
+
+    /* Soft shadowed glow */
+    .big-h2.glow-text {
+      text-shadow:
+        0 0 4px rgba(0,166,81,0.5),
+        0 0 8px rgba(0,166,81,0.3);
+    }
+
     @media (max-width: 600px) {
       .big-h2 {
         font-size: 1.75rem;
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      .big-h2 {
+        background-color: #2a2a2a;
       }
     }
   </style>
@@ -210,11 +170,13 @@
   </header>
 
   <main class="content-wrapper">
-    <h3 class="big-h2"><strong>Toshon Jennings,</strong> <em>People-Centered Technologist</em></h3>
+    <h3 class="big-h2 glow-text letter-space">
+      <strong>Toshon Jennings,</strong> <em>People-Centered Technologist</em>
+    </h3>
 
     <section id="resume">
       <h2>Résumé</h2>
-      <h3>Professional Summary</h3>
+       <h3>Professional Summary</h3>
   <p>Creative IT professional with experience managing multi-campus infrastructure and data security.</p>
   <p>Skilled in asset management, incident response, service delivery, and automation.</p>
   <p>CompTIA Security+ and ITIL v4 certified, with a foundation in front-end development and user-centered design.</p>
@@ -334,11 +296,11 @@
 <hr>
 
   <p><em>Last updated July 26, 2025 · For full cockpit projects or contact info, see <a href="https://toshon-jennings.github.io/caps-cortex/about.html#contact-info">About Toshon</a>.</em></p>
-  </section>
+    </section>
   </main>
-</body>
+
   <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e1e4e8; text-align: center; font-size: 0.9rem; color: #555;">
-    <p>🔐 CAps is built for user-first verification and open-source transparency.<br />
+    <p>🔐 CAps is built for user-first verification and open-source transparency.<br>
       ← <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/" target="_blank" rel="noopener noreferrer">Download CAps</a>
       &nbsp;|&nbsp;
       <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/verify.html" target="_blank" rel="noopener noreferrer">Verification Page</a>
