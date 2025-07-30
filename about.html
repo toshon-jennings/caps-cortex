@@ -182,19 +182,6 @@
       color: white; font-weight: 600; font-size: 1.05em;
       text-align: center; border-radius: 6px;
     }
-	
-	.content-wrapper > section::after {
-  content: "";
-  position: absolute;
-  bottom: 1rem;           /* distance from bottom of card */
-  right: 1.5rem;            /* align logo to the right */
-  width: 24px;            /* size of the logo */
-  height: 22px;
-  background: url("favicon.ico") no-repeat center;
-  background-size: contain;
-  opacity: 0.6;
-  pointer-events: none;   /* so it never blocks clicks */
-}
 
     /* Dark mode */
     @media (prefers-color-scheme: dark) {
@@ -291,7 +278,7 @@
 
     <h2>Contact</h2>
     <div class="contact-buttons">
-      <a class="contact-button" href="mailto:toshon.tech@gmail.com">Email: toshon.tech@gmail.com</a>
+      <a class="contact-button" href="mailto:toshon.tech@gmail.com" target="_blank" rel="noopener">Email: toshon.tech@gmail.com</a>
       <a class="contact-button" href="https://github.com/toshon-jennings/DoubleCapsCorrect" target="_blank" rel="noopener">Central GitHub Repo: CAps™</a>
       <a class="contact-button" href="https://toshon-jennings.github.io/DoubleCapsCorrect/" target="_blank" rel="noopener">
         <img src="caps-logo.png" alt="CAps Logo" style="height: 22px; width: 25px; margin-right: 0.4em; vertical-align: middle; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.09);" />
