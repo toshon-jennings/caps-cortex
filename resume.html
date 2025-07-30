@@ -109,35 +109,21 @@
       }
     }
 
-    /* Base big-h2 box styling */
+    /* big-h2 as a slightly darker box with light grey text */
     .big-h2 {
       display: block;
-      background-color: #e0e0e0;
+      background-color: #555555;   /* darker grey box */
       padding: 1rem 1.5rem;
       border-radius: 8px;
       text-align: center;
       font-size: 2rem;
       line-height: 1.2;
       margin: 0 auto 1.5rem;
-      color: #333333;
+      color: #e0e0e0;              /* very light grey text */
       border-bottom: 2px solid rgba(0,166,81,0.3);
       font-weight: 600;
       max-width: fit-content;
-      transition: letter-spacing 0.3s ease;
     }
-
-    /* Letter-spacing “breathing” on hover */
-    .big-h2.letter-space:hover {
-      letter-spacing: 2px;
-    }
-
-    /* Soft shadowed glow */
-    .big-h2.glow-text {
-      text-shadow:
-        0 0 4px rgba(0,166,81,0.5),
-        0 0 8px rgba(0,166,81,0.3);
-    }
-
     @media (max-width: 600px) {
       .big-h2 {
         font-size: 1.75rem;
@@ -145,7 +131,7 @@
     }
     @media (prefers-color-scheme: dark) {
       .big-h2 {
-        background-color: #2a2a2a;
+        background-color: #3a3a3a;
       }
     }
   </style>
@@ -170,12 +156,12 @@
   </header>
 
   <main class="content-wrapper">
-    <h3 class="big-h2 glow-text letter-space">
+    <h3 class="big-h2">
       <strong>Toshon Jennings,</strong> <em>People-Centered Technologist</em>
     </h3>
 
     <section id="resume">
-      <h2>Résumé</h2>
+       <h2>Résumé</h2>
        <h3>Professional Summary</h3>
   <p>Creative IT professional with experience managing multi-campus infrastructure and data security.</p>
   <p>Skilled in asset management, incident response, service delivery, and automation.</p>
@@ -297,7 +283,7 @@
 
   <p><em>Last updated July 26, 2025 · For full cockpit projects or contact info, see <a href="https://toshon-jennings.github.io/caps-cortex/about.html#contact-info">About Toshon</a>.</em></p>
     </section>
-  </main>
+   </main>
 
   <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e1e4e8; text-align: center; font-size: 0.9rem; color: #555;">
     <p>🔐 CAps is built for user-first verification and open-source transparency.<br>
