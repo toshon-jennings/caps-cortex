@@ -243,11 +243,11 @@ main.content-wrapper > h2:first-child {
   content: "";
   position: absolute;
   bottom: 1rem;           /* distance from bottom of card */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 24px;
+  right: 1.5rem;            /* align logo to the right */
+  width: 24px;            /* size of the logo */
   height: 22px;
-  background: url("favicon.ico") no-repeat center/contain;
+  background: url("favicon.ico") no-repeat center;
+  background-size: contain;
   opacity: 0.6;
   pointer-events: none;   /* so it never blocks clicks */
 }
