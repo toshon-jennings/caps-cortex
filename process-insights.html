@@ -400,6 +400,18 @@ main.content-wrapper > h2:first-child {
   Coding remains a living muscle—best exercised through active contribution.</p>
 </section>
 
+<section id="emoji-rendering-anomaly">
+  <h2>Render Anomaly — Emoji Unicolor & Leftward Shift @ CAps-Cortex Home</h2>
+  <p><strong>Insight:</strong> Yes, in fact. A strange event just occurred that I want to capture for process insights. While reviewing <code>@ Do Now</code> on CAps-Cortex Home, I saw that the last two <code>🛠️ → In progress</code> items had an icon that was unicolor—the same color as the text—and both lines were leftward by one space. I went to the markup, thinking that there was a missing space, because that's what I saw onscreen. There was no such issue in the markup, however. My first play worked: I copied the emoji from the first line, the following space, and the leading 'E' of the working line, pasted that over the other two lines, and changed the E back to Ds. Visual parity was restored.</p>
+  <ul>
+    <li><span style="color:green;">✅</span> Markup was clean, but emoji rendered as flat/unicolor, visually drifting leftward</li>
+    <li><span style="color:green;">✅</span> Fix involved trusted-paste from a working line, replacing leading character only</li>
+    <li><span style="color:green;">✅</span> All emojis were clone-sourced—no format or origin deviation observed</li>
+  </ul>
+  <p><strong>Response:</strong> Logged as a markup-obedient but renderer-defiant anomaly. Suspect clipboard pollution, DOM cache residue, or invisible character fallout. May need to adopt “paste-from-stable” when cloning visual emoji lines.</p>
+  <p><strong>Rationale:</strong> Illustrates that renderer loyalty isn't guaranteed, even when markup is visually sound. Future edits to stacked emoji contexts should verify rendering fidelity—especially near similar lines—to maintain cockpit visual trust.</p>
+</section>
+
 </body>
 <main class="content-wrapper">
 
