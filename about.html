@@ -198,6 +198,29 @@
       a:visited { color: #3FDF8F; }
       a:visited:hover { color: #4FFF9F; border-bottom: 1px solid #4FFF9F; }
     }
+	
+.flipbook-full {
+  position: relative;
+  width: 90vw;
+  max-width: 800px;
+  margin: 2rem auto;
+  /* cancel the 2rem padding from .content-wrapper */
+  margin-left: calc(2rem * -1);
+  margin-right: calc(2rem * -1);
+  height: 0;
+  padding-top: 75%;
+  overflow: hidden;
+}
+
+.flipbook-full iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+
   </style>
 </head>
 <body>
@@ -296,12 +319,55 @@
     </div>
 	
 	<hr>
-	
-	<h2 style="color: #505050;">FutureReady@TCS Interactive Flipbook</h2>
-	<div style="position:relative;padding-top:max(60%,324px);width:100%;height:0;">
-	<iframe style="position:absolute;border:none;width:100%;height:100%;left:0;top:0;"
- src="https://online.fliphtml5.com/City-Lights/ynot/"  seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" ></iframe></div>
+
   </main>
+  
+  
+
+<section
+  style="
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding: 2rem 0;
+    box-sizing: border-box;
+    text-align: center;
+  "
+>
+  <h2 style="color: #505050; margin-bottom: 1rem;">
+    FutureReady@TCS Interactive Flipbook
+  </h2>
+
+  <div
+    class="flipbook-full"
+    style="
+      /* make it up to 67% of viewport, but no wider than 800px */
+      width: 67vw;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      height: 0;
+      padding-top: 75%; /* 4:3 ratio */
+      overflow: hidden;
+    "
+  >
+    <iframe
+      src="https://online.fliphtml5.com/City-Lights/ynot/"
+      frameborder="0"
+      scrolling="no"
+      seamless
+      allowfullscreen
+      style="
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      "
+    ></iframe>
+  </div>
+</section>
+
+
   
 
   <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e1e4e8; text-align: center; font-size: 0.9rem; color: #555;">
