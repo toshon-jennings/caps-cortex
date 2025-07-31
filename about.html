@@ -220,6 +220,41 @@
   border: none;
 }
 
+.flipbook-section {
+  /* full‐width bleed */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  box-sizing: border-box;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.flipbook-section h2 {
+  color: #505050;
+  margin-bottom: 1rem;
+}
+
+.flipbook {
+  /* up to 80% of viewport width, max 1000px */
+  width: 80vw;
+  max-width: 1000px;
+  margin: 0 auto;
+  /* 16:9 aspect ratio → height = 56.25% of width */
+  position: relative;
+  padding-top: 56.25%;
+  overflow: hidden;
+}
+
+.flipbook iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+
+
 
   </style>
 </head>
@@ -322,49 +357,17 @@
   
   
 
-<section
-  style="
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    padding: 2rem 0;
-    box-sizing: border-box;
-    text-align: center;
-  "
->
-  <h2 style="color: #505050; margin-bottom: 1rem;">
-    FutureReady@TCS Interactive Flipbook
-  </h2>
-
-  <div
-    class="flipbook-full"
-    style="
-      /* make it up to 67% of viewport, but no wider than 800px */
-      width: 67vw;
-      max-width: 800px;
-      margin: 0 auto;
-      position: relative;
-      height: 0;
-      padding-top: 75%; /* 4:3 ratio */
-      overflow: hidden;
-    "
-  >
+<section class="flipbook-section">
+  <h2>FutureReady@TCS Interactive Flipbook</h2>
+  <div class="flipbook">
     <iframe
-      src="https://online.fliphtml5.com/City-Lights/ynot/"
+      src="https://online.fliphtml5.com/City-Lights/ynot/?mode=4"
       frameborder="0"
       scrolling="no"
-      seamless
       allowfullscreen
-      style="
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-      "
     ></iframe>
   </div>
 </section>
-
 
   
 
