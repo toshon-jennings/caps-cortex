@@ -132,6 +132,7 @@
         font-size: 1.75rem;
       }
     }
+	
     @media (prefers-color-scheme: dark) {
       .big-h2 {
         background-color: #3a3a3a;
@@ -171,6 +172,14 @@
   margin-top: 0;
   margin-bottom: 0.5em;
 }
+/* after your base .faq-entry rules */
+@media (prefers-color-scheme: dark),
+body.dark-mode {
+  .faq-entry summary:hover {
+    background-color: #3d3d3d;
+  }
+}
+
 /* Buttons and contact overlay sizing */
     .resume-buttons,
     .contact-buttons {
