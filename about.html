@@ -152,7 +152,7 @@
     .contact-location-overlay:visited {
       color: white !important;
     }
-    
+        
     .resume-button:hover,
     .contact-button:hover,
     .contact-location-overlay:hover {
@@ -198,68 +198,82 @@
       a:visited { color: #3FDF8F; }
       a:visited:hover { color: #4FFF9F; border-bottom: 1px solid #4FFF9F; }
     }
-	
-.flipbook-full {
-  position: relative;
-  width: 90vw;
-  max-width: 800px;
-  margin: 2rem auto;
-  /* cancel the 2rem padding from .content-wrapper */
-  margin-left: calc(2rem * -1);
-  margin-right: calc(2rem * -1);
-  height: 0;
-  padding-top: 75%;
-  overflow: hidden;
-}
 
-.flipbook-full iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
+    .flipbook-full {
+      position: relative;
+      width: 90vw;
+      max-width: 800px;
+      margin: 2rem auto;
+      /* cancel the 2rem padding from .content-wrapper */
+      margin-left: calc(2rem * -1);
+      margin-right: calc(2rem * -1);
+      height: 0;
+      padding-top: 75%;
+      overflow: hidden;
+    }
 
-.flipbook-section {
-  /* full‐width bleed */
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  box-sizing: border-box;
-  padding: 2rem 0;
-  text-align: center;
-}
+    .flipbook-full iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
 
-.flipbook-section h2 {
-  color: #505050;
-  margin-bottom: 1rem;
-}
+    .flipbook-section {
+      /* full‐width bleed */
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      box-sizing: border-box;
+      padding: 1rem 0; /* Reduced from 2rem to 1rem */
+      text-align: center;
+    }
 
-.flipbook {
-  /* up to 80% of viewport width, max 1000px */
-  width: 80vw;
-  max-width: 1000px;
-  margin: 0 auto;
-  /* 16:9 aspect ratio → height = 56.25% of width */
-  position: relative;
-  padding-top: 56.25%;
-  overflow: hidden;
-}
+    .flipbook-section h2 {
+      color: #505050;
+      margin-bottom: 1rem;
+    }
 
-.flipbook iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
- 
- /* Change color of flipbook heading @ above footer */
-.flipbook-heading {
-  color: #505050;
-  text-align: left;
-}
+    .flipbook {
+      /* up to 80% of viewport width, max 1000px */
+      width: 80vw;
+      max-width: 1000px;
+      margin: 0 auto;
+      /* Reduced aspect ratio from 16:9 (56.25%) to more compact */
+      position: relative;
+      padding-top: 42%; /* Reduced from 56.25% - this makes it shorter */
+      overflow: hidden;
+      border-radius: 8px; /* Added subtle border radius */
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* Added subtle shadow */
+    }
 
+    .flipbook iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 8px; /* Match container border radius */
+    }
 
+    /* Change color of flipbook heading @ above footer */
+    .flipbook-heading {
+      color: #505050;
+      text-align: left;
+      margin-bottom: 0.5rem; /* Reduced spacing below heading */
+    }
+
+    /* Mobile responsiveness improvements */
+    @media (max-width: 768px) {
+      .flipbook {
+        width: 95vw; /* Use more width on mobile */
+        padding-top: 45%; /* Slightly taller on mobile for better readability */
+      }
+      
+      .flipbook-section {
+        padding: 0.5rem 0; /* Even less padding on mobile */
+      }
+    }
   </style>
 </head>
 <body>
@@ -298,7 +312,7 @@
         <div style="flex: 1 1 250px; min-width: 180px;">
           <p>I founded CRTA to expand access to tech careers for middle and high school students, as well as adult learners. Our model is certification-first—designed to help students graduate not only with diplomas, but with industry-recognized credentials. From CompTIA to Microsoft tracks, the goal is equity, readiness, and career acceleration. It's where mentorship meets methodology, tailored to your school's culture.</p>
           <p><strong>Our goal: plant the seeds of tomorrow's tech field today.</strong></p>
-		  <p>See <strong>FutureReady@TCS</strong> for CRTA's proposal to TCS, a private K-12 Christian school with 2 campuses in Philadelphia, PA. There is also an interactive flipbook version at the bottom of this screen.</p>
+          <p>See <strong>FutureReady@TCS</strong> for CRTA's proposal to TCS, a private K-12 Christian school with 2 campuses in Philadelphia, PA. There is also an interactive flipbook version at the bottom of this screen.</p>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; min-width: 180px; max-width: 260px;">
           <a href="https://toshon-jennings.github.io/caps-cortex/FutureReady@TCS.html" target="_blank" rel="noopener">
@@ -342,38 +356,33 @@
     <h2>Contact</h2>
     <div class="contact-buttons">
       <a class="contact-button" href="mailto:toshon.tech@gmail.com" target="_blank" rel="noopener">toshon.tech@gmail.com</a>
-	  <a class="contact-button" href="https://www.linkedin.com/in/toshon/" target="_blank" rel="noopener">
+      <a class="contact-button" href="https://www.linkedin.com/in/toshon/" target="_blank" rel="noopener">
         <img src="linkedin-logo.png" alt="LinkedIn Logo" style="height: 22px; width: 22px; margin-right: 0.4em; vertical-align: middle; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.09);" />
        LinkedIn</a>
       <a class="contact-button" href="https://github.com/toshon-jennings/DoubleCapsCorrect" target="_blank" rel="noopener">GitHub: CAps™</a>
       <a class="contact-button" href="https://toshon-jennings.github.io/DoubleCapsCorrect/" target="_blank" rel="noopener">
-	  <img src="caps-logo.png" alt="CAps Logo" style="height: 22px; width: 25px; margin-right: 0.4em; vertical-align: middle; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.09);" />
+      <img src="caps-logo.png" alt="CAps Logo" style="height: 22px; width: 25px; margin-right: 0.4em; vertical-align: middle; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.09);" />
       CAps™ 2.1.1</a>
-	  <div class="contact-button contact-location-overlay">
+      <div class="contact-button contact-location-overlay">
         <img class="contact-location-imgfill" src="https://toshon-jennings.github.io/caps-cortex/abdul-delati-_jlkgoaKHj0-unsplash.jpg" alt="Philadelphia" aria-hidden="true" />
         <span class="contact-location-overlaytext">📍 Location: Philadelphia, PA</span>
       </div>
     </div>
-	
-	<hr>
-<h2  class="flipbook-heading">FutureReady@TCS Interactive Flipbook</h2>
+
+    <hr>
+    <h2 class="flipbook-heading">FutureReady@TCS Interactive Flipbook</h2>
   </main>
-  
-  
 
-<section class="flipbook-section">
-  
-  <div class="flipbook">
-    <iframe
-      src="https://online.fliphtml5.com/City-Lights/ynot/?mode=4"
-      frameborder="0"
-      scrolling="no"
-      allowfullscreen
-    ></iframe>
-  </div>
-</section>
-
-  
+  <section class="flipbook-section">
+    <div class="flipbook">
+      <iframe
+        src="https://online.fliphtml5.com/City-Lights/ynot/?mode=4"
+        frameborder="0"
+        scrolling="no"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </section>
 
   <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e1e4e8; text-align: center; font-size: 0.9rem; color: #555;">
     <p>🔐 CAps™ is built for user-first verification and open-source transparency.<br />
@@ -383,7 +392,7 @@
       &nbsp;|&nbsp;
       <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/index.html#faq" target="_blank" rel="noopener noreferrer">FAQs</a>
     </p>
-	<p>Photo Credit: <a href="https://unsplash.com/@delati" target="_blank" rel="noopener noreferrer">Abdul Delati</a></p>
+    <p>Photo Credit: <a href="https://unsplash.com/@delati" target="_blank" rel="noopener noreferrer">Abdul Delati</a></p>
   </footer>
 </body>
 </html>
