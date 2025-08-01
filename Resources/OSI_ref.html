@@ -1,0 +1,102 @@
+
+
+
+<h2>OSI Model Reference Chart</h2>
+<table border="1" cellpadding="8" cellspacing="0"
+       style="border-collapse: collapse; width:100%; max-width:900px; margin: auto; font-family: sans-serif;">
+  <thead style="background: #007A33; color: #fff;">
+    <tr>
+      <th>Layer #</th>
+      <th>Layer Name</th>
+      <th>Main Function</th>
+      <th>PDU</th>
+      <th>Example Protocols</th>
+      <th>Example Devices</th>
+      <th>TCP/IP Layer</th>
+      <th>Encapsulation Order</th>
+      <th>Employs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="background:#f4f4f4;">7</td>
+      <td>Application</td>
+      <td>Services directly to user applications</td>
+      <td>Data</td>
+      <td>HTTP, FTP, SMTP, DNS</td>
+      <td>Browsers, Mail Clients</td>
+      <td>Application</td>
+      <td>Data →</td>
+      <td>Web Developers, App Developers, UX Specialists</td>
+    </tr>
+    <tr>
+      <td style="background:#f4f4f4;">6</td>
+      <td>Presentation</td>
+      <td>Encryption, compression, translation</td>
+      <td>Data</td>
+      <td>SSL/TLS, JPEG, MPEG</td>
+      <td>Codecs, SSL Accelerators</td>
+      <td>Application</td>
+      <td>Data →</td>
+      <td>Security Engineers, Cryptographers</td>
+    </tr>
+    <tr>
+      <td style="background:#f4f4f4;">5</td>
+      <td>Session</td>
+      <td>Establish/maintain sessions</td>
+      <td>Data</td>
+      <td>NetBIOS, RPC, SMB</td>
+      <td>Session Border Controllers</td>
+      <td>Application</td>
+      <td>Data →</td>
+      <td>Systems Architects, Middleware Specialists</td>
+    </tr>
+    <tr>
+      <td style="background:#f4f4f4;">4</td>
+      <td>Transport</td>
+      <td>End-to-end reliability, flow control</td>
+      <td>Segment</td>
+      <td>TCP, UDP, SCTP</td>
+      <td>Firewalls, Load Balancers</td>
+      <td>Transport</td>
+      <td>Data → Segment →</td>
+      <td>Network Engineers, Transport Protocol Specialists</td>
+    </tr>
+    <tr>
+      <td style="background:#f4f4f4;">3</td>
+      <td>Network</td>
+      <td>Logical addressing, routing</td>
+      <td>Packet</td>
+      <td>IP, ICMP, IGMP</td>
+      <td>Routers, Layer-3 Switches</td>
+      <td>Internet</td>
+      <td>… → Packet →</td>
+      <td>Network Architects, Routing Specialists</td>
+    </tr>
+    <tr>
+      <td style="background:#f4f4f4;">2</td>
+      <td>Data Link</td>
+      <td>Framing, MAC addressing, error detection</td>
+      <td>Frame</td>
+      <td>Ethernet, PPP, HDLC</td>
+      <td>Switches, Bridges, NICs</td>
+      <td>Network Access</td>
+      <td>… → Frame →</td>
+      <td>LAN Engineers, Switching Specialists</td>
+    </tr>
+    <tr>
+      <td style="background:#f4f4f4;">1</td>
+      <td>Physical</td>
+      <td>Raw bit transmission</td>
+      <td>Bit</td>
+      <td>Ethernet PHY, DSL, USB</td>
+      <td>Hubs, Repeaters, Modems</td>
+      <td>Network Access</td>
+      <td>… → Bit</td>
+      <td>Cabling Technicians, Fiber‐Optic Technicians</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<iframe src="https://docs.google.com/document/d/e/2PACX-1vQyijgBe5LEXpDYupsul72kD14oMudPlPQV4OtM-yTgVlr6v7OWRjxH0ZiW4lt6_bLJQDAQ890gXWsA/pub?embedded=true"></iframe>
