@@ -38,12 +38,49 @@
       margin-right: calc(-50vw + 50%);
     }
 
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1em;
+      flex-wrap: wrap;
+    }
+
+    .header-content img {
+      height: 48px;
+      flex-shrink: 0;
+    }
+
     header.site-header h1 {
       color: #00A651;
       font-size: 2.5em;
       font-weight: 600;
       letter-spacing: 0.5px;
       margin: 0;
+      text-align: center;
+    }
+
+    /* Navigation with hamburger menu */
+    nav {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-toggle {
+      display: none;
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #333;
+      padding: 0.5rem;
+      z-index: 1001;
     }
 
     .nav-links {
@@ -52,25 +89,100 @@
       gap: 14px;
       margin: 0;
       padding: 0;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     .nav-links li a {
       text-decoration: none;
       color: #333;
       font-weight: 500;
+      white-space: nowrap;
+      font-size: clamp(0.8rem, 2.5vw, 1rem);
     }
 
     .nav-links li a:hover {
       text-decoration: underline;
     }
 
-    h1, h2, h3 { font-weight: bold; margin-top: 2rem; }
+    /* Mobile responsive styles */
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+      
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        padding: 1rem;
+        margin-top: 0.5rem;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .nav-links.open {
+        display: flex;
+      }
+      
+      .nav-links li a {
+        padding: 0.75rem 1rem;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+      }
+      
+      .nav-links li a:hover {
+        background-color: #f5f5f5;
+        text-decoration: none;
+      }
+
+      .header-content {
+        flex-direction: column;
+        gap: 0.5em;
+      }
+      
+      .header-content img {
+        height: 36px !important;
+      }
+      
+      header.site-header h1 {
+        font-size: 1.8em;
+        line-height: 1.2;
+      }
+
+      .content-wrapper {
+        padding: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header.site-header h1 {
+        font-size: 1.5em;
+      }
+      
+      .header-content img {
+        height: 32px !important;
+      }
+    }
+
+    h1, h2, h3 {
+      font-weight: bold;
+      margin-top: 2rem;
+    }
+
     h2 {
       color: #007A33;
       border-bottom: 1px solid #cccccc;
       padding-bottom: 0.3em;
       margin-top: 2em;
     }
+
     h3 {
       color: #00A651;
       padding-bottom: 0.3em;
@@ -83,36 +195,72 @@
       border-bottom: 1px solid transparent;
       transition: all 0.2s ease;
     }
+
     a:hover {
       color: #00A651;
       border-bottom: 1px solid #00A651;
+      text-decoration: none;
     }
-    a:visited { color: #005722; }
-    a:visited:hover { color: #007A33; border-bottom: 1px solid #007A33; }
 
+    a:visited {
+      color: #005722;
+    }
+
+    a:visited:hover {
+      color: #007A33;
+      border-bottom: 1px solid #007A33;
+    }
+
+    /* Special styling for download buttons */
     a[href*=".zip"],
     a[style*="background-color: #1d843c"] {
       color: #ffffff !important;
       border-bottom: none !important;
     }
+
     a[href*=".zip"]:hover,
     a[style*="background-color: #1d843c"]:hover {
       background-color: #155a2b !important;
       color: #ffffff !important;
     }
 
-    .faq-entry { margin-bottom: 1.5em; padding-bottom: 0.5em; border-bottom: 1px solid #ccc; }
-    .faq-entry summary {
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 1.1em; cursor: pointer; padding: 0.4em 0;
-      transition: background-color 0.2s ease; border-radius: 4px;
+    .faq-entry {
+      margin-bottom: 1.5em;
+      padding-bottom: 0.5em;
+      border-bottom: 1px solid #ccc;
     }
-    .faq-entry summary:hover { background-color: #f3f3f3; }
-    .faq-entry summary::marker { font-size: 1.2em; color: #00A651; }
-    .faq-entry[open] summary { margin-bottom: 0.5em; }
-    .faq-entry p { margin: 0 0 0.5em; }
 
-    main.content-wrapper > h2:first-child { margin-top: 0; }
+    .faq-entry summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.1em;
+      cursor: pointer;
+      padding: 0.4em 0;
+      transition: background-color 0.2s ease;
+      border-radius: 4px;
+    }
+
+    .faq-entry summary:hover {
+      background-color: #f3f3f3;
+    }
+
+    .faq-entry summary::marker {
+      font-size: 1.2em;
+      color: #00A651;
+    }
+
+    .faq-entry[open] summary {
+      margin-bottom: 0.5em;
+    }
+
+    .faq-entry p {
+      margin: 0 0 0.5em;
+    }
+
+    main.content-wrapper > h2:first-child {
+      margin-top: 0;
+    }
 
     /* Buttons and contact overlay sizing */
     .resume-buttons,
@@ -143,7 +291,7 @@
       overflow: hidden;
       box-sizing: border-box;
     }
-    /* Ensure button link colors remain white even when visited */
+
     .resume-button:link,
     .resume-button:visited,
     .contact-button:link,
@@ -176,27 +324,17 @@
     }
 
     .contact-location-overlaytext {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background: rgba(0,0,0,0.35);
-      color: white; font-weight: 600; font-size: 1.05em;
-      text-align: center; border-radius: 6px;
-    }
-
-    /* Dark mode */
-    @media (prefers-color-scheme: dark) {
-      body { background-color: #1e1e1e; color: #ffffff; }
-      .status-box { background-color: #2a2a2a; border: 1px solid #444; }
-      h2 { color: #7FFFBE; border-bottom: 1px solid #444; }
-      h3 { color: #4FFF9F; }
-      header.site-header { margin-bottom: 1em; background: #1e1e1e; border-bottom: 1px solid #444; }
-      header.site-header h1 { color: #4FFF9F; }
-      .nav-links li a { color: #ccc; }
-      .nav-links li a:hover { color: #ffffff; }
-      a { color: #4FFF9F; border-bottom: 1px solid transparent; }
-      a:hover { color: #7FFFBE; border-bottom: 1px solid #7FFFBE; }
-      a:visited { color: #3FDF8F; }
-      a:visited:hover { color: #4FFF9F; border-bottom: 1px solid #4FFF9F; }
+      color: white;
+      font-weight: 600;
+      font-size: 1.05em;
+      text-align: center;
+      border-radius: 6px;
     }
 
     .flipbook-full {
@@ -204,7 +342,6 @@
       width: 90vw;
       max-width: 800px;
       margin: 2rem auto;
-      /* cancel the 2rem padding from .content-wrapper */
       margin-left: calc(2rem * -1);
       margin-right: calc(2rem * -1);
       height: 0;
@@ -221,11 +358,10 @@
     }
 
     .flipbook-section {
-      /* full‐width bleed */
       width: 100vw;
       margin-left: calc(-50vw + 50%);
       box-sizing: border-box;
-      padding: 1rem 0; /* Reduced from 2rem to 1rem */
+      padding: 1rem 0;
       text-align: center;
     }
 
@@ -235,12 +371,11 @@
     }
 
     .flipbook {
-      /* Adjusted for 70% scale - smaller container */
       width: 70vw;
       max-width: 1000px;
       margin: 0 auto;
       position: relative;
-      padding-top: 42%; /* Reduced height since we're scaling down */
+      padding-top: 42%;
       overflow: hidden;
       border-radius: 8px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
@@ -252,37 +387,127 @@
       width: 100%;
       height: 100%;
       border: none;
-      border-radius: 8px; /* Match container border radius */
+      border-radius: 8px;
     }
 
-    /* Change color of flipbook heading @ above footer */
     .flipbook-heading {
       color: #505050;
       text-align: center;
-      margin-bottom: 0.5rem; /* Reduced spacing below heading */
-	  letter-spacing: 3px;
+      margin-bottom: 0.5rem;
+      letter-spacing: 3px;
     }
 
-    /* Mobile responsiveness improvements */
+    /* Mobile responsiveness improvements for flipbook */
     @media (max-width: 768px) {
       .flipbook {
-        width: 95vw; /* Use more width on mobile */
-        padding-top: 45%; /* Slightly taller on mobile for better readability */
+        width: 95vw;
+        padding-top: 45%;
       }
       
       .flipbook-section {
-        padding: 0.5rem 0; /* Even less padding on mobile */
+        padding: 0.5rem 0;
+      }
+
+      .flipbook-heading {
+        letter-spacing: 1px;
+        font-size: 1.5em;
+      }
+    }
+
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #1e1e1e;
+        color: #ffffff;
+      }
+
+      .status-box {
+        background-color: #2a2a2a;
+        border: 1px solid #444;
+      }
+
+      h2 {
+        color: #7FFFBE;
+        border-bottom: 1px solid #444;
+      }
+
+      h3 {
+        color: #4FFF9F;
+      }
+
+      header.site-header {
+        margin-bottom: 1em;
+        background: #1e1e1e;
+        border-bottom: 1px solid #444;
+      }
+
+      header.site-header h1 {
+        color: #4FFF9F;
+      }
+
+      .nav-toggle {
+        color: #ccc;
+      }
+
+      .nav-links {
+        background: #1e1e1e;
+        border-color: #444;
+      }
+
+      .nav-links li a {
+        color: #ccc;
+      }
+
+      .nav-links li a:hover {
+        color: #ffffff;
+        background-color: #333;
+      }
+
+      a {
+        color: #4FFF9F;
+        border-bottom: 1px solid transparent;
+      }
+
+      a:hover {
+        color: #7FFFBE;
+        border-bottom: 1px solid #7FFFBE;
+      }
+
+      a:visited {
+        color: #3FDF8F;
+      }
+
+      a:visited:hover {
+        color: #4FFF9F;
+        border-bottom: 1px solid #4FFF9F;
+      }
+
+      .faq-entry {
+        border-bottom-color: #444;
+      }
+
+      .faq-entry summary:hover {
+        background-color: #3d3d3d;
+      }
+
+      .flipbook-heading {
+        color: #7FFFBE;
+      }
+
+      .flipbook-section h2 {
+        color: #7FFFBE;
       }
     }
   </style>
 </head>
 <body>
   <header class="site-header">
-    <div style="display: flex; align-items: center; justify-content: center; gap: 1em;">
+    <div class="header-content">
       <img src="caps-logo.png" alt="CAps Logo" style="height: 48px;">
       <h1>About Toshon</h1>
     </div>
     <nav>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
       <ul class="nav-links">
         <li><a href="https://toshon-jennings.github.io/DoubleCapsCorrect/">CAps™ 2.1.1</a></li>
         <li><a href="https://toshon-jennings.github.io/DoubleCapsCorrect/verify.html">Verify</a></li>
@@ -353,21 +578,23 @@
 
     <hr>
 
-    <h2>Contact</h2>
-    <div class="contact-buttons">
-      <a class="contact-button" href="mailto:toshon.tech@gmail.com" target="_blank" rel="noopener">toshon.tech@gmail.com</a>
-      <a class="contact-button" href="https://www.linkedin.com/in/toshon/" target="_blank" rel="noopener">
-        <img src="linkedin-logo.png" alt="LinkedIn Logo" style="height: 22px; width: 22px; margin-right: 0.4em; vertical-align: middle; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.09);" />
-       LinkedIn</a>
-      <a class="contact-button" href="https://github.com/toshon-jennings/DoubleCapsCorrect" target="_blank" rel="noopener">GitHub: CAps™</a>
-      <a class="contact-button" href="https://toshon-jennings.github.io/DoubleCapsCorrect/" target="_blank" rel="noopener">
-      <img src="caps-logo.png" alt="CAps Logo" style="height: 22px; width: 25px; margin-right: 0.4em; vertical-align: middle; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.09);" />
-      CAps™ 2.1.1</a>
-      <div class="contact-button contact-location-overlay">
-        <img class="contact-location-imgfill" src="https://toshon-jennings.github.io/caps-cortex/abdul-delati-_jlkgoaKHj0-unsplash.jpg" alt="Philadelphia" aria-hidden="true" />
-        <span class="contact-location-overlaytext">📍 Location: Philadelphia, PA</span>
+    <section id="contact-info">
+      <h2>Contact</h2>
+      <div class="contact-buttons">
+        <a class="contact-button" href="mailto:toshon.tech@gmail.com" target="_blank" rel="noopener">toshon.tech@gmail.com</a>
+        <a class="contact-button" href="https://www.linkedin.com/in/toshon/" target="_blank" rel="noopener">
+          <img src="linkedin-logo.png" alt="LinkedIn Logo" style="height: 22px; width: 22px; margin-right: 0.4em; vertical-align: middle; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.09);" />
+         LinkedIn</a>
+        <a class="contact-button" href="https://github.com/toshon-jennings/DoubleCapsCorrect" target="_blank" rel="noopener">GitHub: CAps™</a>
+        <a class="contact-button" href="https://toshon-jennings.github.io/DoubleCapsCorrect/" target="_blank" rel="noopener">
+        <img src="caps-logo.png" alt="CAps Logo" style="height: 22px; width: 25px; margin-right: 0.4em; vertical-align: middle; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.09);" />
+        CAps™ 2.1.1</a>
+        <div class="contact-button contact-location-overlay">
+          <img class="contact-location-imgfill" src="https://toshon-jennings.github.io/caps-cortex/abdul-delati-_jlkgoaKHj0-unsplash.jpg" alt="Philadelphia" aria-hidden="true" />
+          <span class="contact-location-overlaytext">📍 Location: Philadelphia, PA</span>
+        </div>
       </div>
-    </div>
+    </section>
 
     <hr>
     <h2 class="flipbook-heading">FutureReady@TCS Interactive Flipbook</h2>
@@ -394,5 +621,29 @@
     </p>
     <p>Photo Credit: <a href="https://unsplash.com/@delati" target="_blank" rel="noopener noreferrer">Abdul Delati</a></p>
   </footer>
+
+  <script>
+    // Plain JS toggle for hamburger menu
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    
+    if (toggle && links) {
+      toggle.addEventListener('click', () => {
+        links.classList.toggle('open');
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!toggle.contains(e.target) && !links.contains(e.target)) {
+          links.classList.remove('open');
+        }
+      });
+
+      // Close menu when clicking on a link
+      links.addEventListener('click', () => {
+        links.classList.remove('open');
+      });
+    }
+  </script>
 </body>
 </html>
