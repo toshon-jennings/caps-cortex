@@ -38,12 +38,46 @@
       margin-right: calc(-50vw + 50%);
     }
 
+    /* FIXED: Title container with responsive font sizing */
+    .title-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1em;
+      flex-wrap: nowrap; /* Prevent wrapping */
+    }
+
     header.site-header h1 {
       color: #00A651;
-      font-size: 2.5em;
+      font-size: clamp(1.5rem, 4vw, 2.5rem); /* Responsive font size */
       font-weight: 600;
       letter-spacing: 0.5px;
       margin: 0;
+      white-space: nowrap; /* Keep title on one line */
+    }
+
+    /* FIXED: Navigation with proper hamburger positioning */
+    nav {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Base: hide the toggle button */
+    .nav-toggle {
+      display: none;
+      position: absolute;
+      right: 1rem; /* Position hamburger to the right */
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #333;
+      padding: 0.5rem;
+      z-index: 1001;
     }
 
     .nav-links {
@@ -52,16 +86,78 @@
       gap: 14px;
       margin: 0;
       padding: 0;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     .nav-links li a {
       text-decoration: none;
       color: #333;
       font-weight: 500;
+      white-space: nowrap;
+      font-size: clamp(0.8rem, 2.5vw, 1rem); /* Responsive link text */
     }
 
     .nav-links li a:hover {
       text-decoration: underline;
+    }
+
+    /* Small screens: show hamburger, hide/show nav */
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+      
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        padding: 1rem;
+        margin-top: 0.5rem;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .nav-links.open {
+        display: flex;
+      }
+      
+      .nav-links li a {
+        padding: 0.75rem 1rem;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+      }
+      
+      .nav-links li a:hover {
+        background-color: #f5f5f5;
+        text-decoration: none;
+      }
+
+      /* Ensure title stays on one line on mobile */
+      .title-container {
+        gap: 0.5em;
+      }
+      
+      .title-container img {
+        height: 36px !important; /* Smaller logo on mobile */
+      }
+    }
+
+    /* Extra small screens: even smaller title */
+    @media (max-width: 480px) {
+      header.site-header h1 {
+        font-size: clamp(1.2rem, 5vw, 1.8rem);
+      }
+      
+      .title-container img {
+        height: 32px !important;
+      }
     }
 
     h1, h2, h3 {
@@ -159,15 +255,14 @@
       border-radius: 8px;
       margin: 1.5em 0;
       font-size: 0.95em;
-
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       gap: 1rem;
       max-width: 100%;
     }
-	
-	 @media (prefers-color-scheme: dark) {
+
+    @media (prefers-color-scheme: dark) {
       body {
         background-color: #1e1e1e;
         color: #ffffff;
@@ -187,11 +282,19 @@
       header.site-header h1 {
         color: #4FFF9F;
       }
+      .nav-toggle {
+        color: #ccc;
+      }
+      .nav-links {
+        background: #1e1e1e;
+        border-color: #444;
+      }
       .nav-links li a {
         color: #ccc;
       }
       .nav-links li a:hover {
         color: #ffffff;
+        background-color: #333;
       }
       a {
         color: #4FFF9F;
@@ -218,11 +321,12 @@
 </head>
 <body>
   <header class="site-header">
-    <div style="display: flex; align-items: center; justify-content: center; gap: 1em;">
+    <div class="title-container">
       <img src="caps-logo.png" alt="CAps Logo" style="height: 48px;">
       <h1>Welcome to CAps-Cortex™</h1>
     </div>
     <nav>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
       <ul class="nav-links">
         <li><a href="https://toshon-jennings.github.io/DoubleCapsCorrect/">CAps™ 2.1.1</a></li>
         <li><a href="https://toshon-jennings.github.io/DoubleCapsCorrect/verify.html">Verify</a></li>
@@ -272,12 +376,10 @@
   <li>🟨 Finalize markdown styling rules</li>
   <li>🟨 Sketch multi-Copilot handoff protocol: Define a fault-tolerant workflow pairing GitHub Copilot (solution synthesis) with Microsoft Copilot (markup, parity, polish).
          Includes role boundaries, escalation logic, and fallback strategies. <em>Insight from July 27 session; defer for later mapping.</em></li>
-  <li>🟨 Create persistent wayfinder @ all PDFs that originate @CAps website</li>
-  
-  
-</ul>
+  <li>🟨 Create persistent wayfinder @ all PDFs that originate @ CAps website</li>
+      </ul>
 
-  <h2>🌱 Future List</h2>
+   <h2>🌱 Future List</h2>
   <strong>Exploratory ideas and long-range aspirations</strong>
   <ul>
     <li>🔐 Trust Layer plugin: SHA256, GPG, OpenTimestamps</li>
@@ -291,11 +393,10 @@
 	<li>⚙️ GitHub Apps audit: "Explore label/milestone automation, webhook clarity, and cockpit-native integration" — from Future List sketch, not yet implemented</li>
   </ul>
 
-  <p><strong>Context:</strong> Aligns with Toshon's cockpit philosophy—transparent tooling, zero overwrite, and additive integration.</p>
+   <p><strong>Context:</strong> Aligns with Toshon's cockpit philosophy—transparent tooling, zero overwrite, and additive integration.</p>
 </section>
-  </ul>
 
-  <section id="outstanding-mentions">
+   <section id="outstanding-mentions">
   <h2>Outstanding Mentions We Haven't Fully Tackled</h2>
   <ul>
     <li><strong>Universal anchor attribute audit</strong> — Logo and footer anchors are trust-safe; remaining anchors need review</li>
@@ -304,7 +405,7 @@
   </ul>
   </section>
 
-  <h2>Milestone: Repo Initialization and First Push (2025-07-24)</h2>
+   <h2>Milestone: Repo Initialization and First Push (2025-07-24)</h2>
   <ul>
     <li>Set up <code>.gitignore</code></li>
     <li>Resolved push conflicts via rebase</li>
@@ -313,7 +414,7 @@
   </ul>
   <p>🧠 This moment marks the true beginning of caps-cortex as a collaborative engine for CAps development.</p>
 
-  <h2>🔮 Coming Milestones</h2>
+   <h2>🔮 Coming Milestones</h2>
   <strong>Short-term roadmap items with high confidence</strong>
   <ul>
     <li>🧭 Finalize markdown styling rules</li>
@@ -323,27 +424,36 @@
     <li>📦 Consider YAML export or markdown-to-Wiki automation</li>
   </ul>
 
-  <h2>📘 Log Highlights</h2>
-  <strong>Recent milestones from <a href="project-log.html">Project Log</a></p></strong>
+   <h2>📘 Log Highlights</h2>
+  <strong>Recent milestones from <a href="project-log.html">Project Log</a></strong>
   <ul>
     <li>🗓️ 2025-07-24 — caps-cortex initiated</li>
     <li>🗓️ 2025-07-24 — CAps v2.1.1 ZIP finalized and hosted</li>
     <li>🗓️ 2025-07-24 — Trust guide created and linked</li>
     <li>🗓️ 2025-07-24 — Logging protocol confirmed</li>
     <li>🗓️ 2025-07-24 — Homepage layout and trust-first language refined</li>
-	<li>🗓️ 2025-07-25 — Completed nav bar harmonization and cockpit visual audit across: <code>index.html</code>, <code>verify.html</code>, <code>caps-cortex/index.html</code>, 
-  <code>caps-cortex/process-insights.html</code>, and <code>caps-cortex/project-log.html</code>. Unified spacing (<code>gap: 16px;</code>), deployed consistent style blocks, and staged favicon updates</li>
+	<li>🗓️ 2025-07-25 — Completed nav bar harmonization and cockpit visual audit across: <code>index.html</code>, <code>verify.html</code>, <code>caps-cortex/index.html</code>,
+   <code>caps-cortex/process-insights.html</code>, and <code>caps-cortex/project-log.html</code>. Unified spacing (<code>gap: 16px;</code>), deployed consistent style blocks, and staged favicon updates</li>
   </ul>
 
-  <hr>
+   <hr>
 
-  <div class="copilot-note status-box">
-<p><strong>💡About Copilot:</strong> 
-Throughout this repo, "Copilot" generally refers to <strong>Microsoft Copilot,</strong> a conversational AI assistant integrated with Windows and Bing—not GitHub Copilot, the code-completion tool for developers. When in doubt, trust the timestamps, emoji flair, and conversational scaffolding; if you see that, you're talking to Microsoft Copilot.</p>
+   <div class="copilot-note status-box">
+<p><strong>💡About Copilot:</strong>
+ Throughout this repo, "Copilot" generally refers to <strong>Microsoft Copilot,</strong> a conversational AI assistant integrated with Windows and Bing—not GitHub Copilot, the code-completion tool for developers. When in doubt, trust the timestamps, emoji flair, and conversational scaffolding; if you see that, you're talking to Microsoft Copilot.</p>
   </div>
   </main>
-  
-  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e1e4e8; text-align: center; font-size: 0.9rem; color: #555;">
+
+  <script>
+// Plain JS toggle
+const toggle = document.querySelector('.nav-toggle');
+const links  = document.querySelector('.nav-links');
+toggle.addEventListener('click', () => {
+  links.classList.toggle('open');
+});
+</script>
+
+        <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e1e4e8; text-align: center; font-size: 0.9rem; color: #555;">
     <p>🔐 CAps™ is built for user-first verification and open-source transparency. <br />
       ← <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/" target="_blank" rel="noopener noreferrer">Download CAps™</a>
       &nbsp;|&nbsp;
