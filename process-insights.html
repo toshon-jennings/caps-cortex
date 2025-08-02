@@ -47,6 +47,7 @@ header.site-header h1 {
   font-weight: 600;
   letter-spacing: 0.5px;
   margin: 0;
+  text-align: center;
 }
 
 .nav-links {
@@ -55,6 +56,8 @@ header.site-header h1 {
   gap: 14px;
   margin: 0;
   padding: 0;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .nav-links li a {
@@ -106,6 +109,111 @@ a:visited {
 a:visited:hover {
   color: #007A33;
   border-bottom: 1px solid #007A33;
+}
+
+/* Header content container */
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.header-content img {
+  height: 48px;
+  flex-shrink: 0;
+}
+
+/* Navigation wrapper */
+nav {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+/* Hamburger button (hidden by default) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+  
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 1rem;
+    margin-top: 0.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .nav-links.open {
+    display: flex;
+  }
+  
+  .nav-links li {
+    text-align: center;
+  }
+  
+  .nav-links li a {
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .nav-links li a:hover {
+    background-color: #f5f5f5;
+    text-decoration: none;
+  }
+
+  .header-content {
+    flex-direction: column;
+    gap: 0.5em;
+  }
+  
+  .header-content img {
+    height: 36px !important;
+  }
+  
+  header.site-header h1 {
+    font-size: 1.8em;
+    line-height: 1.2;
+  }
+  
+  .content-wrapper {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header.site-header h1 {
+    font-size: 1.5em;
+  }
+  
+  .header-content img {
+    height: 32px !important;
+  }
 }
 
 /* Dark mode */
@@ -160,6 +268,18 @@ a:visited:hover {
   a:visited:hover {
     color: #4FFF9F;
     border-bottom: 1px solid #4FFF9F;
+  }
+  .nav-toggle {
+    color: #ccc;
+  }
+  
+  .nav-links {
+    background: #1e1e1e;
+    border-color: #444;
+  }
+  
+  .nav-links li a:hover {
+    background-color: #333;
   }
 }
 
@@ -234,7 +354,7 @@ main.content-wrapper > h2:first-child {
   }
 }
 
-/* Subtle hover “lift” */
+/* Subtle hover "lift" */
 .content-wrapper > section:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -257,15 +377,14 @@ main.content-wrapper > h2:first-child {
 <body>
   
  <header class="site-header">
-  <div style="display: flex; align-items: center; justify-content: center; gap: 1em;">
-    <img src="caps-logo.png" alt="CAps Logo" style="height: 48px;">
-   <h1 style="color: #00A651; font-size: 2.5em; font-weight: 600; letter-spacing: 0.5px; margin: 0;">
-      Process-Insights | CAps-Cortex™
-    </h1>
+  <div class="header-content">
+  <img src="caps-logo.png" alt="CAps Logo">
+  <h1>Process-Insights | CAps-Cortex™</h1>
 </div>
 
-  <nav style="text-align: center;">
-    <ul class="nav-links">
+<nav>
+  <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+  <ul class="nav-links">
       <li><a href="https://toshon-jennings.github.io/DoubleCapsCorrect/">CAps™ 2.1.1</a></li>
       <li><a href="https://toshon-jennings.github.io/DoubleCapsCorrect/verify.html">Verify</a></li>
       <li><a href="https://toshon-jennings.github.io/caps-cortex/">CAps-Cortex™</a></li>
@@ -285,11 +404,10 @@ main.content-wrapper > h2:first-child {
   <p><strong>Action:</strong> Create a dedicated process doc (e.g. <code>process-insights.html</code>) to log insights like this. Use it to track workflow habits, decision-making principles, and meta-level improvements.</p>
 </section>
 
-
 <section id="favicon-workaround">
   <h2>Favicon Troubleshooting</h2>
   <p>
-    GitHub Pages may fail to display <code>favicon.ico</code> due to persistent caching. If the favicon is correctly placed and linked but still doesn’t appear, try appending a query string to force a fresh request:
+    GitHub Pages may fail to display <code>favicon.ico</code> due to persistent caching. If the favicon is correctly placed and linked but still doesn't appear, try appending a query string to force a fresh request:
   </p>
   <pre><code>&lt;link rel="icon" href="favicon.ico?" type="image/x-icon"&gt;</code></pre>
   <p>
@@ -313,14 +431,14 @@ main.content-wrapper > h2:first-child {
   </ul>
   <p><strong>Response:</strong> Reaffirmed the centrality of Git/GitHub to cockpit correction, visibility, and resilience. Logged version control interactions as meaningful process events—not just behind-the-scenes plumbing
   (although many events are, in fact, behind the scenes plumbing).</p>
-  <p><strong>Rationale:</strong> Enables process integrity, reduces anxiety around mistakes, and elevates documentation as a living, revisable artifact. Git isn’t just a technical requirement—it’s an
+  <p><strong>Rationale:</strong> Enables process integrity, reduces anxiety around mistakes, and elevates documentation as a living, revisable artifact. Git isn't just a technical requirement—it's an
   invaluable trust mechanism.</p>
 </section>
 
 <section id="notepad-plusplus-tab-color">
   <h2>Notepad++ Tab Coloring</h2>
   <p>
-    I’ve long relied on Notepad++ for quick edits and scripting tweaks, but recently discovered its tab-coloring feature—a quiet powerhouse for visual triage when juggling multi-tab projects.
+    I've long relied on Notepad++ for quick edits and scripting tweaks, but recently discovered its tab-coloring feature—a quiet powerhouse for visual triage when juggling multi-tab projects.
   </p>
   <p>
     Right-click any tab and choose <strong>Color Tab</strong> to assign a highlight. It helps keep distinct workflows visually separated—especially when managing cockpit markup, packaging scripts, or audit logs side by side.
@@ -328,7 +446,6 @@ main.content-wrapper > h2:first-child {
    This small UX boost makes a big difference when working with 15+ tabs open across overlapping projects. Visual clarity is as important as clean code; this helps deliver both.
   </p>
 </section>
-
 
 <section id="github-pages-path-pitfall">
   <h2>GitHub Pages Path Pitfall</h2>
@@ -353,7 +470,7 @@ main.content-wrapper > h2:first-child {
 <section id="title-tag-symbol-behavior">
   <h2>&lt;title&gt; Tag Symbol Behavior</h2>
   <p>While refining branding in page tabs, I noticed unexpected literal rendering when trying to superscript a trademark symbol inside the <code>&lt;title&gt;</code> block.</p>
-  <p><strong>Observation:</strong> Using <code>&lt;sup&gt;&amp;trade;&lt;/sup&gt;</code> inside the <code>&lt;title&gt;</code> caused the tab to display “<code>&lt;sup&gt;™&lt;/sup&gt;</code>” rather than the intended symbol. Removing <code>&lt;sup&gt;</code> and using <code>&amp;trade;</code> or the raw character rendered correctly.</p>
+  <p><strong>Observation:</strong> Using <code>&lt;sup&gt;&amp;trade;&lt;/sup&gt;</code> inside the <code>&lt;title&gt;</code> caused the tab to display "<code>&lt;sup&gt;™&lt;/sup&gt;</code>" rather than the intended symbol. Removing <code>&lt;sup&gt;</code> and using <code>&amp;trade;</code> or the raw character rendered correctly.</p>
   <ul>
     <li><span style="color:green;">✅</span> <code>&lt;title&gt;CAps™ Utility&lt;/title&gt;</code> <em>(displays cleanly)</em></li>
     <li><span style="color:red;">❌</span> <code>&lt;title&gt;CAps&lt;sup&gt;&amp;trade;&lt;/sup&gt;&lt;/title&gt;</code> <em>(renders tags as text)</em></li>
@@ -376,7 +493,7 @@ main.content-wrapper > h2:first-child {
 
 <section id="multi-agent-workflow-benefit">
   <h2>Multi-Agent Workflow: Code Confidence Through Cross-Tool Use</h2>
-  <p><strong>Insight:</strong> Instead of relying solely on the two Copilots, today’s workflow benefited from Claude Sonnet (noted for code clarity), a custom GPT with specialized markup fluency, and real-time previewing via CodePen—resulting in faster iteration and reduced rework.</p>
+  <p><strong>Insight:</strong> Instead of relying solely on the two Copilots, today's workflow benefited from Claude Sonnet (noted for code clarity), a custom GPT with specialized markup fluency, and real-time previewing via CodePen—resulting in faster iteration and reduced rework.</p>
   <ul>
     <li><span style="color:green;">✅</span> Used Claude Sonnet for code-generation accuracy and structural clarity (until I lost access for several hours; I may invest in an upgraded subscription because that preview is *chef's kiss*)</li>
     <li><span style="color:green;">✅</span> Employed a custom GPT (Software Architect GPT by Vim Wickramasinghe) for cockpit-aligned markup and audit-language consistency (a major takeaway is that the Plus subscription is a necessary evil)</li>
@@ -411,13 +528,10 @@ main.content-wrapper > h2:first-child {
     <li><span style="color:green;">✅</span> All emojis were clone-sourced—no format or origin deviation observed</li>
   </ul>
   <p><strong>Response:</strong> Logged as a markup-obedient but renderer-defiant anomaly. Suspect clipboard pollution, DOM cache residue, invisible Notepad++ issue, or invisible character fallout. 
-  May need to adopt “paste-from-stable” when cloning visual emoji lines.</p>
+  May need to adopt "paste-from-stable" when cloning visual emoji lines.</p>
   <p><strong>Rationale:</strong> Illustrates that renderer loyalty isn't guaranteed, even when markup is visually sound. 
   Future edits to stacked emoji contexts should verify rendering fidelity—especially near similar lines—to maintain cockpit visual trust.</p>
 </section>
-
-</body>
-<main class="content-wrapper">
 
  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e1e4e8; text-align: center; font-size: 0.9rem; color: #555;">
   <p>🔐 CAps™ is built for user-first verification and open-source transparency. <br />
@@ -428,5 +542,30 @@ main.content-wrapper > h2:first-child {
     <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/index.html#faq" target="_blank" rel="noopener noreferrer">FAQs</a>
   </p>
 </footer>
-    
- </footer>
+
+<script>
+// Hamburger menu toggle
+const toggle = document.querySelector('.nav-toggle');
+const links  = document.querySelector('.nav-links');
+
+if (toggle && links) {
+  toggle.addEventListener('click', () => {
+    links.classList.toggle('open');
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!toggle.contains(e.target) && !links.contains(e.target)) {
+      links.classList.remove('open');
+    }
+  });
+
+  // Close menu when clicking on a link
+  links.addEventListener('click', () => {
+    links.classList.remove('open');
+  });
+}
+</script>
+
+</body>
+</html>
