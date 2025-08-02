@@ -41,12 +41,46 @@ header.site-header {
   margin-right: calc(-50vw + 50%);
 }
 
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.header-content img {
+  height: 48px;
+  flex-shrink: 0;
+}
+
 header.site-header h1 {
   color: #00A651;
   font-size: 2.5em;
   font-weight: 600;
   letter-spacing: 0.5px;
   margin: 0;
+  text-align: center;
+}
+
+/* Navigation styles */
+nav {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .nav-links {
@@ -55,16 +89,77 @@ header.site-header h1 {
   gap: 14px;
   margin: 0;
   padding: 0;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .nav-links li a {
   text-decoration: none;
   color: #333;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .nav-links li a:hover {
   text-decoration: underline;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 0.5em;
+  }
+  
+  .header-content img {
+    height: 36px;
+  }
+  
+  header.site-header h1 {
+    font-size: 1.8em;
+    line-height: 1.2;
+  }
+  
+  .nav-toggle {
+    display: block;
+  }
+  
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-top: none;
+    padding: 1rem;
+    gap: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  
+  .nav-links.open {
+    display: flex;
+  }
+  
+  .nav-links li {
+    text-align: center;
+  }
+  
+  .content-wrapper {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header.site-header h1 {
+    font-size: 1.5em;
+  }
+  
+  .header-content img {
+    height: 32px;
+  }
 }
 
 h1, h2, h3 {
@@ -132,6 +227,15 @@ a:visited:hover {
 
   header.site-header h1 {
     color: #4FFF9F;
+  }
+
+  .nav-toggle {
+    color: #ccc;
+  }
+
+  .nav-links {
+    background: #1e1e1e;
+    border-color: #444;
   }
 
   .nav-links li a {
@@ -219,6 +323,43 @@ main.content-wrapper > h3:first-child {
   margin-top: 0; /* override default 2em from h3 for first element */
 }
 
+.log-entry {
+  margin-bottom: 0.8em;
+  padding: 0.5em 0;
+}
+
+.timestamp {
+  font-weight: 500;
+  color: #007A33;
+}
+
+.copilot-note {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-left: 4px solid #00A651;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .copilot-note {
+    background-color: #2d2d2d;
+    border-left-color: #4FFF9F;
+  }
+  
+  .timestamp {
+    color: #4FFF9F;
+  }
+  
+  .faq-entry {
+    border-bottom-color: #444;
+  }
+  
+  .faq-entry summary:hover {
+    background-color: #333;
+  }
+}
+
 </style>
 
 </head>
@@ -226,25 +367,24 @@ main.content-wrapper > h3:first-child {
 <body>
  
   <header class="site-header">
-  <div style="display: flex; align-items: center; justify-content: center; gap: 1em;">
-    <img src="caps-logo.png" alt="CAps Logo" style="height: 48px;">
-   <h1 style="color: #00A651; font-size: 2.5em; font-weight: 600; letter-spacing: 0.5px; margin: 0;">
-      Project Log | CAps-Cortex™
-    </h1>
-</div>
+    <div class="header-content">
+      <img src="caps-logo.png" alt="CAps Logo">
+      <h1>Project Log | CAps-Cortex™</h1>
+    </div>
 
-  <nav style="text-align: center;">
-    <ul class="nav-links">
-      <li><a href="https://toshon-jennings.github.io/DoubleCapsCorrect/">CAps™ 2.1.1</a></li>
-      <li><a href="https://toshon-jennings.github.io/DoubleCapsCorrect/verify.html">Verify</a></li>
-      <li><a href="https://toshon-jennings.github.io/caps-cortex/">CAps-Cortex™</a></li>
-      <li><a href="/caps-cortex/project-log.html">Project Log</a></li>
-      <li><a href="https://toshon-jennings.github.io/caps-cortex/process-insights.html">Process Insights</a></li>
-      <li><a href="https://github.com/toshon-jennings/DoubleCapsCorrect/wiki" target="_blank" rel="noopener">Wiki</a></li>
-      <li><a href="/caps-cortex/about.html">About Toshon</a></li>
-    </ul>
-  </nav>
-</header>
+    <nav>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-links">
+        <li><a href="https://toshon-jennings.github.io/DoubleCapsCorrect/">CAps™ 2.1.1</a></li>
+        <li><a href="https://toshon-jennings.github.io/DoubleCapsCorrect/verify.html">Verify</a></li>
+        <li><a href="https://toshon-jennings.github.io/caps-cortex/">CAps-Cortex™</a></li>
+        <li><a href="/caps-cortex/project-log.html">Project Log</a></li>
+        <li><a href="https://toshon-jennings.github.io/caps-cortex/process-insights.html">Process Insights</a></li>
+        <li><a href="https://github.com/toshon-jennings/DoubleCapsCorrect/wiki" target="_blank" rel="noopener">Wiki</a></li>
+        <li><a href="/caps-cortex/about.html">About Toshon</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <main class="content-wrapper">
   <p><em>This page documents the collaborative development of CAps™ tooling and trust-first refinements.</em></p>
@@ -276,7 +416,7 @@ main.content-wrapper > h3:first-child {
     <span class="timestamp">🗓️ 2025-07-24</span> — Logging protocol established and styled
   </div>
   <div class="log-entry">
-    <span class="timestamp">🗓️ 2025-07-24</span> — Logo anchor updated with <code>target="_blank"` and `rel="noopener noreferrer"</code> for UX continuity and trust-safe redirection
+    <span class="timestamp">🗓️ 2025-07-24</span> — Logo anchor updated with <code>target="_blank"</code> and <code>rel="noopener noreferrer"</code> for UX continuity and trust-safe redirection
   </div>
   <div class="log-entry">
    <span class="timestamp">🗓️ 2025-07-24</span> — Favicon integration complete; rendering correctly on GitHub Pages
@@ -350,7 +490,6 @@ main.content-wrapper > h3:first-child {
   </div>
   </main>
 
-
 <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e1e4e8; text-align: center; font-size: 0.9rem; color: #555;">
   <p>🔐 CAps™ is built for user-first verification and open-source transparency. <br />
     ← <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/" target="_blank" rel="noopener noreferrer">Download CAps™</a>
@@ -361,6 +500,29 @@ main.content-wrapper > h3:first-child {
   </p>
 </footer>
 
+<script>
+// Hamburger menu toggle
+const toggle = document.querySelector('.nav-toggle');
+const links  = document.querySelector('.nav-links');
+
+if (toggle && links) {
+  toggle.addEventListener('click', () => {
+    links.classList.toggle('open');
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!toggle.contains(e.target) && !links.contains(e.target)) {
+      links.classList.remove('open');
+    }
+  });
+
+  // Close menu when clicking on a link
+  links.addEventListener('click', () => {
+    links.classList.remove('open');
+  });
+}
+</script>
 
 </body>
 </html>
