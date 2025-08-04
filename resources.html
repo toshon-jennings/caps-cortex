@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CompTIA Security+ Acronyms Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    .content-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    header.site-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1em;
+      margin-bottom: 2em;
+      position: sticky;
+      top: 0;
+      background: #ffffff;
+      z-index: 1000;
+      padding: 1.5em 0;
+      border-bottom: 1px solid #ccc;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1em;
+      flex-wrap: wrap;
+    }
+
+    .header-content img {
+      height: 48px;
+      flex-shrink: 0;
+    }
+
+    header.site-header h1 {
+      color: #00A651;
+      font-size: 2.5em;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin: 0;
+      text-align: center;
+    }
+
+    /* Navigation with hamburger menu */
+    nav {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-toggle {
+      display: none;
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #333;
+      padding: 0.5rem;
+      z-index: 1001;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      white-space: nowrap;
+      font-size: clamp(0.8rem, 2.5vw, 1rem);
+    }
+
+    .nav-links li a:hover {
+      text-decoration: underline;
+    }
+
+    /* Mobile responsive styles */
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+      
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        padding: 1rem;
+        margin-top: 0.5rem;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .nav-links.open {
+        display: flex;
+      }
+      
+      .nav-links li a {
+        padding: 0.75rem 1rem;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+      }
+      
+      .nav-links li a:hover {
+        background-color: #f5f5f5;
+        text-decoration: none;
+      }
+
+      .header-content {
+        flex-direction: column;
+        gap: 0.5em;
+      }
+      
+      .header-content img {
+        height: 36px !important;
+      }
+      
+      header.site-header h1 {
+        font-size: 1.8em;
+        line-height: 1.2;
+      }
+
+      .content-wrapper {
+        padding: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header.site-header h1 {
+        font-size: 1.5em;
+      }
+      
+      .header-content img {
+        height: 32px !important;
+      }
+    }
+
+    h1, h2, h3 {
+      font-weight: bold;
+      margin-top: 2rem;
+    }
+
+    h2 {
+      color: #007A33;
+      border-bottom: 1px solid #cccccc;
+      padding-bottom: 0.3em;
+      margin-top: 2em;
+    }
+
+    h3 {
+      color: #00A651;
+      padding-bottom: 0.3em;
+      margin-top: 2em;
+    }
+
+    a {
+      color: #007A33;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    a:hover {
+      color: #00A651;
+      border-bottom: 1px solid #00A651;
+      text-decoration: none;
+    }
+
+    a:visited {
+      color: #005722;
+    }
+
+    a:visited:hover {
+      color: #007A33;
+      border-bottom: 1px solid #007A33;
+    }
+
+    /* Special styling for download buttons */
+    a[href*=".zip"],
+    a[style*="background-color: #1d843c"] {
+      color: #ffffff !important;
+      border-bottom: none !important;
+    }
+
+    a[href*=".zip"]:hover,
+    a[style*="background-color: #1d843c"]:hover {
+      background-color: #155a2b !important;
+      color: #ffffff !important;
+    }
+
+    .faq-entry {
+      margin-bottom: 1.5em;
+      padding-bottom: 0.5em;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .faq-entry summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.1em;
+      cursor: pointer;
+      padding: 0.4em 0;
+      transition: background-color 0.2s ease;
+      border-radius: 4px;
+    }
+
+    .faq-entry summary:hover {
+      background-color: #f3f3f3;
+    }
+
+    .faq-entry summary::marker {
+      font-size: 1.2em;
+      color: #00A651;
+    }
+
+    .faq-entry[open] summary {
+      margin-bottom: 0.5em;
+    }
+
+    .faq-entry p {
+      margin: 0 0 0.5em;
+    }
+
+    main.content-wrapper > h2:first-child {
+      margin-top: 0;
+    }
+
+    /* Buttons and contact overlay sizing */
+    .resume-buttons,
+    .contact-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.6em;
+      margin: 1.5em auto;
+      max-width: 520px;
+      width: 100%;
+    }
+
+    .resume-button,
+    .contact-button,
+    .contact-location-overlay {
+      background-color: #bcbcbc;
+      color: white;
+      padding: 0.75em 1.2em;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      width: 100%;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .resume-button:link,
+    .resume-button:visited,
+    .contact-button:link,
+    .contact-button:visited,
+    .contact-location-overlay:link,
+    .contact-location-overlay:visited {
+      color: white !important;
+    }
+        
+    .resume-button:hover,
+    .contact-button:hover,
+    .contact-location-overlay:hover {
+      background-color: #959595;
+      transform: scale(1.03);
+    }
+
+    .contact-location-overlay {
+      background-color: transparent;
+      padding: 0;
+      height: auto;
+    }
+
+    .contact-location-imgfill {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 6px;
+      margin-bottom: 0;
+    }
+
+    .contact-location-overlaytext {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.35);
+      color: white;
+      font-weight: 600;
+      font-size: 1.05em;
+      text-align: center;
+      border-radius: 6px;
+    }
+
+    .flipbook-full {
+      position: relative;
+      width: 90vw;
+      max-width: 800px;
+      margin: 2rem auto;
+      margin-left: calc(2rem * -1);
+      margin-right: calc(2rem * -1);
+      height: 0;
+      padding-top: 75%;
+      overflow: hidden;
+    }
+
+    .flipbook-full iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .flipbook-section {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      box-sizing: border-box;
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    .flipbook-section h2 {
+      color: #505050;
+      margin-bottom: 1rem;
+    }
+
+    .flipbook {
+      width: 70vw;
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      padding-top: 42%;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .flipbook iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .flipbook-heading {
+      color: #505050;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      letter-spacing: 3px;
+    }
+
+    /* Mobile responsiveness improvements for flipbook */
+    @media (max-width: 768px) {
+      .flipbook {
+        width: 95vw;
+        padding-top: 45%;
+      }
+      
+      .flipbook-section {
+        padding: 0.5rem 0;
+      }
+
+      .flipbook-heading {
+        letter-spacing: 1px;
+        font-size: 1.5em;
+      }
+    }
+
+    /* Status box from index.html */
+    .status-box {
+      background-color: #f5f5f5;
+      border-left: 4px solid #00A651;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 1em 1.2em;
+      border-radius: 8px;
+      margin: 1.5em 0;
+      font-size: 0.95em;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1rem;
+      max-width: 100%;
+    }
+
+    /* Game container styling */
+    .game-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      background-color: transparent;
+      text-align: center;
+      box-shadow: rgba(0,0,0,0.1) 0 0 5px 0;
+      padding: 5px 10px;
+      border-radius: 8px;
+    }
+
+    .game-container iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .game-container a {
+      color: #007A33;
+      font-size: 12px;
+      margin-top: 5px;
+      display: inline-block;
+    }
+
+    /* Adjust game container for mobile */
+    @media (max-width: 768px) {
+      .game-container {
+        margin: 1rem;
+        max-width: calc(100% - 2rem);
+      }
+      
+      .game-container iframe {
+        height: 500px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .game-container iframe {
+        height: 400px;
+      }
+    }
+
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #1e1e1e;
+        color: #ffffff;
+      }
+
+      .status-box {
+        background-color: #2a2a2a;
+        border: 1px solid #444;
+      }
+
+      h2 {
+        color: #7FFFBE;
+        border-bottom: 1px solid #444;
+      }
+
+      h3 {
+        color: #4FFF9F;
+      }
+
+      header.site-header {
+        margin-bottom: 1em;
+        background: #1e1e1e;
+        border-bottom: 1px solid #444;
+      }
+
+      header.site-header h1 {
+        color: #4FFF9F;
+      }
+
+      .nav-toggle {
+        color: #ccc;
+      }
+
+      .nav-links {
+        background: #1e1e1e;
+        border-color: #444;
+      }
+
+      .nav-links li a {
+        color: #ccc;
+      }
+
+      .nav-links li a:hover {
+        color: #ffffff;
+        background-color: #333;
+      }
+
+      a {
+        color: #4FFF9F;
+        border-bottom: 1px solid transparent;
+      }
+
+      a:hover {
+        color: #7FFFBE;
+        border-bottom: 1px solid #7FFFBE;
+      }
+
+      a:visited {
+        color: #3FDF8F;
+      }
+
+      a:visited:hover {
+        color: #4FFF9F;
+        border-bottom: 1px solid #4FFF9F;
+      }
+
+      .faq-entry {
+        border-bottom-color: #444;
+      }
+
+      .faq-entry summary:hover {
+        background-color: #3d3d3d;
+      }
+
+      .flipbook-heading {
+        color: #7FFFBE;
+      }
+
+      .flipbook-section h2 {
+        color: #7FFFBE;
+      }
+
+      .status-box {
+        background-color: #5a5a5a;
+        border-left-color: #4FFF9F;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      }
+
+      .game-container {
+        background-color: transparent;
+        box-shadow: rgba(0,0,0,0.3) 0 0 5px 0;
+      }
+
+      .game-container a {
+        color: #4FFF9F;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-content">
+      <img src="caps-logo.png" alt="CAps Logo" style="height: 48px;">
+      <h1>CompTIA Security+ Training</h1>
+    </div>
+    <nav>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
+      <ul class="nav-links">
+        <li><a href="https://toshon-jennings.github.io/DoubleCapsCorrect/">CAps™ 2.1.1</a></li>
+        <li><a href="https://toshon-jennings.github.io/DoubleCapsCorrect/verify.html">Verify</a></li>
+        <li><a href="https://toshon-jennings.github.io/caps-cortex/">CAps-Cortex™</a></li>
+        <li><a href="/caps-cortex/project-log.html">Project Log</a></li>
+        <li><a href="https://toshon-jennings.github.io/caps-cortex/process-insights.html">Process Insights</a></li>
+        <li><a href="https://github.com/toshon-jennings/DoubleCapsCorrect/wiki" target="_blank" rel="noopener">Wiki</a></li>
+        <li><a href="/caps-cortex/about.html">About Toshon</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content-wrapper">
+   <h2 style="text-align: center;">CompTIA Security+ Acronyms | JeopardyLabs</h2>
+        
+    <section id="game-info">
+      <h3>About This Game</h3>
+      <p>Test your knowledge of CompTIA Security+ acronyms with this interactive Jeopardy-style game. Perfect for certification prep and reinforcing key security concepts.</p>
+      
+      <!-- Example of available components you can add -->
+      <details class="faq-entry">
+        <summary>How to Play</summary>
+        <p>Click on dollar amounts to reveal clues. Answer in the form of a question to earn points. The game covers essential Security+ acronyms and their meanings.</p>
+      </details>
+
+      <details class="faq-entry">
+        <summary>Study Tips</summary>
+        <p>Focus on understanding not just what the acronyms stand for, but how they're used in cybersecurity contexts. Practice regularly and review missed questions.</p>
+      </details>
+    </section>
+
+    <h3>Comprehensive</h3>
+    <div class="game-container">
+    <iframe src="https://jeopardylabs.com/play/security-acronyms-game-i?embed=1" frameborder="0" width="100%" height="600"></iframe>
+      <a target="_blank" href="https://jeopardylabs.com">JeopardyLabs</a>
+    </div>
+        
+    <section id="additional-resources">
+      <h3>Additional Resources</h3>
+      <div class="resume-buttons">
+        <a href="#" class="resume-button">CompTIA Study Guide</a>
+        <a href="#" class="resume-button">Practice Exams</a>
+        <a href="#" class="resume-button">Flashcards</a>
+      </div>
+    </section>
+  </main>
+
+  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e1e4e8; text-align: center; font-size: 0.9rem; color: #555;">
+    <p>🔐 CAps™ is built for user-first verification and open-source transparency.<br />
+      ← <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/" target="_blank" rel="noopener noreferrer">Download CAps™</a>
+      &nbsp;|&nbsp;
+      <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/verify.html" target="_blank" rel="noopener noreferrer">Verification Page</a>
+      &nbsp;|&nbsp;
+      <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/index.html#faq" target="_blank" rel="noopener noreferrer">FAQs</a>
+    </p>
+  </footer>
+
+  <script>
+    // Plain JS toggle for hamburger menu
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    
+    if (toggle && links) {
+      toggle.addEventListener('click', () => {
+        links.classList.toggle('open');
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!toggle.contains(e.target) && !links.contains(e.target)) {
+          links.classList.remove('open');
+        }
+      });
+
+      // Close menu when clicking on a link
+      links.addEventListener('click', () => {
+        links.classList.remove('open');
+      });
+    }
+  </script>
+</body>
+</html>
