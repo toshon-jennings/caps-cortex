@@ -263,8 +263,7 @@
     }
 
     /* Buttons and contact overlay sizing */
-    .resume-buttons,
-    .contact-buttons {
+    .resume-buttons {
       display: flex;
       flex-direction: column;
       align-items: stretch;
@@ -274,9 +273,16 @@
       width: 100%;
     }
 
-    .resume-button,
-    .contact-button,
-    .contact-location-overlay {
+    .contact-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 0.8em;
+      margin: 1.5em auto;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .resume-button {
       background-color: #bcbcbc;
       color: white;
       padding: 0.75em 1.2em;
@@ -292,26 +298,77 @@
       box-sizing: border-box;
     }
 
+    .contact-button {
+      background-color: #bcbcbc;
+      color: white !important;
+      padding: 0.75em 1em;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4em;
+      box-sizing: border-box;
+      min-height: 48px;
+      border-bottom: none !important;
+    }
+
     .resume-button:link,
     .resume-button:visited,
     .contact-button:link,
-    .contact-button:visited,
-    .contact-location-overlay:link,
-    .contact-location-overlay:visited {
+    .contact-button:visited {
       color: white !important;
     }
         
     .resume-button:hover,
-    .contact-button:hover,
-    .contact-location-overlay:hover {
+    .contact-button:hover {
       background-color: #959595;
       transform: scale(1.03);
+    }
+
+    .contact-button:hover {
+      transform: scale(1.02);
+    }
+
+    /* Location container - separate from grid */
+    .location-container {
+      margin-top: 1.5em;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .location-container .contact-location-overlay {
+      max-width: 600px;
+      width: 100%;
+      min-height: 120px;
+    }
+
+    .location-container .contact-location-imgfill {
+      min-height: 120px;
     }
 
     .contact-location-overlay {
       background-color: transparent;
       padding: 0;
       height: auto;
+      position: relative;
+      overflow: hidden;
+      border-radius: 6px;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      display: block;
+    }
+
+    .contact-location-overlay:link,
+    .contact-location-overlay:visited {
+      color: white !important;
+    }
+
+    .contact-location-overlay:hover {
+      transform: scale(1.03);
     }
 
     .contact-location-imgfill {
@@ -399,6 +456,24 @@
 
     /* Mobile responsiveness improvements for flipbook */
     @media (max-width: 768px) {
+      .contact-buttons {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+      }
+      
+      .contact-button {
+        padding: 0.8em 1em;
+      }
+
+      .location-container .contact-location-overlay {
+        width: 100%;
+        min-height: 100px;
+      }
+
+      .location-container .contact-location-imgfill {
+        min-height: 100px;
+      }
+
       .flipbook {
         width: 95vw;
         padding-top: 45%;
@@ -606,10 +681,12 @@
           <img src="caps-logo.png" alt="CAps Logo" style="height: 22px; width: 25px; margin-right: 0.4em; vertical-align: middle; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.09);" />
           CAps™ 2.1.1</a>
 		<a class="contact-button" href="https://whimsical.com/use-chrome-browser-like-an-os-4jUtNkzWCk3kKFCxZKP29P" target="_blank" rel="noopener">
-		  <img src="whimsical-logo.jpg" alt="Whimsical Logo" style="height: 22px; width: 22px; margin-right: 0.4em; vertical-align: middle; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.09);" />
+		  <img src="whimsical-logo.png" alt="Whimsical Logo" style="height: 22px; width: 22px; margin-right: 0.4em; vertical-align: middle; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.09);" />
 		  Use Chrome Browser Like an OS</a>
-		  
-        <div class="contact-button contact-location-overlay">
+      </div>
+      
+      <div class="location-container">
+        <div class="contact-location-overlay">
           <img class="contact-location-imgfill" src="https://toshon-jennings.github.io/caps-cortex/abdul-delati-_jlkgoaKHj0-unsplash.jpg" alt="Philadelphia" aria-hidden="true" /> 
           <span class="contact-location-overlaytext">📍 Location: Philadelphia, PA</span>
         </div>
