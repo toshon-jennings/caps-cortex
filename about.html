@@ -1,789 +1,944 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>About Toshon</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      background-color: #ffffff;
-      color: #000000;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-    }
-
-    .content-wrapper {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-
-    header.site-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1em;
-      margin-bottom: 2em;
-      position: sticky;
-      top: 0;
-      background: #ffffff;
-      z-index: 1000;
-      padding: 1.5em 0;
-      border-bottom: 1px solid #ccc;
-      width: 100vw;
-      margin-left: calc(-50vw + 50%);
-      margin-right: calc(-50vw + 50%);
-    }
-
-    .header-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1em;
-      flex-wrap: wrap;
-    }
-
-    .header-content img {
-      height: 48px;
-      flex-shrink: 0;
-    }
-
-    header.site-header h1 {
-      color: #00A651;
-      font-size: 2.5em;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      margin: 0;
-      text-align: center;
-    }
-
-    /* Navigation with hamburger menu */
-    nav {
-      position: relative;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-
-    .nav-toggle {
-      display: none;
-      position: absolute;
-      right: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #333;
-      padding: 0.5rem;
-      z-index: 1001;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 14px;
-      margin: 0;
-      padding: 0;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .nav-links li a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      white-space: nowrap;
-      font-size: clamp(0.8rem, 2.5vw, 1rem);
-    }
-
-    .nav-links li a:hover {
-      text-decoration: underline;
-    }
-
-    /* Mobile responsive styles */
-    @media (max-width: 768px) {
-      .nav-toggle {
-        display: block;
-      }
-      
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: #ffffff;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        padding: 1rem;
-        margin-top: 0.5rem;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      
-      .nav-links.open {
-        display: flex;
-      }
-      
-      .nav-links li a {
-        padding: 0.75rem 1rem;
-        border-radius: 4px;
-        transition: background-color 0.2s ease;
-      }
-      
-      .nav-links li a:hover {
-        background-color: #f5f5f5;
-        text-decoration: none;
-      }
-
-      .header-content {
-        flex-direction: column;
-        gap: 0.5em;
-      }
-      
-      .header-content img {
-        height: 36px !important;
-      }
-      
-      header.site-header h1 {
-        font-size: 1.8em;
-        line-height: 1.2;
-      }
-
-      .content-wrapper {
-        padding: 1rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header.site-header h1 {
-        font-size: 1.5em;
-      }
-      
-      .header-content img {
-        height: 32px !important;
-      }
-    }
-
-    h1, h2, h3 {
-      font-weight: bold;
-      margin-top: 2rem;
-    }
-
-    h2 {
-      color: #007A33;
-      border-bottom: 1px solid #cccccc;
-      padding-bottom: 0.3em;
-      margin-top: 2em;
-    }
-
-    h3 {
-      color: #00A651;
-      padding-bottom: 0.3em;
-      margin-top: 2em;
-    }
-
-    a {
-      color: #007A33;
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: all 0.2s ease;
-    }
-
-    a:hover {
-      color: #00A651;
-      border-bottom: 1px solid #00A651;
-      text-decoration: none;
-    }
-
-    a:visited {
-      color: #005722;
-    }
-
-    a:visited:hover {
-      color: #007A33;
-      border-bottom: 1px solid #007A33;
-    }
-
-    /* Special styling for download buttons */
-    a[href*=".zip"],
-    a[style*="background-color: #1d843c"] {
-      color: #ffffff !important;
-      border-bottom: none !important;
-    }
-
-    a[href*=".zip"]:hover,
-    a[style*="background-color: #1d843c"]:hover {
-      background-color: #155a2b !important;
-      color: #ffffff !important;
-    }
-
-    .faq-entry {
-      margin-bottom: 1.5em;
-      padding-bottom: 0.5em;
-      border-bottom: 1px solid #ccc;
-    }
-
-    .faq-entry summary {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 1.1em;
-      cursor: pointer;
-      padding: 0.4em 0;
-      transition: background-color 0.2s ease;
-      border-radius: 4px;
-    }
-
-    .faq-entry summary:hover {
-      background-color: #f3f3f3;
-    }
-
-    .faq-entry summary::marker {
-      font-size: 1.2em;
-      color: #00A651;
-    }
-
-    .faq-entry[open] summary {
-      margin-bottom: 0.5em;
-    }
-
-    .faq-entry p {
-      margin: 0 0 0.5em;
-    }
-
-    main.content-wrapper > h2:first-child {
-      margin-top: 0;
-    }
-
-    /* Buttons and contact overlay sizing */
-    .resume-buttons {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0.6em;
-      margin: 1.5em auto;
-      max-width: 520px;
-      width: 100%;
-    }
-
-    .contact-buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 0.8em;
-      margin: 1.5em auto;
-      max-width: 600px;
-      width: 100%;
-    }
-
-    .resume-button {
-      background-color: #bcbcbc;
-      color: white;
-      padding: 0.75em 1.2em;
-      text-align: center;
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 6px;
-      transition: background-color 0.2s ease, transform 0.2s ease;
-      width: 100%;
-      display: block;
-      position: relative;
-      overflow: hidden;
-      box-sizing: border-box;
-    }
-
-    .contact-button {
-      background-color: #bcbcbc;
-      color: white !important;
-      padding: 0.75em 1em;
-      text-align: center;
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 6px;
-      transition: background-color 0.2s ease, transform 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4em;
-      box-sizing: border-box;
-      min-height: 48px;
-      border-bottom: none !important;
-    }
-
-    .resume-button:link,
-    .resume-button:visited,
-    .contact-button:link,
-    .contact-button:visited {
-      color: white !important;
-    }
-        
-    .resume-button:hover,
-    .contact-button:hover {
-      background-color: #959595;
-      transform: scale(1.03);
-    }
-
-    .contact-button:hover {
-      transform: scale(1.02);
-    }
-
-    /* Location container - separate from grid */
-    .location-container {
-      margin-top: 1.5em;
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
-
-    .location-container .contact-location-overlay {
-      max-width: 600px;
-      width: 100%;
-      min-height: 120px;
-    }
-
-    .location-container .contact-location-imgfill {
-      min-height: 120px;
-    }
-
-    .contact-location-overlay {
-      background-color: transparent;
-      padding: 0;
-      height: auto;
-      position: relative;
-      overflow: hidden;
-      border-radius: 6px;
-      transition: background-color 0.2s ease, transform 0.2s ease;
-      display: block;
-    }
-
-    .contact-location-overlay:link,
-    .contact-location-overlay:visited {
-      color: white !important;
-    }
-
-    .contact-location-overlay:hover {
-      transform: scale(1.03);
-    }
-
-    .contact-location-imgfill {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      border-radius: 6px;
-      margin-bottom: 0;
-    }
-
-    .contact-location-overlaytext {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.35);
-      color: white;
-      font-weight: 600;
-      font-size: 1.05em;
-      text-align: center;
-      border-radius: 6px;
-    }
-
-    .flipbook-full {
-      position: relative;
-      width: 90vw;
-      max-width: 800px;
-      margin: 2rem auto;
-      margin-left: calc(2rem * -1);
-      margin-right: calc(2rem * -1);
-      height: 0;
-      padding-top: 75%;
-      overflow: hidden;
-    }
-
-    .flipbook-full iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .flipbook-section {
-      width: 100vw;
-      margin-left: calc(-50vw + 50%);
-      box-sizing: border-box;
-      padding: 1rem 0;
-      text-align: center;
-    }
-
-    .flipbook-section h2 {
-      color: #505050;
-      margin-bottom: 1rem;
-    }
-
-    .flipbook {
-      width: 70vw;
-      max-width: 1000px;
-      margin: 0 auto;
-      position: relative;
-      padding-top: 42%;
-      overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-
-    .flipbook iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-      border-radius: 8px;
-    }
-
-    .flipbook-heading {
-      color: #505050;
-      text-align: center;
-      margin-bottom: 0.5rem;
-      letter-spacing: 3px;
-    }
-
-    /* Mobile responsiveness improvements for flipbook */
-    @media (max-width: 768px) {
-      .contact-buttons {
-        grid-template-columns: 1fr;
-        max-width: 100%;
-      }
-      
-      .contact-button {
-        padding: 0.8em 1em;
-      }
-
-      .location-container .contact-location-overlay {
-        width: 100%;
-        min-height: 100px;
-      }
-
-      .location-container .contact-location-imgfill {
-        min-height: 100px;
-      }
-
-      .flipbook {
-        width: 95vw;
-        padding-top: 45%;
-      }
-      
-      .flipbook-section {
-        padding: 0.5rem 0;
-      }
-
-      .flipbook-heading {
-        letter-spacing: 1px;
-        font-size: 1.5em;
-      }
-    }
-
-    /* Dark mode */
-    @media (prefers-color-scheme: dark) {
-      body {
-        background-color: #1e1e1e;
-        color: #ffffff;
-      }
-
-      .status-box {
-        background-color: #2a2a2a;
-        border: 1px solid #444;
-      }
-
-      h2 {
-        color: #7FFFBE;
-        border-bottom: 1px solid #444;
-      }
-
-      h3 {
-        color: #4FFF9F;
-      }
-
-      header.site-header {
-        margin-bottom: 1em;
-        background: #1e1e1e;
-        border-bottom: 1px solid #444;
-      }
-
-      header.site-header h1 {
-        color: #4FFF9F;
-      }
-
-      .nav-toggle {
-        color: #ccc;
-      }
-
-      .nav-links {
-        background: #1e1e1e;
-        border-color: #444;
-      }
-
-      .nav-links li a {
-        color: #ccc;
-      }
-
-      .nav-links li a:hover {
-        color: #ffffff;
-        background-color: #333;
-      }
-
-      a {
-        color: #4FFF9F;
-        border-bottom: 1px solid transparent;
-      }
-
-      a:hover {
-        color: #7FFFBE;
-        border-bottom: 1px solid #7FFFBE;
-      }
-
-      a:visited {
-        color: #3FDF8F;
-      }
-
-      a:visited:hover {
-        color: #4FFF9F;
-        border-bottom: 1px solid #4FFF9F;
-      }
-
-      .faq-entry {
-        border-bottom-color: #444;
-      }
-
-      .faq-entry summary:hover {
-        background-color: #3d3d3d;
-      }
-
-      .flipbook-heading {
-        color: #7FFFBE;
-      }
-
-      .flipbook-section h2 {
-        color: #7FFFBE;
-      }
-
-      /* FIXED: Dark mode button styles with better contrast */
-      .resume-button {
-        background-color: #4a4a4a !important;
-        color: #ffffff !important;
-      }
-
-      .resume-button:link,
-      .resume-button:visited {
-        color: #ffffff !important;
-      }
-
-      .resume-button:hover {
-        background-color: #5a5a5a !important;
-        color: #ffffff !important;
-      }
-
-      .contact-button {
-        background-color: #4a4a4a !important;
-        color: #ffffff !important;
-      }
-
-      .contact-button:link,
-      .contact-button:visited {
-        color: #ffffff !important;
-      }
-
-      .contact-button:hover {
-        background-color: #5a5a5a !important;
-        color: #ffffff !important;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toshon Jennings - IT Professional Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Light mode with green accent */
+            --site-bg: #ffffff;
+            --site-text: #1a1a1a;
+            --site-accent: #10b981;
+            --site-nav-bg: #ffffff;
+            --site-nav-border: #e5e7eb;
+            
+            /* Dashboard specific dark theme */
+            --sidebar-bg: #1a1f2e;
+            --main-bg: #0f1419;
+            --card-bg: #1a1f2e;
+            --card-hover: #222938;
+            --text-primary: #e4e6eb;
+            --text-secondary: #9ca3af;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-purple: #8b5cf6;
+            --border-color: #2d3748;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Dark mode for main site nav */
+        body.dark-mode {
+            --site-bg: #1f2937;
+            --site-text: #f3f4f6;
+            --site-nav-bg: #1f2937;
+            --site-nav-border: #374151;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--site-bg);
+            color: var(--site-text);
+            min-height: 100vh;
+        }
+
+        /* Main Site Navigation Bar */
+        .site-header {
+            background: var(--site-nav-bg);
+            border-bottom: 1px solid var(--site-nav-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .site-nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .site-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        .site-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--site-text);
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .site-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--site-accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .site-nav-menu {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .site-nav-link {
+            color: var(--site-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .site-nav-link:hover {
+            color: var(--site-accent);
+        }
+
+        .site-nav-link.active {
+            color: var(--site-accent);
+        }
+
+        .site-nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--site-accent);
+        }
+
+        .site-nav-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: transparent;
+            border: 1px solid var(--site-nav-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--site-text);
+        }
+
+        .theme-toggle:hover {
+            background: var(--site-accent);
+            color: white;
+            border-color: var(--site-accent);
+        }
+
+        /* Dashboard Container */
+        .dashboard-wrapper {
+            background: var(--main-bg);
+            min-height: calc(100vh - 69px);
+        }
+
+        .app-container {
+            display: flex;
+            height: calc(100vh - 69px);
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 240px;
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-header {
+            padding: 24px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            color: white;
+        }
+
+        .brand-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .nav-menu {
+            flex: 1;
+            padding: 20px 0;
+            overflow-y: auto;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .nav-item:hover {
+            background: var(--card-hover);
+            color: var(--text-primary);
+        }
+
+        .nav-item.active {
+            background: var(--card-hover);
+            color: var(--accent-green);
+        }
+
+        .nav-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent-green);
+        }
+
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pro-section {
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .pro-badge {
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+            color: white;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Dashboard Header Bar */
+        .header-bar {
+            background: var(--card-bg);
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .search-bar {
+            width: 100%;
+            background: var(--main-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px 16px;
+            color: var(--text-primary);
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border-color: var(--accent-green);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .icon-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: var(--main-bg);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .icon-button:hover {
+            background: var(--card-hover);
+            transform: translateY(-1px);
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Dashboard Content */
+        .dashboard-content {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+            background: var(--main-bg);
+        }
+
+        .dashboard-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: var(--text-primary);
+        }
+
+        .update-badge {
+            background: var(--accent-green);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-green);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .card-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .card-menu {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        /* Profile Card Specific */
+        .profile-card {
+            grid-column: span 2;
+            background: linear-gradient(135deg, var(--card-bg), #1e293b);
+        }
+
+        .profile-content {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .profile-info h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .profile-tagline {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 24px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--accent-green);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Certification Card */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .cert-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px;
+            background: var(--main-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .progress-ring {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        .progress-ring svg {
+            transform: rotate(-90deg);
+        }
+
+        .progress-ring-circle {
+            fill: none;
+            stroke: var(--border-color);
+            stroke-width: 4;
+        }
+
+        .progress-ring-circle-progress {
+            fill: none;
+            stroke: var(--accent-green);
+            stroke-width: 4;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+
+        .progress-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .cert-name {
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        /* Project Cards */
+        .project-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-green);
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .action-button {
+            background: var(--accent-green);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .action-button:hover {
+            background: #059669;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow);
+        }
+
+        .action-button.secondary {
+            background: var(--main-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .action-button.secondary:hover {
+            background: var(--card-hover);
+            border-color: var(--accent-green);
+        }
+
+        /* Skills Card */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            padding: 6px 12px;
+            background: var(--main-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            font-size: 13px;
+            transition: all 0.2s ease;
+            color: var(--text-primary);
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+            transform: translateY(-1px);
+        }
+
+        /* Status Indicators */
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-green);
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background: currentColor;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* Mobile Navigation */
+        .mobile-menu-toggle {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--site-nav-border);
+            border-radius: 8px;
+            background: transparent;
+            color: var(--site-text);
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .profile-card {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .site-nav-menu {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .sidebar {
+                position: fixed;
+                left: -240px;
+                z-index: 999;
+                height: 100vh;
+                top: 69px;
+            }
+            
+            .sidebar.active {
+                left: 0;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .dashboard-content {
+                padding: 16px;
+            }
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: slideIn 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+        .card:nth-child(6) { animation-delay: 0.6s; }
+        .card:nth-child(7) { animation-delay: 0.7s; }
+        .card:nth-child(8) { animation-delay: 0.8s; }
+    </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="header-content">
-      <img src="caps-logo.png" alt="CAps Logo" style="height: 48px;">
-      <h1>About Toshon</h1>
-    </div>
-    <nav>
-      <button class="nav-toggle" aria-label="Open menu">☰</button>
-      <ul class="nav-links">
-        <li><a href="https://toshon-jennings.github.io/DoubleCapsCorrect/">CAps™ 2.1.1</a></li>
-        <li><a href="https://toshon-jennings.github.io/DoubleCapsCorrect/verify.html">Verify</a></li>
-        <li><a href="https://toshon-jennings.github.io/caps-cortex/">CAps-Cortex™</a></li>
-        <li><a href="/caps-cortex/project-log.html">Project Log</a></li>
-        <li><a href="https://toshon-jennings.github.io/caps-cortex/process-insights.html">Process Insights</a></li>
-        <li><a href="https://github.com/toshon-jennings/DoubleCapsCorrect/wiki" target="_blank" rel="noopener">Wiki</a></li>
-        <li><a href="/caps-cortex/about.html">About Toshon</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main class="content-wrapper">
-    <section id="about-toshon">
-      <h2>Systems steward by day, trust-pipeline architect by night.</h2>
-      <p>I'm an IT professional, process architect, and product steward driven by clarity, transparency, and trust-centered design. I manage multi-campus educational infrastructure by day, build verification tooling by night—and refine everything in between.</p>
-    
-	<h3>Experience</h3>
-      <details class="faq-entry">
-        <summary>Current Role</summary>
-        <p>I serve as I.T. Coordinator at The City School (TCS) in Philadelphia, leading incident response, asset management, and infrastructure modernization. I oversee key IT projects—including an MSSP transition, E-Rate implementations, and process documentation—while optimizing service delivery, user satisfaction, and operational uptime across multiple campuses.</p>
-      </details>
-
-      <details class="faq-entry">
-        <summary>CAps™ Creator</summary>
-        <p>CAps™ is a portable, trust-forward correction utility designed to complement autocorrect and streamline text revision workflows, quickly and easily solving the "double-caps" problem. It operates as a lightweight enhancement layer, giving users rapid access to trusted corrections wherever keystrokes are happening—engineered for speed, accuracy, and user empowerment.</p>
-        <p>The CAps cockpit, "CAps-Cortex™," showcases technical implementation, visual design, documentation polish, and UX focus—essentially, the nuts-and-bolts of my product stewardship philosophy focused on clarity, trust, and respect for the user.</p>
-      </details>
-
-      <details class="faq-entry">
-        <summary>Cert-Ready Technology Academy, LLC</summary>
-        <div style="display: flex; align-items: flex-start; gap: 1.5em; flex-wrap: wrap;">
-          <div style="flex: 1 1 250px; min-width: 180px;">
-            <p>I founded CRTA to expand access to tech careers for middle and high school students, as well as adult learners. Our model is certification-first—designed to help students graduate not only with diplomas, but with industry-recognized credentials. From CompTIA to Microsoft tracks, the goal is equity, readiness, and career acceleration. It's where mentorship meets methodology, tailored to your school's culture.</p>
-            <p><strong>Our goal: plant the seeds of tomorrow's tech field today.</strong></p>
-            <p>See <strong>FutureReady@TCS</strong> for CRTA's proposal to TCS, a private K-12 Christian school with 2 campuses in Philadelphia, PA. There is also an interactive flipbook version at the bottom of this screen.</p>
-          </div>
-          <div style="display: flex; flex-direction: column; align-items: center; min-width: 180px; max-width: 260px;">
-            <a href="https://toshon-jennings.github.io/caps-cortex/FutureReady@TCS.html" target="_blank" rel="noopener">
-              <img src="https://toshon-jennings.github.io/caps-cortex/FutureReady@TCS.png" alt="FutureReady@TCS PDF Cover" style="max-width: 180px; box-shadow: 0 2px 18px rgba(0,0,0,0.11); border-radius: 8px; transition: transform 0.18s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
-            </a>
-            <div style="margin-top: 0.5em; font-weight: bold; color: #0366d6; font-size: 0.98em;">
-              <a href="https://toshon-jennings.github.io/caps-cortex/FutureReady@TCS.html" target="_blank" rel="noopener" style="color: #0366d6; text-decoration: underline;"><code>Click to view proposal</code></a>
-            </div>
-          </div>
+    <!-- Main Site Navigation -->
+    <header class="site-header">
+        <div class="site-nav-container">
+            <nav class="site-nav">
+                <a href="/" class="site-logo">
+                    <div class="site-logo-icon">TJ</div>
+                    <span>Toshon Jennings</span>
+                </a>
+                
+                <div class="site-nav-menu">
+                    <a href="/" class="site-nav-link">Home</a>
+                    <a href="/about" class="site-nav-link">About</a>
+                    <a href="/projects" class="site-nav-link">Projects</a>
+                    <a href="/dashboard" class="site-nav-link active">Dashboard</a>
+                    <a href="/contact" class="site-nav-link">Contact</a>
+                </div>
+                
+                <div class="site-nav-actions">
+                    <button class="theme-toggle" id="themeToggle">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                        ☰
+                    </button>
+                </div>
+            </nav>
         </div>
-      </details>
+    </header>
 
-      <details class="faq-entry">
-        <summary>Education & Certifications</summary>
-        <ul>
-          <li><strong>B.S./M.S. IT Management</strong> — Western Governors University (in progress)</li>
-          <li><strong>Cybersecurity Specialist</strong> — NexGenT NISP Program</li>
-          <li><strong>Security+</strong> — CompTIA</li>
-          <li><strong>ITIL Foundations v4</strong> — Axelos</li>
-          <li><strong>A+ and Network+</strong> — In progress</li>
-        </ul>
-      </details>
+    <!-- Dashboard Application -->
+    <div class="dashboard-wrapper">
+        <div class="app-container">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <div class="logo-section">
+                        <div class="logo">TJ</div>
+                        <div class="brand-name">IT Dashboard</div>
+                    </div>
+                </div>
+                
+                <nav class="nav-menu">
+                    <a href="#overview" class="nav-item active">
+                        <span class="nav-icon">📊</span>
+                        <span>Overview</span>
+                    </a>
+                    <a href="#experience" class="nav-item">
+                        <span class="nav-icon">💼</span>
+                        <span>Experience</span>
+                    </a>
+                    <a href="#projects" class="nav-item">
+                        <span class="nav-icon">🚀</span>
+                        <span>Projects</span>
+                    </a>
+                    <a href="#certifications" class="nav-item">
+                        <span class="nav-icon">🏆</span>
+                        <span>Certifications</span>
+                    </a>
+                    <a href="#skills" class="nav-item">
+                        <span class="nav-icon">🛠️</span>
+                        <span>Tools & Skills</span>
+                    </a>
+                    <a href="#education" class="nav-item">
+                        <span class="nav-icon">🎓</span>
+                        <span>Education</span>
+                    </a>
+                    <a href="#analytics" class="nav-item">
+                        <span class="nav-icon">📈</span>
+                        <span>Analytics</span>
+                    </a>
+                </nav>
+                
+                <div class="pro-section">
+                    <div class="pro-badge">PROFESSIONAL</div>
+                </div>
+            </aside>
 
-      <details class="faq-entry">
-        <summary>Tools & Philosophy</summary>
-        <p>I work fluently across scripting (PowerShell, Bash, AutoHotkey, Python), front-end design (HTML, CSS, JavaScript, UI/UX), and user trust tooling (GPG, hashes, OpenTimestamp). I practice commitments to parity, transparency, and future-proof design.  I also support educational programs—training tech learners, facilitating youth chess clubs, and mentoring next-gen problem solvers.</p>
-        <p>I leverage a wide variety of AI tools—ranging from automation agents and prompt engineering platforms to generative design and data synthesis—to drive revenue, streamline operations, and amplify organizational impact. My approach blends technical precision with strategic insight and creativity, ensuring that AI integrations are not just clever, but cost-effective and aligned with user respect.</p>
-		<p>Beyond systems, I support educational programs—training tech learners, facilitating youth chess clubs, and mentoring next-gen problem solvers. Whether guiding certification-first pathways or embedding trust into digital workflows, I build with clarity, empowerment, and long-term value in mind.</p>
-      </details>
-    </section>
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Dashboard Header Bar -->
+                <header class="header-bar">
+                    <div class="search-container">
+                        <input type="text" class="search-bar" placeholder="Search dashboard...">
+                    </div>
+                    <div class="header-actions">
+                        <div class="icon-button">🔔</div>
+                        <div class="icon-button">⚙️</div>
+                        <div class="user-avatar">TJ</div>
+                    </div>
+                </header>
 
-    <section id="resume-download">
-      <h3>Résumé</h3>
-      <p>Want to learn more or share my experience? Feel free to view or download a complete PDF version of my résumé:</p>
-    </section>
+                <!-- Dashboard Content -->
+                <div class="dashboard-content">
+                    <h1 class="dashboard-title">
+                        Professional Dashboard
+                        <span class="update-badge">Live Status</span>
+                    </h1>
 
-    <section id="resume">
-      <div class="resume-buttons">
-        <a href="https://toshon-jennings.github.io/caps-cortex/resume.html" class="resume-button" target="_blank" rel="noopener">Quick View</a>
-        <a href="https://toshon-jennings.github.io/caps-cortex/resume_full.html" class="resume-button" target="_blank" rel="noopener">Full PDF View</a>
-        <a href="https://toshon-jennings.github.io/caps-cortex/toshon_resume.pdf" class="resume-button" download>📡‡ Download PDF</a>
-      </div>
-    </section>
+                    <div class="card-grid">
+                        <!-- Profile Summary Card -->
+                        <div class="card profile-card">
+                            <div class="profile-content">
+                                <div class="profile-avatar">TJ</div>
+                                <div class="profile-info">
+                                    <h2>Toshon Jennings</h2>
+                                    <p class="profile-tagline">Systems steward by day, trust-pipeline architect by night</p>
+                                    <div class="profile-stats">
+                                        <div class="stat-item">
+                                            <span class="stat-value">10+</span>
+                                            <span class="stat-label">Years Experience</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-value">500+</span>
+                                            <span class="stat-label">Systems Managed</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-value">4</span>
+                                            <span class="stat-label">Active Projects</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-    <hr>
+                        <!-- Current Role Card -->
+                        <div class="card">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Current Role</h3>
+                                    <p class="card-subtitle">I.T. Coordinator</p>
+                                </div>
+                                <span class="status-indicator">
+                                    <span class="status-dot"></span>
+                                    Active
+                                </span>
+                            </div>
+                            <div class="project-badge">The City School</div>
+                            <p class="project-description">
+                                Managing IT infrastructure, implementing security protocols, and ensuring seamless technology operations for educational excellence.
+                            </p>
+                            <button class="action-button secondary">View Details →</button>
+                        </div>
 
-    <section id="contact-info">
-      <h2>Contact & Resources</h2>
-      <div class="contact-buttons">
-	    
-        <a class="contact-button" href="mailto:toshon.tech@gmail.com" target="_blank" rel="noopener">
-		  <img src="gmail-logo.jpg" alt="Gmail Logo" style="height: 22px; width: 22px; margin-right: 0.4em; vertical-align: middle; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.09);" />
-		Email@Gmail</a>
-		
-		<a class="contact-button" href="https://www.linkedin.com/in/toshon/" target="_blank" rel="noopener">
-          <img src="linkedin-logo.png" alt="LinkedIn Logo" style="height: 22px; width: 22px; margin-right: 0.4em; vertical-align: middle; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.09);" />
-         LinkedIn</a>
-		
-		<a class="contact-button" href="https://toshon-jennings.github.io/crta/" target="_blank" rel="noopener">
-		  <img src="logo-solo-bright.png" alt="Cert-Ready Tech Academy logo" style="height: 22px; width: 22px; margin-right: 0.4em; vertical-align: middle; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.09);" />
-		  Cert-Ready Tech Acad</a>   
-		 
-        <a class="contact-button" href="https://toshon-jennings.github.io/DoubleCapsCorrect/" target="_blank" rel="noopener">
-          <img src="caps-logo.png" alt="CAps Logo" style="height: 22px; width: 25px; margin-right: 0.4em; vertical-align: middle; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.09);" />
-          CAps™ 2.1.1</a>
-		  
-		<a class="contact-button" href="https://github.com/toshon-jennings/DoubleCapsCorrect" target="_blank" rel="noopener">
-		  <img src="github-logo.png" alt="GitHub Logo" style="height: 22px; width: 22px; margin-right: 0.4em; vertical-align: middle; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.09);" />
-		  CAps™ GitHub</a>
-		  
-        <a class="contact-button" href="https://github.com/toshon-jennings/DoubleCapsCorrect/wiki/%F0%9F%92%BB-Hills-To-Die-On-(&-Other-Ideas)" target="_blank" rel="noopener">
-          <img src="github-logo.png" alt="GitHub logo" style="height: 22px; width: 25px; margin-right: 0.4em; vertical-align: middle; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.09);" />
-          Hills To Die On | Blog</a>
-		  
-		<a class="contact-button" href="https://whimsical.com/use-chrome-browser-like-an-os-4jUtNkzWCk3kKFCxZKP29P" target="_blank" rel="noopener">
-		  <img src="whimsical-logo.png" alt="Whimsical Logo" style="height: 22px; width: 22px; margin-right: 0.4em; vertical-align: middle; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.09);" />
-		  Use Chrome Like an OS</a>
-		  
-		<a class="contact-button" href="#" target="_blank" rel="noopener">
-		  <img src="something-cover-small.png" alt="Something That's Not Nothing cover" style="height: 22px; width: 22px; margin-right: 0.4em; vertical-align: middle; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.09);" />
-		  Something That's Not Nothing</a>
-		  
-      </div>
-      
-      <div class="location-container">
-        <div class="contact-location-overlay">
-          <img class="contact-location-imgfill" src="https://toshon-jennings.github.io/caps-cortex/abdul-delati-_jlkgoaKHj0-unsplash.jpg" alt="Philadelphia" aria-hidden="true" /> 
-          <span class="contact-location-overlaytext">📍 Location: Philadelphia, PA</span>
-        </div>
-      </div>
-    </section>
+                        <!-- Certifications Card -->
+                        <div class="card">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Certifications</h3>
+                                    <p class="card-subtitle">Professional Development</p>
+                                </div>
+                                <div class="card-menu">⋮</div>
+                            </div>
+                            <div class="cert-grid">
+                                <div class="cert-item">
+                                    <div class="progress-ring">
+                                        <svg width="80" height="80">
+                                            <circle class="progress-ring-circle" cx="40" cy="40" r="36"></circle>
+                                            <circle class="progress-ring-circle-progress" cx="40" cy="40" r="36" 
+                                                    style="stroke-dasharray: 226; stroke-dashoffset: 0;"></circle>
+                                        </svg>
+                                        <div class="progress-value">✓</div>
+                                    </div>
+                                    <span class="cert-name">Security+</span>
+                                </div>
+                                <div class="cert-item">
+                                    <div class="progress-ring">
+                                        <svg width="80" height="80">
+                                            <circle class="progress-ring-circle" cx="40" cy="40" r="36"></circle>
+                                            <circle class="progress-ring-circle-progress" cx="40" cy="40" r="36" 
+                                                    style="stroke-dasharray: 226; stroke-dashoffset: 0;"></circle>
+                                        </svg>
+                                        <div class="progress-value">✓</div>
+                                    </div>
+                                    <span class="cert-name">ITIL v4</span>
+                                </div>
+                                <div class="cert-item">
+                                    <div class="progress-ring">
+                                        <svg width="80" height="80">
+                                            <circle class="progress-ring-circle" cx="40" cy="40" r="36"></circle>
+                                            <circle class="progress-ring-circle-progress" cx="40" cy="40" r="36" 
+                                                    style="stroke-dasharray: 226; stroke-dashoffset: 56.5; stroke: var(--accent-orange);"></circle>
+                                        </svg>
+                                        <div class="progress-value">75%</div>
+                                    </div>
+                                    <span class="cert-name">A+</span>
+                                </div>
+                                <div class="cert-item">
+                                    <div class="progress-ring">
+                                        <svg width="80" height="80">
+                                            <circle class="progress-ring-circle" cx="40" cy="40" r="36"></circle>
+                                            <circle class="progress-ring-circle-progress" cx="40" cy="40" r="36" 
+                                                    style="stroke-dasharray: 226; stroke-dashoffset: 113; stroke: var(--accent-purple);"></circle>
+                                        </svg>
+                                        <div class="progress-value">50%</div>
+                                    </div>
+                                    <span class="cert-name">Network+</span>
+                                </div>
+                            </div>
+                        </div>
 
-    <hr>
-    <h2 class="flipbook-heading">FutureReady@TCS Interactive Flipbook</h2>
-	<div style="position:relative;padding-top:0;width:900px;height:700px;"><iframe style="position:absolute;border:none;width:100%;height:100%;left:0;top:0;" src="https://online.fliphtml5.com/City-Lights/ynot/"  seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" ></iframe></div>
-  </main>
-
-  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e1e4e8; text-align: center; font-size: 0.9rem; color: #555;">
-    <p>🔐 CAps™ is built for user-first verification and open-source transparency.<br />
-      ← <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/" target="_blank" rel="noopener noreferrer">Download CAps™</a>
-      &nbsp;|&nbsp;
-      <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/verify.html" target="_blank" rel="noopener noreferrer">Verification Page</a>
-      &nbsp;|&nbsp;
-      <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/index.html#faq" target="_blank" rel="noopener noreferrer">FAQs</a>
-    </p>
-    <p>Photo Credit: <a href="https://unsplash.com/@delati" target="_blank" rel="noopener noreferrer">Abdul Delati</a></p>
-  </footer>
-
-  <script>
-    // Plain JS toggle for hamburger menu
-    const toggle = document.querySelector('.nav-toggle');
-    const links = document.querySelector('.nav-links');
-    
-    if (toggle && links) {
-      toggle.addEventListener('click', () => {
-        links.classList.toggle('open');
-      });
-
-      // Close menu when clicking outside
-      document.addEventListener('click', (e) => {
-        if (!toggle.contains(e.target) && !links.contains(e.target)) {
-          links.classList.remove('open');
-        }
-      });
-
-      // Close menu when clicking on a link
-      links.addEventListener('click', () => {
-        links.classList.remove('open');
-      });
-    }
-  </script>
-  
-  <!-- Elfsight AI Chatbot | Untitled AI Chatbot -->
-<script src="https://static.elfsight.com/platform/platform.js" async></script>
-<div class="elfsight-app-3943a306-16a3-4ab7-a5fa-daca259ffff1" data-elfsight-app-lazy></div>
-</body>
-</html>
+                        <!-- CApsTM Project Card -->
+                        <div class="card">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">CApsTM Project</h3>
+                                    <p class="card-subtitle">Featured Initiative</p>
+                                </div>
+                                <div class="card-menu">⋮</div>
+                            </div>
+                            <div class="project-badge">Trust Framework</div>
+                            <p class="project-description">
+                                Competitive Analysis by proxy (CAps™) - A trust-forward correction utility designed to enhance decision-making through innovative trust pipeline architecture.
