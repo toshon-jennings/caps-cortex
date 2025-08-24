@@ -610,10 +610,15 @@
 
         /* Resume Actions */
         .resume-actions {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-direction: column;
             gap: 12px;
-            margin-top: auto;
+            margin-top: 16px;
+        }
+
+        .resume-actions .action-button {
+            width: 100%;
+            justify-content: center;
         }
 
         /* Contact & Resources Grid */
@@ -1590,6 +1595,30 @@
                                 </div>
                             </div>
                             <button class="view-details-btn" onclick="window.open('https://online.fliphtml5.com/City-Lights/ynot/', '_blank')">View Fullscreen →</button>
+                        </div>
+
+                        <!-- Something That's Not Nothing Card -->
+                        <div class="card flipbook-card" data-category="projects">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Something That's Not Nothing</h3>
+                                    <p class="card-subtitle">Book Project</p>
+                                </div>
+                                <div class="card-menu">⋮</div>
+                            </div>
+                            <div class="card-content">
+                                <div style="position:relative;padding-top:0;width:100%;height:500px;">
+                                    <iframe style="position:absolute;border:none;width:100%;height:100%;left:0;top:0;" 
+                                            src="https://online.fliphtml5.com/City-Lights/zyor/" 
+                                            seamless="seamless" 
+                                            scrolling="no" 
+                                            frameborder="0" 
+                                            allowtransparency="true" 
+                                            allowfullscreen="true">
+                                    </iframe>
+                                </div>
+                            </div>
+                            <button class="view-details-btn" onclick="window.open('https://online.fliphtml5.com/City-Lights/zyor/', '_blank')">View Fullscreen →</button>
                         </div>
                     </div>
                 </div>
