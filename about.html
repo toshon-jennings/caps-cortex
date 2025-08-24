@@ -161,7 +161,7 @@
 
         .app-container {
             display: flex;
-            height: calc(100vh - 69px);
+            min-height: calc(100vh - 69px);
             max-width: 1920px;
             margin: 0 auto;
         }
@@ -174,6 +174,10 @@
             display: flex;
             flex-direction: column;
             transition: all 0.3s ease;
+            position: sticky;
+            top: 69px;
+            height: calc(100vh - 69px);
+            overflow-y: auto;
         }
 
         .sidebar-header {
@@ -210,7 +214,6 @@
         .nav-menu {
             flex: 1;
             padding: 20px 0;
-            overflow-y: auto;
         }
 
         .nav-item {
@@ -222,6 +225,7 @@
             text-decoration: none;
             transition: all 0.2s ease;
             position: relative;
+            cursor: pointer;
         }
 
         .nav-item:hover {
@@ -386,6 +390,8 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .card:hover {
@@ -423,7 +429,18 @@
             color: var(--text-secondary);
         }
 
-        /* Profile Card Specific */
+        .card-content {
+            flex: 1;
+            margin-bottom: 16px;
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        /* Profile Card */
         .profile-card {
             grid-column: span 2;
             background: linear-gradient(135deg, var(--card-bg), #1e293b);
@@ -433,6 +450,7 @@
             display: flex;
             gap: 24px;
             align-items: center;
+            margin-bottom: 20px;
         }
 
         .profile-avatar {
@@ -482,7 +500,46 @@
             margin-top: 4px;
         }
 
-        /* Certification Card */
+        /* Status Indicators */
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-green);
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background: currentColor;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Project Badge */
+        .project-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-green);
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        /* Certification Progress */
         .cert-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -541,57 +598,7 @@
             color: var(--text-primary);
         }
 
-        /* Project Cards */
-        .project-badge {
-            display: inline-block;
-            padding: 4px 8px;
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--accent-green);
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .project-description {
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .action-button {
-            background: var(--accent-green);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            border: none;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .action-button:hover {
-            background: #059669;
-            transform: translateY(-1px);
-            box-shadow: var(--shadow);
-        }
-
-        .action-button.secondary {
-            background: var(--main-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-        }
-
-        .action-button.secondary:hover {
-            background: var(--card-hover);
-            border-color: var(--accent-green);
-        }
-
-        /* Skills Card */
+        /* Skills Grid */
         .skills-grid {
             display: flex;
             flex-wrap: wrap;
@@ -614,38 +621,160 @@
             transform: translateY(-1px);
         }
 
-        /* Status Indicators */
-        .status-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 4px 10px;
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--accent-green);
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .status-dot {
-            width: 6px;
-            height: 6px;
-            background: currentColor;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-
-        /* Quick Actions */
-        .quick-actions {
+        /* Resume Actions */
+        .resume-actions {
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
+            margin-top: auto;
+        }
+
+        /* Contact & Resources Grid */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .resource-button {
+            background: var(--main-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 12px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 0;
+            min-height: 48px;
+        }
+
+        .resource-button img {
+            height: 22px;
+            width: 22px;
+            margin-right: 0.5em;
+            vertical-align: middle;
+            border-radius: 5px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.09);
+            flex-shrink: 0;
+        }
+
+        .resource-button:hover {
+            background: var(--accent-green);
+            color: white;
+            border-color: var(--accent-green);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .resource-button:hover img {
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        /* Location Card */
+        .location-card {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            min-height: 250px;
+            display: flex;
+            align-items: flex-end;
+            padding: 0;
+        }
+
+        .location-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            width: 100%;
+            padding: 24px;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .location-info {
+            color: white;
+        }
+
+        .location-info h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .location-info p {
+            color: rgba(255,255,255,0.9);
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        /* Action Buttons */
+        .action-button {
+            background: var(--accent-green);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .action-button:hover {
+            background: #059669;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow);
+        }
+
+        .action-button.secondary {
+            background: var(--main-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .action-button.secondary:hover {
+            background: var(--card-hover);
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+
+        .view-details-btn {
+            background: transparent;
+            color: var(--accent-green);
+            padding: 8px 0;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: auto;
+        }
+
+        .view-details-btn:hover {
+            transform: translateX(4px);
+        }
+
+        /* Flipbook Container */
+        .flipbook-card {
+            grid-column: span 2;
+            min-height: 600px;
+        }
+
+        .flipbook-embed {
+            width: 100%;
+            height: 550px;
+            border: none;
+            border-radius: 8px;
         }
 
         /* Mobile Navigation */
@@ -667,7 +796,8 @@
             .card-grid {
                 grid-template-columns: 1fr;
             }
-            .profile-card {
+            .profile-card,
+            .flipbook-card {
                 grid-column: span 1;
             }
         }
@@ -700,6 +830,10 @@
             .dashboard-content {
                 padding: 16px;
             }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Animations */
@@ -727,6 +861,8 @@
         .card:nth-child(6) { animation-delay: 0.6s; }
         .card:nth-child(7) { animation-delay: 0.7s; }
         .card:nth-child(8) { animation-delay: 0.8s; }
+        .card:nth-child(9) { animation-delay: 0.9s; }
+        .card:nth-child(10) { animation-delay: 1.0s; }
     </style>
 </head>
 <body>
@@ -740,10 +876,12 @@
                 </a>
                 
                 <div class="site-nav-menu">
-                    <a href="/" class="site-nav-link">Home</a>
-                    <a href="/about" class="site-nav-link">About</a>
+                    <a href="/" class="site-nav-link active">Dashboard</a>
                     <a href="/projects" class="site-nav-link">Projects</a>
-                    <a href="/dashboard" class="site-nav-link active">Dashboard</a>
+                    <a href="/certifications" class="site-nav-link">Certifications</a>
+                    <a href="/education" class="site-nav-link">Education</a>
+                    <a href="/experience" class="site-nav-link">Experience</a>
+                    <a href="/blog" class="site-nav-link">Blog</a>
                     <a href="/contact" class="site-nav-link">Contact</a>
                 </div>
                 
@@ -772,34 +910,38 @@
                 </div>
                 
                 <nav class="nav-menu">
-                    <a href="#overview" class="nav-item active">
+                    <div class="nav-item active" onclick="filterCards('all')">
                         <span class="nav-icon">📊</span>
                         <span>Overview</span>
-                    </a>
-                    <a href="#experience" class="nav-item">
+                    </div>
+                    <div class="nav-item" onclick="filterCards('profile')">
+                        <span class="nav-icon">👤</span>
+                        <span>Profile</span>
+                    </div>
+                    <div class="nav-item" onclick="filterCards('role')">
                         <span class="nav-icon">💼</span>
-                        <span>Experience</span>
-                    </a>
-                    <a href="#projects" class="nav-item">
+                        <span>Current Role</span>
+                    </div>
+                    <div class="nav-item" onclick="filterCards('projects')">
                         <span class="nav-icon">🚀</span>
                         <span>Projects</span>
-                    </a>
-                    <a href="#certifications" class="nav-item">
+                    </div>
+                    <div class="nav-item" onclick="filterCards('certifications')">
                         <span class="nav-icon">🏆</span>
                         <span>Certifications</span>
-                    </a>
-                    <a href="#skills" class="nav-item">
+                    </div>
+                    <div class="nav-item" onclick="filterCards('skills')">
                         <span class="nav-icon">🛠️</span>
-                        <span>Tools & Skills</span>
-                    </a>
-                    <a href="#education" class="nav-item">
+                        <span>Skills</span>
+                    </div>
+                    <div class="nav-item" onclick="filterCards('education')">
                         <span class="nav-icon">🎓</span>
                         <span>Education</span>
-                    </a>
-                    <a href="#analytics" class="nav-item">
-                        <span class="nav-icon">📈</span>
-                        <span>Analytics</span>
-                    </a>
+                    </div>
+                    <div class="nav-item" onclick="filterCards('resources')">
+                        <span class="nav-icon">🔗</span>
+                        <span>Resources</span>
+                    </div>
                 </nav>
                 
                 <div class="pro-section">
@@ -830,7 +972,7 @@
 
                     <div class="card-grid">
                         <!-- Profile Summary Card -->
-                        <div class="card profile-card">
+                        <div class="card profile-card" data-category="profile">
                             <div class="profile-content">
                                 <div class="profile-avatar">TJ</div>
                                 <div class="profile-info">
@@ -846,16 +988,17 @@
                                             <span class="stat-label">Systems Managed</span>
                                         </div>
                                         <div class="stat-item">
-                                            <span class="stat-value">4</span>
-                                            <span class="stat-label">Active Projects</span>
+                                            <span class="stat-value">50+</span>
+                                            <span class="stat-label">Students Mentored</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <button class="view-details-btn" onclick="viewProfileDetails()">View Details →</button>
                         </div>
 
                         <!-- Current Role Card -->
-                        <div class="card">
+                        <div class="card" data-category="role">
                             <div class="card-header">
                                 <div>
                                     <h3 class="card-title">Current Role</h3>
@@ -866,15 +1009,34 @@
                                     Active
                                 </span>
                             </div>
-                            <div class="project-badge">The City School</div>
-                            <p class="project-description">
-                                Managing IT infrastructure, implementing security protocols, and ensuring seamless technology operations for educational excellence.
-                            </p>
-                            <button class="action-button secondary">View Details →</button>
+                            <div class="card-content">
+                                <div class="project-badge">The City School</div>
+                                <p class="card-description">
+                                    Managing IT infrastructure, implementing security protocols, and ensuring seamless technology operations for educational excellence.
+                                </p>
+                            </div>
+                            <button class="view-details-btn" onclick="viewRoleDetails()">View Details →</button>
+                        </div>
+
+                        <!-- About Me Card -->
+                        <div class="card" data-category="profile">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">About Me</h3>
+                                    <p class="card-subtitle">Professional Summary</p>
+                                </div>
+                                <div class="card-menu">⋮</div>
+                            </div>
+                            <div class="card-content">
+                                <p class="card-description">
+                                    IT professional with 10+ years of experience in infrastructure management, security implementation, and educational technology. Passionate about building secure, efficient systems and empowering others through technology education.
+                                </p>
+                            </div>
+                            <button class="view-details-btn" onclick="viewAboutDetails()">View Full Profile →</button>
                         </div>
 
                         <!-- Certifications Card -->
-                        <div class="card">
+                        <div class="card" data-category="certifications">
                             <div class="card-header">
                                 <div>
                                     <h3 class="card-title">Certifications</h3>
@@ -882,56 +1044,59 @@
                                 </div>
                                 <div class="card-menu">⋮</div>
                             </div>
-                            <div class="cert-grid">
-                                <div class="cert-item">
-                                    <div class="progress-ring">
-                                        <svg width="80" height="80">
-                                            <circle class="progress-ring-circle" cx="40" cy="40" r="36"></circle>
-                                            <circle class="progress-ring-circle-progress" cx="40" cy="40" r="36" 
-                                                    style="stroke-dasharray: 226; stroke-dashoffset: 0;"></circle>
-                                        </svg>
-                                        <div class="progress-value">✓</div>
+                            <div class="card-content">
+                                <div class="cert-grid">
+                                    <div class="cert-item">
+                                        <div class="progress-ring">
+                                            <svg width="80" height="80">
+                                                <circle class="progress-ring-circle" cx="40" cy="40" r="36"></circle>
+                                                <circle class="progress-ring-circle-progress" cx="40" cy="40" r="36" 
+                                                        style="stroke-dasharray: 226; stroke-dashoffset: 0;"></circle>
+                                            </svg>
+                                            <div class="progress-value">✓</div>
+                                        </div>
+                                        <span class="cert-name">Security+</span>
                                     </div>
-                                    <span class="cert-name">Security+</span>
-                                </div>
-                                <div class="cert-item">
-                                    <div class="progress-ring">
-                                        <svg width="80" height="80">
-                                            <circle class="progress-ring-circle" cx="40" cy="40" r="36"></circle>
-                                            <circle class="progress-ring-circle-progress" cx="40" cy="40" r="36" 
-                                                    style="stroke-dasharray: 226; stroke-dashoffset: 0;"></circle>
-                                        </svg>
-                                        <div class="progress-value">✓</div>
+                                    <div class="cert-item">
+                                        <div class="progress-ring">
+                                            <svg width="80" height="80">
+                                                <circle class="progress-ring-circle" cx="40" cy="40" r="36"></circle>
+                                                <circle class="progress-ring-circle-progress" cx="40" cy="40" r="36" 
+                                                        style="stroke-dasharray: 226; stroke-dashoffset: 0;"></circle>
+                                            </svg>
+                                            <div class="progress-value">✓</div>
+                                        </div>
+                                        <span class="cert-name">ITIL v4</span>
                                     </div>
-                                    <span class="cert-name">ITIL v4</span>
-                                </div>
-                                <div class="cert-item">
-                                    <div class="progress-ring">
-                                        <svg width="80" height="80">
-                                            <circle class="progress-ring-circle" cx="40" cy="40" r="36"></circle>
-                                            <circle class="progress-ring-circle-progress" cx="40" cy="40" r="36" 
-                                                    style="stroke-dasharray: 226; stroke-dashoffset: 56.5; stroke: var(--accent-orange);"></circle>
-                                        </svg>
-                                        <div class="progress-value">75%</div>
+                                    <div class="cert-item">
+                                        <div class="progress-ring">
+                                            <svg width="80" height="80">
+                                                <circle class="progress-ring-circle" cx="40" cy="40" r="36"></circle>
+                                                <circle class="progress-ring-circle-progress" cx="40" cy="40" r="36" 
+                                                        style="stroke-dasharray: 226; stroke-dashoffset: 56.5; stroke: var(--accent-orange);"></circle>
+                                            </svg>
+                                            <div class="progress-value">75%</div>
+                                        </div>
+                                        <span class="cert-name">A+</span>
                                     </div>
-                                    <span class="cert-name">A+</span>
-                                </div>
-                                <div class="cert-item">
-                                    <div class="progress-ring">
-                                        <svg width="80" height="80">
-                                            <circle class="progress-ring-circle" cx="40" cy="40" r="36"></circle>
-                                            <circle class="progress-ring-circle-progress" cx="40" cy="40" r="36" 
-                                                    style="stroke-dasharray: 226; stroke-dashoffset: 113; stroke: var(--accent-purple);"></circle>
-                                        </svg>
-                                        <div class="progress-value">50%</div>
+                                    <div class="cert-item">
+                                        <div class="progress-ring">
+                                            <svg width="80" height="80">
+                                                <circle class="progress-ring-circle" cx="40" cy="40" r="36"></circle>
+                                                <circle class="progress-ring-circle-progress" cx="40" cy="40" r="36" 
+                                                        style="stroke-dasharray: 226; stroke-dashoffset: 113; stroke: var(--accent-purple);"></circle>
+                                            </svg>
+                                            <div class="progress-value">50%</div>
+                                        </div>
+                                        <span class="cert-name">Network+</span>
                                     </div>
-                                    <span class="cert-name">Network+</span>
                                 </div>
                             </div>
+                            <button class="view-details-btn" onclick="viewCertDetails()">View All Certifications →</button>
                         </div>
 
                         <!-- CApsTM Project Card -->
-                        <div class="card">
+                        <div class="card" data-category="projects">
                             <div class="card-header">
                                 <div>
                                     <h3 class="card-title">CApsTM Project</h3>
@@ -939,6 +1104,205 @@
                                 </div>
                                 <div class="card-menu">⋮</div>
                             </div>
-                            <div class="project-badge">Trust Framework</div>
-                            <p class="project-description">
-                                Competitive Analysis by proxy (CAps™) - A trust-forward correction utility designed to enhance decision-making through innovative trust pipeline architecture.
+                            <div class="card-content">
+                                <div class="project-badge">Trust Framework</div>
+                                <p class="card-description">
+                                    Competitive Analysis by proxy (CAps™) - A trust-forward correction utility designed to enhance decision-making through innovative trust pipeline architecture.
+                                </p>
+                            </div>
+                            <button class="view-details-btn" onclick="viewProjectDetails('caps')">View Details →</button>
+                        </div>
+
+                        <!-- CRTA Card -->
+                        <div class="card" data-category="projects">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">CRTA Academy</h3>
+                                    <p class="card-subtitle">Educational Initiative</p>
+                                </div>
+                                <span class="status-indicator">
+                                    <span class="status-dot"></span>
+                                    Enrolling
+                                </span>
+                            </div>
+                            <div class="card-content">
+                                <div class="project-badge">Cert-Ready Technology Academy</div>
+                                <p class="card-description">
+                                    Empowering the next generation of IT professionals through comprehensive certification preparation and hands-on technology training.
+                                </p>
+                                <div class="profile-stats" style="margin-top: 16px;">
+                                    <div class="stat-item">
+                                        <span class="stat-value">50+</span>
+                                        <span class="stat-label">Students</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-value">12</span>
+                                        <span class="stat-label">Courses</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="view-details-btn" onclick="viewProjectDetails('crta')">View Details →</button>
+                        </div>
+
+                        <!-- Resume Card -->
+                        <div class="card" data-category="profile">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Professional Resume</h3>
+                                    <p class="card-subtitle">Complete Experience</p>
+                                </div>
+                                <div class="card-menu">⋮</div>
+                            </div>
+                            <div class="card-content">
+                                <p class="card-description">
+                                    Want to learn more or share my experience? Feel free to view or download a complete PDF version of my résumé:
+                                </p>
+                                <div class="resume-actions">
+                                    <button class="action-button" onclick="quickView()">📋 Quick View</button>
+                                    <a href="/resume-full.pdf" target="_blank" class="action-button secondary">📄 Full View PDF</a>
+                                    <a href="/resume.pdf" download class="action-button">⬇️ Download PDF</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Skills & Tools Card -->
+                        <div class="card" data-category="skills">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Technical Stack</h3>
+                                    <p class="card-subtitle">Tools & Technologies</p>
+                                </div>
+                                <div class="card-menu">⋮</div>
+                            </div>
+                            <div class="card-content">
+                                <div class="skills-grid">
+                                    <span class="skill-tag">PowerShell</span>
+                                    <span class="skill-tag">Python</span>
+                                    <span class="skill-tag">JavaScript</span>
+                                    <span class="skill-tag">Azure</span>
+                                    <span class="skill-tag">Active Directory</span>
+                                    <span class="skill-tag">VMware</span>
+                                    <span class="skill-tag">Docker</span>
+                                    <span class="skill-tag">Git</span>
+                                    <span class="skill-tag">Linux</span>
+                                    <span class="skill-tag">Network Security</span>
+                                    <span class="skill-tag">SQL</span>
+                                    <span class="skill-tag">Automation</span>
+                                </div>
+                            </div>
+                            <button class="view-details-btn" onclick="viewSkillsDetails()">View All Skills →</button>
+                        </div>
+
+                        <!-- Education Card -->
+                        <div class="card" data-category="education">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Education</h3>
+                                    <p class="card-subtitle">Academic Journey</p>
+                                </div>
+                                <div class="card-menu">⋮</div>
+                            </div>
+                            <div class="card-content">
+                                <div class="project-badge">Western Governors University</div>
+                                <p class="card-description">
+                                    B.S. Information Technology<br>
+                                    Focus: Network Administration & Security<br>
+                                    Expected Completion: 2025
+                                </p>
+                                <div class="progress-ring" style="width: 100%; height: 8px; background: var(--border-color); border-radius: 4px; margin-top: 16px;">
+                                    <div style="width: 65%; height: 100%; background: var(--accent-green); border-radius: 4px;"></div>
+                                </div>
+                                <p style="font-size: 12px; color: var(--text-secondary); margin-top: 8px;">65% Complete</p>
+                            </div>
+                            <button class="view-details-btn" onclick="viewEducationDetails()">View Details →</button>
+                        </div>
+
+                        <!-- Contact & Resources Card -->
+                        <div class="card" data-category="resources">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Contact & Resources</h3>
+                                    <p class="card-subtitle">Connect With Me</p>
+                                </div>
+                                <div class="card-menu">⋮</div>
+                            </div>
+                            <div class="card-content">
+                                <div class="resources-grid">
+                                    <a class="resource-button" href="mailto:toshon.tech@gmail.com" target="_blank" rel="noopener">
+                                        <img src="gmail-logo.jpg" alt="Gmail Logo" />
+                                        Email@Gmail
+                                    </a>
+                                    
+                                    <a class="resource-button" href="https://www.linkedin.com/in/toshon/" target="_blank" rel="noopener">
+                                        <img src="linkedin-logo.png" alt="LinkedIn Logo" />
+                                        LinkedIn
+                                    </a>
+                                    
+                                    <a class="resource-button" href="https://toshon-jennings.github.io/crta/" target="_blank" rel="noopener">
+                                        <img src="logo-solo-bright.png" alt="Cert-Ready Tech Academy logo" />
+                                        Cert-Ready Tech Acad
+                                    </a>
+                                    
+                                    <a class="resource-button" href="https://toshon-jennings.github.io/DoubleCapsCorrect/" target="_blank" rel="noopener">
+                                        <img src="caps-logo.png" alt="CAps Logo" style="width: 25px;" />
+                                        CAps™ 2.1.1
+                                    </a>
+                                    
+                                    <a class="resource-button" href="https://github.com/toshon-jennings/DoubleCapsCorrect" target="_blank" rel="noopener">
+                                        <img src="github-logo.png" alt="GitHub Logo" />
+                                        CAps™ GitHub
+                                    </a>
+                                    
+                                    <a class="resource-button" href="https://github.com/toshon-jennings/DoubleCapsCorrect/wiki/%F0%9F%92%BB-Hills-To-Die-On-(&-Other-Ideas)" target="_blank" rel="noopener">
+                                        <img src="github-logo.png" alt="GitHub logo" style="width: 25px;" />
+                                        Hills To Die On | Blog
+                                    </a>
+                                    
+                                    <a class="resource-button" href="https://whimsical.com/use-chrome-browser-like-an-os-4jUtNkzWCk3kKFCxZKP29P" target="_blank" rel="noopener">
+                                        <img src="whimsical-logo.png" alt="Whimsical Logo" />
+                                        Use Chrome Like an OS
+                                    </a>
+                                    
+                                    <a class="resource-button" href="#" target="_blank" rel="noopener">
+                                        <img src="something-cover-small.png" alt="Something That's Not Nothing cover" />
+                                        Something That's Not Nothing
+                                    </a>
+                                </div>
+                            </div>
+                            <button class="view-details-btn" onclick="viewAllResources()">View All Resources →</button>
+                        </div>
+
+                        <!-- Location Card -->
+                        <div class="card location-card" data-category="profile" style="background-image: url('https://toshon-jennings.github.io/caps-cortex/abdul-delati-_jlkgoaKHj0-unsplash.jpg');">
+                            <div class="location-overlay">
+                                <div class="location-info">
+                                    <h3>📍 Location: Philadelphia, PA</h3>
+                                    <p>Available for remote opportunities and local consulting</p>
+                                    <p>Eastern Time Zone (ET/EST)</p>
+                                </div>
+                            </div>
+                            <button class="view-details-btn" style="color: white;" onclick="viewLocationDetails()">View Details →</button>
+                        </div>
+
+                        <!-- Portfolio Flipbook Card -->
+                        <div class="card flipbook-card" data-category="profile">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Interactive Portfolio</h3>
+                                    <p class="card-subtitle">Flipbook Presentation</p>
+                                </div>
+                                <div class="card-menu">⋮</div>
+                            </div>
+                            <div class="card-content">
+                                <!-- FLIPHTML5 Embed Code Goes Here -->
+                                <iframe 
+                                    class="flipbook-embed"
+                                    src="YOUR_FLIPHTML5_EMBED_URL" 
+                                    allowfullscreen="true"
+                                    scrolling="no"
+                                    title="Toshon's Portfolio">
+                                </iframe>
+                                <!-- Replace YOUR_FLIPHTML5_EMBED_URL with your actual flipbook URL -->
+                            </div>
+                            <button class="view-details-btn" onclick="viewFlipbook()">View Fullscreen →</button>
+</div>
