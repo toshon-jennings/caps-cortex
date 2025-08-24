@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toshon Jennings - IT Professional Dashboard</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         * {
             margin: 0;
@@ -21,7 +22,7 @@
             
             /* Dashboard specific dark theme */
             --sidebar-bg: #1a1f2e;
-            --main-bg: #0f1419;
+            --main-bg: #1e1e1e;
             --card-bg: #1a1f2e;
             --card-hover: #222938;
             --text-primary: #e4e6eb;
@@ -36,11 +37,13 @@
         }
 
         /* Dark mode for main site nav */
-        body.dark-mode {
-            --site-bg: #1f2937;
-            --site-text: #f3f4f6;
-            --site-nav-bg: #1f2937;
-            --site-nav-border: #374151;
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --site-bg: #1f2937;
+                --site-text: #f3f4f6;
+                --site-nav-bg: #1f2937;
+                --site-nav-border: #374151;
+            }
         }
 
         body {
@@ -133,25 +136,7 @@
             align-items: center;
         }
 
-        .theme-toggle {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            background: transparent;
-            border: 1px solid var(--site-nav-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            color: var(--site-text);
-        }
-
-        .theme-toggle:hover {
-            background: var(--site-accent);
-            color: white;
-            border-color: var(--site-accent);
-        }
+        /* Removed theme-toggle styles since we're using system preference */
 
         /* Dashboard Container */
         .dashboard-wrapper {
@@ -328,6 +313,8 @@
             justify-content: center;
             cursor: pointer;
             transition: all 0.2s ease;
+            text-decoration: none;
+            color: var(--text-primary);
         }
 
         .icon-button:hover {
@@ -863,6 +850,297 @@
         .card:nth-child(8) { animation-delay: 0.8s; }
         .card:nth-child(9) { animation-delay: 0.9s; }
         .card:nth-child(10) { animation-delay: 1.0s; }
+
+        /* Epic Gaming Footer */
+        .epic-footer {
+            background: linear-gradient(180deg, var(--main-bg) 0%, #0a0e1a 100%);
+            border-top: 2px solid var(--accent-green);
+            margin-top: 60px;
+            padding: 60px 0 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .epic-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-green), var(--accent-blue), transparent);
+            animation: scanline 3s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-green);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--accent-green);
+            box-shadow: 0 0 10px var(--accent-green);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-link::before {
+            content: '>';
+            color: var(--accent-green);
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-green);
+            padding-left: 15px;
+            text-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+        }
+
+        .footer-link:hover::before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .footer-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 30px;
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 12px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(16, 185, 129, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .footer-stat {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent-green);
+            display: block;
+            margin-bottom: 5px;
+            text-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(16, 185, 129, 0.5); }
+            to { text-shadow: 0 0 30px rgba(16, 185, 129, 0.8), 0 0 40px rgba(16, 185, 129, 0.4); }
+        }
+
+        .footer-stat-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(45, 55, 72, 0.5);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            animation: rotate 10s linear infinite;
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .footer-logo-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .footer-copyright {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .footer-power {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .power-bar {
+            display: flex;
+            gap: 2px;
+        }
+
+        .power-segment {
+            width: 20px;
+            height: 8px;
+            background: var(--accent-green);
+            animation: powerPulse 1.5s ease-in-out infinite;
+            box-shadow: 0 0 10px var(--accent-green);
+        }
+
+        .power-segment:nth-child(1) { animation-delay: 0s; }
+        .power-segment:nth-child(2) { animation-delay: 0.1s; }
+        .power-segment:nth-child(3) { animation-delay: 0.2s; }
+        .power-segment:nth-child(4) { animation-delay: 0.3s; }
+        .power-segment:nth-child(5) { animation-delay: 0.4s; }
+
+        @keyframes powerPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(0.5); }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* Floating particles animation */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 10s infinite linear;
+            box-shadow: 0 0 10px var(--accent-green);
+        }
+
+        .particle:nth-child(even) {
+            background: var(--accent-blue);
+            box-shadow: 0 0 10px var(--accent-blue);
+            animation-duration: 15s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive footer */
+        @media (max-width: 768px) {
+            .footer-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -876,19 +1154,16 @@
                 </a>
                 
                 <div class="site-nav-menu">
-                    <a href="/" class="site-nav-link active">Dashboard</a>
-                    <a href="/projects" class="site-nav-link">Projects</a>
-                    <a href="/certifications" class="site-nav-link">Certifications</a>
-                    <a href="/education" class="site-nav-link">Education</a>
-                    <a href="/experience" class="site-nav-link">Experience</a>
-                    <a href="/blog" class="site-nav-link">Blog</a>
-                    <a href="/contact" class="site-nav-link">Contact</a>
+                    <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/" class="site-nav-link">CAps™ 2.1.1</a>
+                    <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/verify.html" class="site-nav-link">Verify</a>
+                    <a href="https://toshon-jennings.github.io/caps-cortex/" class="site-nav-link">CAps-Cortex™</a>
+                    <a href="https://toshon-jennings.github.io/caps-cortex/project-log.html" class="site-nav-link">Project Log</a>
+                    <a href="https://toshon-jennings.github.io/caps-cortex/process-insights.html" class="site-nav-link">Process Insights</a>
+                    <a href="https://github.com/toshon-jennings/DoubleCapsCorrect/wiki" target="_blank" rel="noopener" class="site-nav-link">Wiki</a>
+                    <a href="https://toshon-jennings.github.io/caps-cortex/about.html" class="site-nav-link active">About Toshon</a>
                 </div>
                 
                 <div class="site-nav-actions">
-                    <button class="theme-toggle" id="themeToggle">
-                        <span id="themeIcon">🌙</span>
-                    </button>
                     <button class="mobile-menu-toggle" id="mobileMenuToggle">
                         ☰
                     </button>
@@ -940,8 +1215,16 @@
                     </div>
                     <div class="nav-item" onclick="filterCards('resources')">
                         <span class="nav-icon">🔗</span>
-                        <span>Resources</span>
+                        <span>Contact & Resources</span>
                     </div>
+                    <a href="https://github.com/toshon-jennings/samo-wiki/wiki" target="_blank" rel="noopener" class="nav-item">
+                        <span class="nav-icon">🐙</span>
+                        <span>SAMO-WIKI™</span>
+                    </a>
+                    <a href="https://github.com/toshon-jennings/samo-wiki/wiki/%F0%9F%92%BB-Hills-To-Die-On-%28%26-Other-Ideas%29" target="_blank" rel="noopener" class="nav-item">
+                        <span class="nav-icon">📝</span>
+                        <span>Hills to Die On</span>
+                    </a>
                 </nav>
                 
                 <div class="pro-section">
@@ -957,8 +1240,8 @@
                         <input type="text" class="search-bar" placeholder="Search dashboard...">
                     </div>
                     <div class="header-actions">
-                        <div class="icon-button">🔔</div>
-                        <div class="icon-button">⚙️</div>
+                        <a href="https://github.com/toshon-jennings/samo-wiki/wiki" target="_blank" rel="noopener" class="icon-button" title="SAMO-WIKI™">🔔</a>
+                        <a href="https://github.com/toshon-jennings" target="_blank" rel="noopener" class="icon-button" title="GitHub Profile">⚙️</a>
                         <div class="user-avatar">TJ</div>
                     </div>
                 </header>
@@ -984,8 +1267,8 @@
                                             <span class="stat-label">Years Experience</span>
                                         </div>
                                         <div class="stat-item">
-                                            <span class="stat-value">500+</span>
-                                            <span class="stat-label">Systems Managed</span>
+                                            <span class="stat-value">10,000+</span>
+                                            <span class="stat-label">Hours Devoted</span>
                                         </div>
                                         <div class="stat-item">
                                             <span class="stat-value">50+</span>
@@ -1073,9 +1356,9 @@
                                             <svg width="80" height="80">
                                                 <circle class="progress-ring-circle" cx="40" cy="40" r="36"></circle>
                                                 <circle class="progress-ring-circle-progress" cx="40" cy="40" r="36" 
-                                                        style="stroke-dasharray: 226; stroke-dashoffset: 56.5; stroke: var(--accent-orange);"></circle>
+                                                        style="stroke-dasharray: 226; stroke-dashoffset: 113; stroke: var(--accent-orange);"></circle>
                                             </svg>
-                                            <div class="progress-value">75%</div>
+                                            <div class="progress-value">50%</div>
                                         </div>
                                         <span class="cert-name">A+</span>
                                     </div>
@@ -1084,9 +1367,9 @@
                                             <svg width="80" height="80">
                                                 <circle class="progress-ring-circle" cx="40" cy="40" r="36"></circle>
                                                 <circle class="progress-ring-circle-progress" cx="40" cy="40" r="36" 
-                                                        style="stroke-dasharray: 226; stroke-dashoffset: 113; stroke: var(--accent-purple);"></circle>
+                                                        style="stroke-dasharray: 226; stroke-dashoffset: 203.4; stroke: var(--accent-purple);"></circle>
                                             </svg>
-                                            <div class="progress-value">50%</div>
+                                            <div class="progress-value">10%</div>
                                         </div>
                                         <span class="cert-name">Network+</span>
                                     </div>
@@ -1099,7 +1382,7 @@
                         <div class="card" data-category="projects">
                             <div class="card-header">
                                 <div>
-                                    <h3 class="card-title">CApsTM Project</h3>
+                                    <h3 class="card-title">CAps™</h3>
                                     <p class="card-subtitle">Featured Initiative</p>
                                 </div>
                                 <div class="card-menu">⋮</div>
@@ -1107,7 +1390,8 @@
                             <div class="card-content">
                                 <div class="project-badge">Trust Framework</div>
                                 <p class="card-description">
-                                    Competitive Analysis by proxy (CAps™) - A trust-forward correction utility designed to enhance decision-making through innovative trust pipeline architecture.
+                                    DoubleCapsCorrect (CAps™) is a trust-first background executable for keyboard perfectionists.<br><br>
+                                    CAps™ fixes clipboard typos where the first two letters are accidentally capitalized—like "FAster" → "Faster". This release introduces onboarding polish, verified distribution, and a trust flow that's friction-free.
                                 </p>
                             </div>
                             <button class="view-details-btn" onclick="viewProjectDetails('caps')">View Details →</button>
@@ -1117,7 +1401,7 @@
                         <div class="card" data-category="projects">
                             <div class="card-header">
                                 <div>
-                                    <h3 class="card-title">CRTA Academy</h3>
+                                    <h3 class="card-title">CRTA</h3>
                                     <p class="card-subtitle">Educational Initiative</p>
                                 </div>
                                 <span class="status-indicator">
@@ -1149,7 +1433,7 @@
                             <div class="card-header">
                                 <div>
                                     <h3 class="card-title">Professional Resume</h3>
-                                    <p class="card-subtitle">Complete Experience</p>
+                                    <p class="card-subtitle">Experience</p>
                                 </div>
                                 <div class="card-menu">⋮</div>
                             </div>
@@ -1158,9 +1442,9 @@
                                     Want to learn more or share my experience? Feel free to view or download a complete PDF version of my résumé:
                                 </p>
                                 <div class="resume-actions">
-                                    <button class="action-button" onclick="quickView()">📋 Quick View</button>
-                                    <a href="/resume-full.pdf" target="_blank" class="action-button secondary">📄 Full View PDF</a>
-                                    <a href="/resume.pdf" download class="action-button">⬇️ Download PDF</a>
+                                    <a href="https://toshon-jennings.github.io/caps-cortex/resume.html" target="_blank" class="action-button">📋 Quick View</a>
+                                    <a href="https://toshon-jennings.github.io/caps-cortex/resume_full.html" target="_blank" class="action-button secondary">📄 Full View PDF</a>
+                                    <a href="https://toshon-jennings.github.io/caps-cortex/toshon_resume.pdf" download class="action-button">⬇️ Download PDF</a>
                                 </div>
                             </div>
                         </div>
@@ -1305,4 +1589,190 @@
                                 <!-- Replace YOUR_FLIPHTML5_EMBED_URL with your actual flipbook URL -->
                             </div>
                             <button class="view-details-btn" onclick="viewFlipbook()">View Fullscreen →</button>
-</div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Epic Gaming Footer -->
+    <footer class="epic-footer">
+        <div class="particles">
+            <span class="particle" style="left: 10%; animation-delay: 0s;"></span>
+            <span class="particle" style="left: 20%; animation-delay: 2s;"></span>
+            <span class="particle" style="left: 30%; animation-delay: 4s;"></span>
+            <span class="particle" style="left: 40%; animation-delay: 6s;"></span>
+            <span class="particle" style="left: 50%; animation-delay: 8s;"></span>
+            <span class="particle" style="left: 60%; animation-delay: 10s;"></span>
+            <span class="particle" style="left: 70%; animation-delay: 12s;"></span>
+            <span class="particle" style="left: 80%; animation-delay: 14s;"></span>
+            <span class="particle" style="left: 90%; animation-delay: 16s;"></span>
+        </div>
+        
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Quick Access</h3>
+                    <div class="footer-links">
+                        <a href="https://toshon-jennings.github.io/DoubleCapsCorrect/" class="footer-link">CAps™ Utility</a>
+                        <a href="https://toshon-jennings.github.io/crta/" class="footer-link">CRTA Academy</a>
+                        <a href="https://github.com/toshon-jennings/samo-wiki/wiki" class="footer-link">SAMO-WIKI™</a>
+                        <a href="https://github.com/toshon-jennings" class="footer-link">GitHub Profile</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Projects</h3>
+                    <div class="footer-links">
+                        <a href="https://toshon-jennings.github.io/caps-cortex/" class="footer-link">CAps-Cortex™</a>
+                        <a href="https://toshon-jennings.github.io/caps-cortex/project-log.html" class="footer-link">Project Log</a>
+                        <a href="https://toshon-jennings.github.io/caps-cortex/process-insights.html" class="footer-link">Process Insights</a>
+                        <a href="https://github.com/toshon-jennings/DoubleCapsCorrect/wiki" class="footer-link">Documentation</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="footer-links">
+                        <a href="mailto:toshon.tech@gmail.com" class="footer-link">Email</a>
+                        <a href="https://www.linkedin.com/in/toshon/" class="footer-link">LinkedIn</a>
+                        <a href="https://github.com/toshon-jennings/samo-wiki/wiki/%F0%9F%92%BB-Hills-To-Die-On-%28%26-Other-Ideas%29" class="footer-link">Blog</a>
+                        <a href="https://whimsical.com/use-chrome-browser-like-an-os-4jUtNkzWCk3kKFCxZKP29P" class="footer-link">Chrome OS Guide</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Status</h3>
+                    <div class="footer-links">
+                        <span class="footer-link" style="color: var(--accent-green); cursor: default;">✓ Available for Consulting</span>
+                        <span class="footer-link" style="color: var(--accent-green); cursor: default;">✓ Open to Opportunities</span>
+                        <span class="footer-link" style="color: var(--accent-blue); cursor: default;">◉ Philadelphia, PA</span>
+                        <span class="footer-link" style="color: var(--accent-orange); cursor: default;">⚡ Response Time: 24h</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-stats">
+                <div class="footer-stat">
+                    <span class="footer-stat-value">10+</span>
+                    <span class="footer-stat-label">Years XP</span>
+                </div>
+                <div class="footer-stat">
+                    <span class="footer-stat-value">50+</span>
+                    <span class="footer-stat-label">Students</span>
+                </div>
+                <div class="footer-stat">
+                    <span class="footer-stat-value">10K+</span>
+                    <span class="footer-stat-label">Hours</span>
+                </div>
+                <div class="footer-stat">
+                    <span class="footer-stat-value">∞</span>
+                    <span class="footer-stat-label">Learning</span>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">TJ</div>
+                    <span class="footer-logo-text">Toshon Jennings</span>
+                </div>
+                
+                <div class="footer-copyright">
+                    © 2025 Toshon Jennings. Built with trust, powered by curiosity.
+                </div>
+                
+                <div class="footer-power">
+                    <span>POWER</span>
+                    <div class="power-bar">
+                        <div class="power-segment"></div>
+                        <div class="power-segment"></div>
+                        <div class="power-segment"></div>
+                        <div class="power-segment"></div>
+                        <div class="power-segment"></div>
+                    </div>
+                    <span>100%</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const sidebar = document.getElementById('sidebar');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+
+        mobileMenuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+
+        // Filter cards function
+        function filterCards(category) {
+            const cards = document.querySelectorAll('.card');
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            // Update active nav item
+            navItems.forEach(item => item.classList.remove('active'));
+            event.target.closest('.nav-item').classList.add('active');
+            
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // View details functions (placeholders)
+        function viewProfileDetails() {
+            console.log('View profile details');
+        }
+
+        function viewRoleDetails() {
+            console.log('View role details');
+        }
+
+        function viewAboutDetails() {
+            console.log('View about details');
+        }
+
+        function viewCertDetails() {
+            console.log('View certification details');
+        }
+
+        function viewProjectDetails(project) {
+            console.log('View project details:', project);
+        }
+
+        function viewSkillsDetails() {
+            console.log('View skills details');
+        }
+
+        function viewEducationDetails() {
+            console.log('View education details');
+        }
+
+        function viewAllResources() {
+            console.log('View all resources');
+        }
+
+        function viewLocationDetails() {
+            console.log('View location details');
+        }
+
+        function viewFlipbook() {
+            console.log('View flipbook fullscreen');
+        }
+
+        function quickView() {
+            console.log('Quick view resume');
+        }
+    </script>
+</body>
+</html>
