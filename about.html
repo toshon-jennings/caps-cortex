@@ -136,8 +136,6 @@
             align-items: center;
         }
 
-        /* Removed theme-toggle styles since we're using system preference */
-
         /* Dashboard Container */
         .dashboard-wrapper {
             background: var(--main-bg);
@@ -426,6 +424,72 @@
             line-height: 1.6;
             margin-bottom: 16px;
         }
+		
+		/* Mini-card (SAMO-WIKI) inside profile card */
+.mini-card {
+  margin-top: 12px;
+  background: var(--main-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mini-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mini-card-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background: rgba(16,185,129,0.15);
+  color: var(--accent-green);
+  border: 1px solid rgba(16,185,129,0.35);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.mini-card-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.mini-card-desc {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.mini-card-cta {
+  margin-top: 4px;
+  width: 100%;
+  background: var(--accent-green);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.2s ease;
+}
+
+.mini-card-cta:hover {
+  background: #059669;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
+
 
         /* Profile Card */
         .profile-card {
@@ -1146,6 +1210,40 @@
                 text-align: center;
             }
         }
+
+        /* ===========================
+           MODAL (NEW)
+           =========================== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background: var(--card-bg);
+            color: var(--text-primary);
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            max-width: 720px;
+            width: 100%;
+            box-shadow: var(--shadow-lg);
+            animation: slideIn 0.25s ease;
+        }
+        .modal-close {
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+        .modal-close:hover { color: var(--accent-green); }
+        .modal h2 { margin: 0 0 10px 0; }
+        .modal p { color: var(--text-secondary); line-height: 1.6; }
     </style>
 </head>
 <body>
@@ -1282,6 +1380,18 @@
                                     </div>
                                 </div>
                             </div>
+							<!-- Mini-card: SAMO-WIKI inside the profile card -->
+						<div class="mini-card">
+							<div class="mini-card-header">
+								<span class="mini-card-badge">Knowledge Hub</span>
+								<h4 class="mini-card-title">SAMO-WIKI™</h4>
+							</div>
+							<p class="mini-card-desc">
+							A living hub for my writings, deeper resources, and behind-the-scenes thinking that goes beyond “About Toshon.”
+							</p>
+							<button class="mini-card-cta" onclick="viewSamoWiki()">View SAMO-WIKI →</button>
+						</div>
+
                             <button class="view-details-btn" onclick="viewProfileDetails()">View Details →</button>
                         </div>
 
@@ -1731,82 +1841,119 @@
     <script src="https://elfsightcdn.com/platform.js" async></script>
     <div class="elfsight-app-3943a306-16a3-4ab7-a5fa-daca259ffff1" data-elfsight-app-lazy></div>
 
+    <!-- =========
+         MODAL HTML (placed BEFORE JS so elements exist)
+         ========= -->
+    <div id="detailsModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="modal-content">
+        <span class="modal-close" aria-label="Close modal">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalBody"></p>
+      </div>
+    </div>
+
     <script>
-        // Mobile menu toggle
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const sidebar = document.getElementById('sidebar');
+        // Wrap everything to ensure DOM is ready and elements exist
+        window.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle (kept same behavior as original)
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const sidebar = document.getElementById('sidebar');
+            if (mobileMenuToggle && sidebar) {
+                mobileMenuToggle.addEventListener('click', () => {
+                    sidebar.classList.toggle('active');
+                });
+                // original had it twice; maintain parity (no side effects)
+                mobileMenuToggle.addEventListener('click', () => {
+                    sidebar.classList.toggle('active');
+                });
+            }
 
-        mobileMenuToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-        });
+            // Filter cards function (kept original logic; guard against missing event)
+            window.filterCards = function(category) {
+                const cards = document.querySelectorAll('.card');
+                const navItems = document.querySelectorAll('.nav-item');
+                // Update active nav item
+                navItems.forEach(item => item.classList.remove('active'));
+                try {
+                    if (window.event && window.event.target) {
+                        const nav = window.event.target.closest('.nav-item');
+                        if (nav) nav.classList.add('active');
+                    }
+                } catch (e) { /* ignore */ }
 
-        mobileMenuToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-        });
+                // Filter cards
+                cards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            };
 
-        // Filter cards function
-        function filterCards(category) {
-            const cards = document.querySelectorAll('.card');
-            const navItems = document.querySelectorAll('.nav-item');
-            
-            // Update active nav item
-            navItems.forEach(item => item.classList.remove('active'));
-            event.target.closest('.nav-item').classList.add('active');
-            
-            // Filter cards
-            cards.forEach(card => {
-                if (category === 'all' || card.dataset.category === category) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
+            // === Live Search ===
+            const searchBar = document.querySelector('.search-bar');
+            if (searchBar) {
+                searchBar.addEventListener('input', () => {
+                    const term = searchBar.value.trim().toLowerCase();
+                    document.querySelectorAll('.card').forEach(card => {
+                        const text = card.innerText.toLowerCase();
+                        const match = !term || text.includes(term);
+                        card.style.display = match ? 'flex' : 'none';
+                    });
+                });
+            }
 
-        // View details functions (placeholders)
-        function viewProfileDetails() {
-            console.log('View profile details');
-        }
+            // === Modal ===
+            const modal = document.getElementById('detailsModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            const modalClose = document.querySelector('.modal-close');
 
-        function viewRoleDetails() {
-            console.log('View role details');
-        }
+            function openModal(title, body) {
+                if (!modal) return;
+                modalTitle.textContent = title || '';
+                modalBody.textContent = body || '';
+                modal.style.display = 'flex';
+                modal.setAttribute('aria-hidden', 'false');
+            }
+            function closeModal() {
+                modal.style.display = 'none';
+                modal.setAttribute('aria-hidden', 'true');
+            }
+            if (modalClose) modalClose.addEventListener('click', closeModal);
+            window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+            window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.style.display === 'flex') closeModal(); });
 
-        function viewAboutDetails() {
-            console.log('View about details');
-        }
+            // === View Details handlers (exposed globally for inline onclick) ===
+            window.viewProfileDetails = () => openModal('Profile Details', 'Toshon Jennings — systems steward by day, trust-pipeline architect by night. 10+ years experience, 10,000+ hours, 50+ students mentored.');
+            window.viewRoleDetails = () => openModal('Current Role — I.T. Coordinator', 'Managing IT infrastructure, security protocols, and daily operations for educational excellence at The City School.');
+            window.viewAboutDetails = () => openModal('About Me', 'IT professional focused on infrastructure, security, and ed-tech enablement. Building secure, efficient systems and empowering learners.');
+            window.viewCertDetails = () => openModal('Certifications', 'Security+ (completed), ITIL v4 (completed), A+ (in progress), Network+ (in progress).');
+            window.viewProjectDetails = (project) => {
+                const map = {
+                    'caps': 'CAps™ — DoubleCapsCorrect trust-first utility. Fixes clipboard “FAster → Faster” errors with a friction-free trust flow.',
+                    'crta': 'CRTA — Cert-Ready Technology Academy. Empowering students with certification prep and hands-on training.'
+                };
+                openModal('Project Details', map[project] || 'Project details unavailable.');
+            };
+            window.viewSkillsDetails = () => openModal('Technical Stack', 'PowerShell, Python, JavaScript, Azure, Active Directory, VMware, Docker, Git, Linux, Network Security, SQL, Automation.');
+            window.viewEducationDetails = () => openModal('Education', 'WGU — B.S. Information Technology (Network Admin & Security). Progress ~65%. Expected completion 2025.');
+            window.viewAllResources = () => openModal('Contact & Resources', 'Quick links: Gmail, LinkedIn, CRTA, CAps™ site and repo, Blog, Chrome OS guide, Book project.');
+              window.viewLocationDetails = () => openModal('Location', 'Philadelphia, PA — Available for remote opportunities and local consulting (Eastern Time).');
 
-        function viewCertDetails() {
-            console.log('View certification details');
-        }
+        // NEW: SAMO-WIKI mini-card handler — this is the one your mini-card button calls
+        window.viewSamoWiki = () => {
+            openModal(
+                'SAMO-WIKI™',
+                'Visit SAMO-WIKI™ to explore my writings, deeper resources, and in-depth notes beyond About Toshon — the living hub for my online activities and behind-the-scenes thinking.'
+            );
+        };
 
-        function viewProjectDetails(project) {
-            console.log('View project details:', project);
-        }
-
-        function viewSkillsDetails() {
-            console.log('View skills details');
-        }
-
-        function viewEducationDetails() {
-            console.log('View education details');
-        }
-
-        function viewAllResources() {
-            console.log('View all resources');
-        }
-
-        function viewLocationDetails() {
-            console.log('View location details');
-        }
-
-        function viewFlipbook() {
-            console.log('View flipbook fullscreen');
-        }
-
-        function quickView() {
-            console.log('Quick view resume');
-        }
-    </script>
+        // (leave placeholders intact)
+        window.viewFlipbook = () => console.log('View flipbook fullscreen');
+        window.quickView = () => console.log('Quick view resume');
+    });
+</script>
 </body>
 </html>
