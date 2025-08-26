@@ -13,6 +13,13 @@
   --accent-green: #10b981;
   --accent-orange: #f59e0b;
   --accent-purple: #8b5cf6;
+  --header-h: 64px;
+ 
+  --bg: var(--site-bg);
+  --text: var(--site-text);
+  --panel: var(--site-nav-bg);
+  --border: var(--site-nav-border);
+  --hover: var(--card-hover);
 
   /* ---------- LIGHT (DEFAULT) ---------- */
   /* Site chrome */
@@ -113,11 +120,12 @@
 
     /* Content area: iframe fills the remaining viewport */
     .viewer-wrap{
-      height: calc(100vh - var(--header-h));
+	  height: calc(100vh - var(--header-h, 64px));
       width: 100%;
       position: relative;
       background: #000;
     }
+
     iframe{
       position: absolute; inset: 0;
       width: 100%; height: 100%;
